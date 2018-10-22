@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc.vhd" into library work
+INFO: [VRFC 10-307] analyzing entity rc5_enc
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc_tb.vhd" into library work
+INFO: [VRFC 10-307] analyzing entity rc5_enc_tb

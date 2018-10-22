@@ -1,0 +1,330 @@
+#-----------------------------------------------------------
+# Vivado v2018.2.1 (64-bit)
+# SW Build 2288692 on Thu Jul 26 18:24:02 MDT 2018
+# IP Build 2289599 on Thu Jul 26 21:09:20 MDT 2018
+# Start of session at: Mon Oct 22 13:35:51 2018
+# Process ID: 4164
+# Current directory: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc/rc5_enc.runs/synth_1
+# Command line: vivado.exe -log rc5_enc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rc5_enc.tcl
+# Log file: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc/rc5_enc.runs/synth_1/rc5_enc.vds
+# Journal file: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc/rc5_enc.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source rc5_enc.tcl -notrace
+Command: synth_design -top rc5_enc -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 15248 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 357.344 ; gain = 99.910
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'rc5_enc' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc.vhd:14]
+INFO: [Synth 8-3491] module 'left_rotate' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/left_rotate.vhd:4' bound to instance 'uut1' of component 'left_rotate' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc.vhd:41]
+INFO: [Synth 8-638] synthesizing module 'left_rotate' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/left_rotate.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'left_rotate' (1#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/left_rotate.vhd:10]
+INFO: [Synth 8-3491] module 'left_rotate' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/left_rotate.vhd:4' bound to instance 'uut2' of component 'left_rotate' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'rc5_enc' (2#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc.vhd:14]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[31]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[30]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[29]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[28]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[27]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[26]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[25]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[24]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[23]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[22]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[21]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[20]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[19]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[18]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[17]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[16]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[15]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[14]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[13]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[12]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[11]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[10]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[9]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[8]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[7]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[6]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[5]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 411.969 ; gain = 154.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 411.969 ; gain = 154.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 411.969 ; gain = 154.535
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 411.969 ; gain = 154.535
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Registers : 
+	               64 Bit    Registers := 1     
+	               32 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module rc5_enc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Registers : 
+	               64 Bit    Registers := 1     
+	               32 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[31]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[30]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[29]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[28]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[27]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[26]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[25]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[24]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[23]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[22]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[21]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[20]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[19]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[18]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[17]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[16]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[15]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[14]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[13]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[12]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[11]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[10]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[9]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[8]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[7]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[6]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[5]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|rc5_enc     | skey[0]    | 32x32         | LUT            | 
+|rc5_enc     | skey[0]    | 32x32         | LUT            | 
+|rc5_enc     | skey[0]    | 32x32         | LUT            | 
+|rc5_enc     | skey[0]    | 32x32         | LUT            | 
++------------+------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    32|
+|3     |LUT1   |     1|
+|4     |LUT2   |    91|
+|5     |LUT3   |    27|
+|6     |LUT4   |   131|
+|7     |LUT5   |    82|
+|8     |LUT6   |   125|
+|9     |FDCE   |   132|
+|10    |FDPE   |     1|
+|11    |IBUF   |    67|
+|12    |OBUF   |    65|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |   755|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 54 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+Synthesis Optimization Complete : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 585.109 ; gain = 327.676
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 99 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+15 Infos, 54 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 674.051 ; gain = 429.496
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc/rc5_enc.runs/synth_1/rc5_enc.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file rc5_enc_utilization_synth.rpt -pb rc5_enc_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.080 . Memory (MB): peak = 674.051 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 22 13:36:27 2018...

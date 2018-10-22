@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_dec/rc5_dec.sim/sim_1/impl/func/xsim/rc5_dec_tb_func_impl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity rc5_dec
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_dec_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity rc5_dec_tb

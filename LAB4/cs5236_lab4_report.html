@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="el6463-advanced-hardware-design">EL6463 Advanced Hardware Design</h1>
+<h2 id="lab-4">Lab #4</h2>
+<p>Name: Chen Shen</p>
+<p>netID: cs5236</p>
+<hr>
+<h2 id="test-cases">Test Cases</h2>
+<p>In my test bench, I used 3 <code>din</code> for encryption and decryption.</p>
+<p><code>din</code> = <code>x&quot;0000000000000000&quot;</code></p>
+<p><code>din</code> = <code>x&quot;0123456789abcdef&quot;</code></p>
+<p><code>din</code> = <code>x&quot;ffffffffffffffff&quot;</code></p>
+<h2 id="hand-calculation">Hand Calculation</h2>
+<h3 id="encryption-din--x0000000000000000">Encryption: <code>din</code> = <code>x&quot;0000000000000000&quot;</code></h3>
+<p>Before the main loop, we have <code>A</code> = <code>x&quot;00000000&quot;</code> and <code>B</code> = <code>x&quot;00000000&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_enc0.png" alt="HC_en0"></p>
+<p>In the first loop, after the first line, we have <code>A</code> = <code>x&quot;46f8e8c5&quot;</code>. After the second line, we have <code>B</code> = <code>x&quot;2529792d&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_enc1.png" alt="HC_enc1"></p>
+<p>In the second loop, after the first line, we have <code>A</code> = <code>x&quot;a3354804&quot;</code>. After the second line, we have <code>B</code> = <code>x&quot;8a0e959b&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_enc2.png" alt="HC_enc2"></p>
+<p>In the third loop, after the first line, we have <code>A</code> = <code>x&quot;4a87f340&quot;</code>. After the second line, we have <code>B</code> = <code>x&quot;b6ab53fd&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_enc3.png" alt="HC_enc3"></p>
+<h3 id="decryption-din--x0000000000000000">Decryption: <code>din</code> = <code>x&quot;0000000000000000&quot;</code></h3>
+<p>Before the main loop, we have <code>A</code> = <code>x&quot;00000000&quot;</code> and <code>B</code> = <code>x&quot;00000000&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_dec0.png" alt="HC_dec0"></p>
+<p>In the first loop, after the first line, we have <code>A</code> = <code>x&quot;93c8774f&quot;</code>. After the second line, we have <code>B</code> = <code>x&quot;9afb9c80&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_dec1.png" alt="HC_dec1"></p>
+<p>In the second loop, after the first line, we have <code>A</code> = <code>x&quot;e99c86aa&quot;</code>. After the second line, we have <code>B</code> = <code>x&quot;6130d88b&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_dec2.png" alt="HC_dec2"></p>
+<p>In the third loop, after the first line, we have <code>A</code> = <code>x&quot;4987f97f&quot;</code>. After the second line, we have <code>B</code> = <code>x&quot;20b04007&quot;</code>.</p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/HC_dec3.png" alt="HC_dec3"></p>
+<h2 id="block-diagram">Block Diagram</h2>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/BlockDiagram_enc.png" alt="BlockDiagram_enc"></p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/BlockDiagram_dec.png" alt="BlockDiagram_dec"></p>
+<h2 id="resource-utilization">Resource Utilization</h2>
+<h3 id="rc5-encryption">RC5 Encryption</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Synthesis stage</th>
+<th style="text-align:center">Place and Route stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LUT and FF pairs usage</td>
+<td style="text-align:left">510 LUTs and 230 FFs</td>
+<td style="text-align:center">186</td>
+</tr>
+<tr>
+<td style="text-align:left">IOB usage</td>
+<td style="text-align:left">32</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:left">RAM/DSP blocks used (if any)</td>
+<td style="text-align:left">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rc5-decryption">RC5 Decryption</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Synthesis stage</th>
+<th style="text-align:center">Place and Route stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LUT and FF pairs usage</td>
+<td style="text-align:left">390 LUTs and 230 FFs</td>
+<td style="text-align:center">131</td>
+</tr>
+<tr>
+<td style="text-align:left">IOB usage</td>
+<td style="text-align:left">32</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:left">RAM/DSP blocks used (if any)</td>
+<td style="text-align:left">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="simulation">Simulation</h2>
+<p>*Notice that all the simulations use the same clock peroid - 20 ns</p>
+<h3 id="functional-simulation">Functional Simulation</h3>
+<p>*In post-implementation simulation, the <code>a_reg</code>, <code>b_reg</code>, <code>a</code> and <code>b</code> are compiled to a lot of <code>wire</code>s. So only some of these signals can be added to wave window.</p>
+<h4 id="rc5-encryption">RC5 Encryption</h4>
+<h5 id="din--x0000000000000000"><code>din</code> = <code>x&quot;0000000000000000&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/func_sim_enc1.png" alt="func_sim_enc1"></p>
+<h5 id="din--x0123456789abcdef"><code>din</code> = <code>x&quot;0123456789abcdef&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/func_sim_enc2.png" alt="func_sim_enc2"></p>
+<h5 id="din--xffffffffffffffff"><code>din</code> = <code>x&quot;ffffffffffffffff&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/func_sim_enc3.png" alt="func_sim_enc3"></p>
+<h4 id="rc5-decryption">RC5 Decryption</h4>
+<h5 id="din--x0000000000000000"><code>din</code> = <code>x&quot;0000000000000000&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/func_sim_dec1.png" alt="func_sim_dec1"></p>
+<h5 id="din--x0123456789abcdef"><code>din</code> = <code>x&quot;0123456789abcdef&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/func_sim_dec2.png" alt="func_sim_dec2"></p>
+<h5 id="din--xffffffffffffffff"><code>din</code> = <code>x&quot;ffffffffffffffff&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/func_sim_dec3.png" alt="func_sim_dec3"></p>
+<h3 id="timing-simulation">Timing Simulation</h3>
+<h4 id="rc5-encryption">RC5 Encryption</h4>
+<h5 id="din--x0000000000000000"><code>din</code> = <code>x&quot;0000000000000000&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_enc1_1.png" alt="timing_sim_enc1_1"></p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_enc1_2.png" alt="timing_sim_enc1_2"></p>
+<h5 id="din--x0123456789abcdef"><code>din</code> = <code>x&quot;0123456789abcdef&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_enc2_1.png" alt="timing_sim_enc2_1"></p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_enc2_2.png" alt="timing_sim_enc2_2"></p>
+<h5 id="din--xffffffffffffffff"><code>din</code> = <code>x&quot;ffffffffffffffff&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_enc3_1.png" alt="timing_sim_enc3_1"></p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_enc3_2.png" alt="timing_sim_enc3_2"></p>
+<h4 id="rc5-decryption">RC5 Decryption</h4>
+<h5 id="din--x0000000000000000"><code>din</code> = <code>x&quot;0000000000000000&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_dec1_1.png" alt="timing_sim_dec1_1"></p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_dec1_2.png" alt="timing_sim_dec1_2"></p>
+<h5 id="din--x0123456789abcdef"><code>din</code> = <code>x&quot;0123456789abcdef&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_dec2_1.png" alt="timing_sim_dec2_1"></p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_dec2_2.png" alt="timing_sim_dec2_2"></p>
+<h5 id="din--xffffffffffffffff"><code>din</code> = <code>x&quot;ffffffffffffffff&quot;</code></h5>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_dec3_1.png" alt="timing_sim_dec3_1"></p>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/LAB4/image/timing_sim_dec3_2.png" alt="timing_sim_dec3_2"></p>
+<h2 id="speed-of-the-design">Speed of the Design</h2>
+<p>*Remember that in Vivado, only WNS (Worst Negative Slack) is provided in the report, which represents the max delay path (required time - arrival time). In my design, I used a clock signal having a period of 20 ns. So the requirement was 20 ns, and the slack is <code>WNS</code> (note that it is positive), which means that we could have asked for a clock period <code>WNS</code> shorter and it would still be fine. Thus we can answer the minimum period and maximal frequency through this way. (I found this explanation on <a href="http://bilauer.co.il/blog/2017/01/vivado-minimal-period-timing/">http://bilauer.co.il/blog/2017/01/vivado-minimal-period-timing/</a>)</p>
+<h3 id="rc5-encryption">RC5 Encryption</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Setup</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Hold</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Pulse Width</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Worst Negative Slack (WNS):</td>
+<td style="text-align:left">6.516 ns</td>
+<td style="text-align:left">Worst Hold Slack (WHS):</td>
+<td style="text-align:left">0.210 ns</td>
+<td style="text-align:left">Worst Pulse Width Slack (WPWS):</td>
+<td style="text-align:left">9.500 ns</td>
+</tr>
+<tr>
+<td style="text-align:left">Total Negative Slack (TNS):</td>
+<td style="text-align:left">0.000 ns</td>
+<td style="text-align:left">Total Hold Slack (THS):</td>
+<td style="text-align:left">0.000 ns</td>
+<td style="text-align:left">Total Pulse Width Negative Slack (TPWS):</td>
+<td style="text-align:left">0.000 ns</td>
+</tr>
+<tr>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">412</td>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">412</td>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">219</td>
+</tr>
+</tbody>
+</table>
+<p>Minimum period: 13.484 ns</p>
+<p>Maximum clock frequency: 74.162 MHz</p>
+<p>Latency: 12 clock cycles</p>
+<h3 id="rc5-decryption">RC5 Decryption</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Setup</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Hold</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Pulse Width</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Worst Negative Slack (WNS):</td>
+<td style="text-align:left">9.005 ns</td>
+<td style="text-align:left">Worst Hold Slack (WHS):</td>
+<td style="text-align:left">0.105 ns</td>
+<td style="text-align:left">Worst Pulse Width Slack (WPWS):</td>
+<td style="text-align:left">9.500 ns</td>
+</tr>
+<tr>
+<td style="text-align:left">Total Negative Slack (TNS):</td>
+<td style="text-align:left">0.000 ns</td>
+<td style="text-align:left">Total Hold Slack (THS):</td>
+<td style="text-align:left">0.000 ns</td>
+<td style="text-align:left">Total Pulse Width Negative Slack (TPWS):</td>
+<td style="text-align:left">0.000 ns</td>
+</tr>
+<tr>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">413</td>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">413</td>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">219</td>
+</tr>
+</tbody>
+</table>
+<p>Minimum period: 10.995 ns</p>
+<p>Maximum clock frequency: 90.950 MHz</p>
+<p>Latency: 12 clock cycles</p>
+<h2 id="port-map">Port Map</h2>
+<h3 id="clock-signal">Clock Signal</h3>
+<p>First, I generated a <strong>clock signal</strong> with period 20 ns, and mapped the clock signal <code>clk</code> (logic bit) in my design to it.</p>
+<p>Because the hardware needs time to deal with the data in each clock cycle, if we use a too small period, for example, 10 ns, the time will be not enough to cover all the computations in each clock cycle. So we need set the clock cycle properly.</p>
+<h3 id="buttons">Buttons</h3>
+<p>In my design, 3 buttons (reset, up, down and center) are used.</p>
+<p>The reset signal <code>clr</code> (logic bit) is mapped to <strong>CPU reset button</strong>, which serves as an asynchronous reset signal. When clicking on reset button, the signals including input (<code>din</code>), output (<code>dout</code>), registers (<code>a_reg</code> and <code>b_reg</code>) and some intermediate signals (<code>i_cnt</code>, <code>do_rdy</code>, .etc) will be initialized with a certain value (generally 0). Notice that the reset signal is low level effective. That is why it must be mapped to the CPU Reset button.</p>
+<p>The signals <code>up_btn</code> (logic bit) and <code>down_btn</code> (logic bit) are mapped to <strong>up button</strong> and <strong>down button</strong>, which are used to modify the value of input vector. When clicking on up button, the displaying 8-bit hexadecimal number will increase by 1. Similarly, when clicking on down button, the displaying 8-bit hexadecimal number will decrease by 1. These two button only work when the input vector is being displayed. In addition, in order to avoid continued increasing/decreasing, I used a buffer signal for each button. By checking the value of button and the corresponding buffer at every clock rising edge, I can decide the rising edge of button signal is within which clock cycle. Thus, the function will be triggered only once at a time. Also, thanks to the high frequency clock signal, the delay cannot be detected by us human beings.</p>
+<p><strong>Center button</strong> is mapped to the signal <code>di_vld</code>, which is used to tell the system that input value is ready and computation can take place.</p>
+<h3 id="switches">Switches</h3>
+<p>In my design, 10 switches (I/O switch, A/B switch, and 8 switches to decide the modifying bits) are used.</p>
+<p>The signal <code>io_sw</code> (logic bit) is mapped to the first right-handed switch (<strong>I/O switch</strong>). This switch is used to switch the display (on 7 segments) between input vector and output vector.</p>
+<p>The signal <code>ab_sw</code> (logic bit) is mapped to the second right-handed switch (<strong>A/B switch</strong>). This switch is used to switch the display (on 7 segments) between vector <code>A</code> (32 most significant bits) and vector <code>B</code> (32 least significant bits).</p>
+<p>The signal <code>mod_hex</code> (8-bit logic vector) is mapped to 8 switches (<strong>modifying switch</strong>). Each bit of the vector corresponds to a certain segment. When modifying the hexadecimal value with the two buttons mentioned above, only the segments of which the corresponding switch is set to <code>1</code> will change.</p>
+<h3 id="leds">LEDs</h3>
+<p>In my design, only one LED is used.</p>
+<p>The signal <code>do_rdy</code> is mapped to the first left-handed LED. When output is ready, the LED will be on. Or it remains off.</p>
+<h3 id="7-segment-display">7 Segment Display</h3>
+<p>In my design, all 7 segment display are used.</p>
+<p>The current displaying value are determined by the two switch mentioned above (<strong>I/O switch</strong> and <strong>A/B switch</strong>).</p>
+<p>In order to perform a proper function of displaying, I generate a slow clock, comparing with the clock <code>clk</code> (20 ns period). This clock signal for 7 segment display has a period of 20 * 2^16 ns and it is used to switch among all the 8 digits. At the rising edge of display clock signal (<code>disp_clk(15)</code>), the anode select (signal <code>seg_sel</code>) and corresponding value to be displayed (signal <code>seg_val</code>) will change. As a result, we can get a suitable refresh rate. With this rate, the 8 digits can be different and no overlapping occurs.</p>
+<h3 id="brief-summary">Brief Summary</h3>
+<p>By modifying the <code>.xdc</code> file, we can set the period of clock signal. In this way, each divide by two will use a flip-flop to implement. However, the number of flip-flop which can be used as frequency divider is limited. So the clock period can only be changed within a certain range. If we want a really slow clock, for example, a period of 1 sec. It can not be realized directly by flip-flop hardware. Thus, we need to declare a vector as counter to count the number of rising edges of clock signal.</p>
+<p>The most significant difference between buttons and switches is that the switches have two stable states (<code>0</code> and <code>1</code>) while the buttons only have one (<code>0</code>). That's why I used buttons as triggers for each function and used switches to represent different states or modes.</p>
+<p>There are 8 digits of 7 segment display but only 16 LEDs. As we all know, each digit of 7 segment display can show one bit of hexadecimal number, which takes 4 binary bits. 32 binary bits can be displayed at a time with 8 hexadecimal bits. So I chose to use 7 segment display to show the long vector (64 logic bits). Besides, the LEDs are used as indecators.</p>
+<p>For more details, please go over my VHDL codes.</p>
+<h2 id="demo-video">Demo Video</h2>
+<p><a href="https://youtu.be/oqQJlu5xBXE">https://youtu.be/oqQJlu5xBXE</a></p>
+
+    </body>
+    </html>

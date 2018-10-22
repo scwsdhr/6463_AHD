@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB3/down_counter/down_counter.sim/sim_1/impl/timing/xsim/down_counter_5236_tb_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module down_counter_5236
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB3/down_counter_5236_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity down_counter_5236_tb

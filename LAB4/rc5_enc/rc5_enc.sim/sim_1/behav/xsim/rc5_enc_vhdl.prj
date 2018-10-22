@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl work  \
+"../../../../../left_rotate.vhd" \
+"../../../../../rc5_enc.vhd" \
+
+# Do not sort compile order
+nosort

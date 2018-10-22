@@ -1,0 +1,4 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+WARNING: "C:\Xilinx\Vivado\2018.2\data/verilog/src/unisims/FDCE.v" Line 170: Timing violation in scope /rc5_enc_tb/uut/b_reg_reg[0]/TChk170_1684 at time 404871 ps $setuphold (posedge C,posedge D,(0:0:0),(0:0:0),notifier,in_clk_enable_p,in_clk_enable_p,C_dly,D_dly) 
+WARNING: "C:\Xilinx\Vivado\2018.2\data/verilog/src/unisims/FDCE.v" Line 170: Timing violation in scope /rc5_enc_tb/uut/b_reg_reg[0]/TChk170_1684 at time 404871 ps $setuphold (posedge C,posedge D,(0:0:0),(0:0:0),notifier,in_clk_enable_p,in_clk_enable_p,C_dly,D_dly) 

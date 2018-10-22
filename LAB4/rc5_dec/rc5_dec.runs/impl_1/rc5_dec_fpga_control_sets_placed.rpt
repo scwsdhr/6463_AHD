@@ -1,0 +1,82 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2.1 (win64) Build 2288692 Thu Jul 26 18:24:02 MDT 2018
+| Date         : Mon Oct 22 11:09:30 2018
+| Host         : DESKTOP-65OAGH3 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file rc5_dec_fpga_control_sets_placed.rpt
+| Design       : rc5_dec_fpga
+| Device       : xc7a100t
+-----------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    15 |
+| Unused register locations in slices containing registers |    36 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            3 |
+|      4 |            1 |
+|      8 |            3 |
+|    16+ |            8 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              50 |            7 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              16 |            5 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             394 |           63 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------+-----------------------+---------------------+------------------+----------------+
+|      Clock Signal      |     Enable Signal     |   Set/Reset Signal  | Slice Load Count | Bel Load Count |
++------------------------+-----------------------+---------------------+------------------+----------------+
+|  clk_IBUF_BUFG         | uut0/do_rdy_i_1_n_0   | uut0/do_rdy_reg_0   |                1 |              2 |
+|  disp_clk_reg_n_0_[15] |                       | disp_sel[7]_i_1_n_0 |                1 |              2 |
+|  disp_clk_reg_n_0_[15] |                       | sel0[0]             |                1 |              2 |
+|  disp_clk_reg_n_0_[15] |                       | sel0[2]             |                1 |              4 |
+|  clk_IBUF_BUFG         | uut0/i_cnt[3]_i_1_n_0 | uut0/dout_reg[26]_0 |                1 |              8 |
+|  disp_clk_reg_n_0_[15] |                       |                     |                1 |              8 |
+|  disp_clk_reg_n_0_[15] |                       | sel0[1]             |                2 |              8 |
+|  clk_IBUF_BUFG         | din[31]_i_1_n_0       | uut0/dout_reg[26]_0 |                2 |             16 |
+|  clk_IBUF_BUFG         | din[63]_i_1_n_0       | uut0/dout_reg[26]_0 |                2 |             16 |
+|  clk_IBUF_BUFG         | uut0/dout[63]_i_1_n_0 | uut0/dout_reg[26]_0 |                6 |             28 |
+|  clk_IBUF_BUFG         |                       |                     |                6 |             42 |
+|  clk_IBUF_BUFG         | din[31]_i_1_n_0       | uut0/do_rdy_reg_0   |                6 |             48 |
+|  clk_IBUF_BUFG         | din[63]_i_1_n_0       | uut0/do_rdy_reg_0   |                5 |             48 |
+|  clk_IBUF_BUFG         | uut0/dout[63]_i_1_n_0 | uut0/do_rdy_reg_0   |               17 |            100 |
+|  clk_IBUF_BUFG         | uut0/b_reg            | uut0/dout_reg[26]_0 |               23 |            128 |
++------------------------+-----------------------+---------------------+------------------+----------------+
+
+

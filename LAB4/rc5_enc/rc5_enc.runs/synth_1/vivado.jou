@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2.1 (64-bit)
+# SW Build 2288692 on Thu Jul 26 18:24:02 MDT 2018
+# IP Build 2289599 on Thu Jul 26 21:09:20 MDT 2018
+# Start of session at: Mon Oct 22 13:35:51 2018
+# Process ID: 4164
+# Current directory: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc/rc5_enc.runs/synth_1
+# Command line: vivado.exe -log rc5_enc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rc5_enc.tcl
+# Log file: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc/rc5_enc.runs/synth_1/rc5_enc.vds
+# Journal file: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB4/rc5_enc/rc5_enc.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source rc5_enc.tcl -notrace

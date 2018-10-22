@@ -1,0 +1,5 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB3/up_counter_5236_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity up_counter_5236_tb
+ERROR: [VRFC 10-91] s is not declared [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB3/up_counter_5236_tb.vhd:24]
+ERROR: [VRFC 10-1504] unit tb ignored due to previous errors [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB3/up_counter_5236_tb.vhd:8]
+INFO: [VRFC 10-240] VHDL file C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB3/up_counter_5236_tb.vhd ignored due to errors
