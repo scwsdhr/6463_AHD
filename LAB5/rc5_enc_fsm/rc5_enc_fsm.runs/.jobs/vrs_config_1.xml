@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="synth_1" LaunchDir="C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_fsm/rc5_enc_fsm.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+</Runs>
+

@@ -1,0 +1,6 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB5/left_rotate.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity left_rotate
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity rc5_enc
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity rc5_enc_tb
