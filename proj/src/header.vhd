@@ -2,45 +2,46 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 package header is	
-	constant OPC_ADD_SUB_AND_OR_NOR   : std_logic_vector(7 downto 0):= x"00";
-	constant OPC_ADDI   	: std_logic_vector(7 downto 0):= x"01";
---	constant OPC_SUB   	    : std_logic_vector(7 downto 0):= x"00";
-	constant OPC_SUBI   	: std_logic_vector(7 downto 0):= x"02";
---	constant OPC_AND   	    : std_logic_vector(7 downto 0):= x"00";
-	constant OPC_ANDI   	: std_logic_vector(7 downto 0):= x"03";
---	constant OPC_OR   	    : std_logic_vector(7 downto 0):= x"00";
---	constant OPC_NOR   	    : std_logic_vector(7 downto 0):= x"00";
-	constant OPC_ORI   	    : std_logic_vector(7 downto 0):= x"04";
-	constant OPC_SHL   	    : std_logic_vector(7 downto 0):= x"05";
-	constant OPC_SHR   	    : std_logic_vector(7 downto 0):= x"06";
-    
-	constant OPC_LW   	    : std_logic_vector(7 downto 0):= x"07";
-	constant OPC_SW   	    : std_logic_vector(7 downto 0):= x"08";
-	constant OPC_BLT   	    : std_logic_vector(7 downto 0):= x"09";
-	constant OPC_BE   	    : std_logic_vector(7 downto 0):= x"0A";
-	constant OPC_BNE   	    : std_logic_vector(7 downto 0):= x"0B";
-	constant OPC_JMP   	    : std_logic_vector(7 downto 0):= x"0C";
-	constant OPC_HAL   	    : std_logic_vector(7 downto 0):= x"3F";
-	
-	constant FUNC_ADD   	: std_logic_vector(7 downto 0):= x"10";
-	constant FUNC_SUB   	: std_logic_vector(7 downto 0):= x"11";
-	constant FUNC_AND   	: std_logic_vector(7 downto 0):= x"12";
-	constant FUNC_OR  	    : std_logic_vector(7 downto 0):= x"13";
-	constant FUNC_NOR  	    : std_logic_vector(7 downto 0):= x"14";
-    
-	constant ENABLE   	    : std_logic := '1';
-	constant DISABLE   	    : std_logic := '0';
-	
-	constant ALU_ADD		: std_logic_vector(3 downto 0):= "0000";
-	constant ALU_SUB		: std_logic_vector(3 downto 0):= "0001";
-	constant ALU_AND		: std_logic_vector(3 downto 0):= "0010";
-	constant ALU_OR		    : std_logic_vector(3 downto 0):= "0011";
-	constant ALU_NOR		: std_logic_vector(3 downto 0):= "0100";
-	constant ALU_SHL		: std_logic_vector(3 downto 0):= "0101";
-	constant ALU_SHR		: std_logic_vector(3 downto 0):= "0110";
-	constant ALU_BLT		: std_logic_vector(3 downto 0):= "0111";
-	constant ALU_BE		    : std_logic_vector(3 downto 0):= "1000";
-	constant ALU_BNE		: std_logic_vector(3 downto 0):= "1001";
-	constant ALU_NDEF		: std_logic_vector(3 downto 0):= "1111";
+	constant OP_ADD_SUB_AND_OR_NOR 	: std_logic_vector(5 downto 0) := "00" & x"0";
+	constant OP_ADDI   				: std_logic_vector(5 downto 0) := "00" & x"1";
+--	constant OP_SUB   	    		: std_logic_vector(5 downto 0) := "00" & x"0";
+	constant OP_SUBI   				: std_logic_vector(5 downto 0) := "00" & x"2";
+--	constant OP_AND   	    		: std_logic_vector(5 downto 0) := "00" & x"0";
+	constant OP_ANDI   				: std_logic_vector(5 downto 0) := "00" & x"3";
+--	constant OP_OR   	    		: std_logic_vector(5 downto 0) := "00" & x"0";
+--	constant OP_NOR   	    		: std_logic_vector(5 downto 0) := "00" & x"0";
+	constant OP_ORI   	    		: std_logic_vector(5 downto 0) := "00" & x"4";
+	constant OP_SHL   	    		: std_logic_vector(5 downto 0) := "00" & x"5";
+	constant OP_SHR   	    		: std_logic_vector(5 downto 0) := "00" & x"6";
+		
+	constant OP_LW   	    		: std_logic_vector(5 downto 0) := "00" & x"7";
+	constant OP_SW   	    		: std_logic_vector(5 downto 0) := "00" & x"8";
+	constant OP_BLT   	    		: std_logic_vector(5 downto 0) := "00" & x"9";
+	constant OP_BE   	    		: std_logic_vector(5 downto 0) := "00" & x"A";
+	constant OP_BNE   	    		: std_logic_vector(5 downto 0) := "00" & x"B";
+	constant OP_JMP   	    		: std_logic_vector(5 downto 0) := "00" & x"C";
+
+	constant OP_HAL   	    		: std_logic_vector(5 downto 0) := "11" & x"F";
+			
+	constant FUNC_ADD   			: std_logic_vector(5 downto 0) := "00" & x"1";
+	constant FUNC_SUB   			: std_logic_vector(5 downto 0) := "00" & x"3";
+	constant FUNC_AND   			: std_logic_vector(5 downto 0) := "00" & x"5";
+	constant FUNC_OR  	    		: std_logic_vector(5 downto 0) := "00" & x"7";
+	constant FUNC_NOR  	    		: std_logic_vector(5 downto 0) := "00" & x"9";
+		
+--	constant ENABLE   	    		: std_logic := '1';
+--	constant DISABLE   	    		: std_logic := '0';
+			
+	constant ALU_ADD				: std_logic_vector(3 downto 0) := x"0";
+	constant ALU_SUB				: std_logic_vector(3 downto 0) := x"1";
+	constant ALU_AND				: std_logic_vector(3 downto 0) := x"2";
+	constant ALU_OR		    		: std_logic_vector(3 downto 0) := x"3";
+	constant ALU_NOR				: std_logic_vector(3 downto 0) := x"4";
+	constant ALU_SHL				: std_logic_vector(3 downto 0) := x"5";
+	constant ALU_SHR				: std_logic_vector(3 downto 0) := x"6";
+	constant ALU_BLT				: std_logic_vector(3 downto 0) := x"7";
+	constant ALU_BE		    		: std_logic_vector(3 downto 0) := x"8";
+	constant ALU_BNE				: std_logic_vector(3 downto 0) := x"9";
+	constant ALU_NDEF				: std_logic_vector(3 downto 0) := x"a";
 		
 end header;

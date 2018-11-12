@@ -7,10 +7,10 @@ entity data_memory is
 	port (		
 		clr	: in STD_LOGIC;
 		clk	: in STD_LOGIC;
-		A : in STD_LOGIC_VECTOR(31 DOWNTO 0);
+		A : in STD_LOGIC_VECTOR(31 downto 0);
         WD : in STD_LOGIC;
         WE : in STD_LOGIC;
-		RD : out STD_LOGIC_VECTOR(31 DOWNTO 0)
+		RD : out STD_LOGIC_VECTOR(31 downto 0)
 	);
 end data_memory;
 
@@ -26,13 +26,14 @@ begin
 
 	process(clr)
 	begin
-        if (clr = '1') then
+        if (clr = '0') then
+			-- TODO: reset function
             null;
 		elsif (clk'event and clk = '1') then
             -- read mode
             if (WE = '0') then
                 RD <= data_mem(conv_integer(A));
-            -- write enable
+            -- write enabled
             else
                 RD <= (others => '0');
                 data_mem(conv_integer(A)) <= WD;

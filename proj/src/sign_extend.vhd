@@ -10,13 +10,12 @@ end sign_extend;
 
 architecture Behavioral of sign_extend is
 begin
-
     process
     begin
-        case imm(15) is
-            when '0' => signimm <= x"0000" & imm;
-            when others => signimm <= x"ffff" & imm;
-        end case;
+        if (imm(15) = '0') then
+            signimm <= x"0000" & imm;
+        else
+            signimm <= x"ffff" & imm;
+        end if;
     end process;
-
 end Behavioral;

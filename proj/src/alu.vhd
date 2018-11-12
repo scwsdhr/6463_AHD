@@ -3,37 +3,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 library work;
-use work.header.all;
+use work.header.ALL;
 
 entity alu is
-
-	PORT 
+	port 
 	(
-		clr	: IN STD_LOGIC;
-		SrcA : IN STD_LOGIC_VECTOR(31 downto 0);
-		SrcB : IN STD_LOGIC_VECTOR(31 downto 0);
-		ALUControl 	: IN STD_LOGIC_VECTOR(3 downto 0);
-		Zero 	: OUT STD_LOGIC;
-		ALUResult : OUT STD_LOGIC_VECTOR(31 downto 0)
-	 );
-
+		clr	: in STD_LOGIC;
+		SrcA : in STD_LOGIC_VECTOR(31 downto 0);
+		SrcB : in STD_LOGIC_VECTOR(31 downto 0);
+		ALUControl 	: in STD_LOGIC_VECTOR(3 downto 0);
+		Zero : out STD_LOGIC;
+		ALUResult : out STD_LOGIC_VECTOR(31 downto 0)
+	);
 end alu;
 
 architecture Behavioral of alu is
-
---TODO: if the ALUControl is invalid, ALUResult SrcA high res. For now it is just 0's
-signal temp : STD_LOGIC_VECTOR(31 downto 0) := (others=> '0');
-
-
 begin
-				 
-
 	process(clr, SrcA, SrcB, ALUControl)
 	begin
 		if (clr = '0') then
+            -- TODO: reset function
 			null;
         else
-
+            -- initialize
             ALUResult <= x"00000000";
             Zero <= '0';
             
@@ -112,23 +104,23 @@ begin
                         when "10101" =>
                             ALUResult <= SrcA(10 downto 0) & "000000000000000000000"; 
                         when "10110" =>
-                            ALUResult <= SrcA(9 downto 0) &  "0000000000000000000000"; 
+                            ALUResult <= SrcA(9 downto 0) & "0000000000000000000000"; 
                         when "10111" =>
-                            ALUResult <= SrcA(8 downto 0) &  "00000000000000000000000"; 
+                            ALUResult <= SrcA(8 downto 0) & "00000000000000000000000"; 
                         when "11000" =>
-                            ALUResult <= SrcA(7 downto 0) &  "000000000000000000000000";
+                            ALUResult <= SrcA(7 downto 0) & "000000000000000000000000";
                         when "11001" =>
-                            ALUResult <= SrcA(6 downto 0) &  "0000000000000000000000000";
+                            ALUResult <= SrcA(6 downto 0) & "0000000000000000000000000";
                         when "11010" =>
-                            ALUResult <= SrcA(5 downto 0) &  "00000000000000000000000000";
+                            ALUResult <= SrcA(5 downto 0) & "00000000000000000000000000";
                         when "11011" =>
-                            ALUResult <= SrcA(4 downto 0) &  "000000000000000000000000000"; 
+                            ALUResult <= SrcA(4 downto 0) & "000000000000000000000000000"; 
                         when "11100" =>
-                            ALUResult <= SrcA(3 downto 0) &  "0000000000000000000000000000";
+                            ALUResult <= SrcA(3 downto 0) & "0000000000000000000000000000";
                         when "11101" =>
-                            ALUResult <= SrcA(2 downto 0) &  "00000000000000000000000000000";
+                            ALUResult <= SrcA(2 downto 0) & "00000000000000000000000000000";
                         when "11110" =>
-                            ALUResult <= SrcA(1 downto 0) &  "000000000000000000000000000000"; 
+                            ALUResult <= SrcA(1 downto 0) & "000000000000000000000000000000"; 
                         when "11111" =>
                             ALUResult <= SrcA(0) & "0000000000000000000000000000000";
                         when others =>
@@ -217,14 +209,15 @@ begin
                     
                 -- branch if equal
                 when ALU_BE =>
-                    if(SrcA = SrcB) then
+                    if (SrcA = SrcB) then
                         Zero <= '1';
                     else
                         Zero <= '0';
                     end if;
-            -- branch if not equal
+
+                -- branch if not equal
                 when ALU_BNE =>
-                    if(SrcA = SrcB) then
+                    if (SrcA = SrcB) then
                         Zero <= '0';
                     else
                         Zero <= '1';
@@ -233,13 +226,11 @@ begin
                     ALUResult <= x"00000000";
                     Zero <= '0';
 
+                -- others
                 when others =>
                     null;
             end case;
-
         end if;	
-
 	end process;
-
 
 end Behavioral;

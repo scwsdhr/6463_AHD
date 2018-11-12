@@ -12,5 +12,4 @@ architecture Behavioral of left_shift_2 is
 begin
     -- add two zeros in the end
     o <= a(29 downto 0) & "00";
-
 end Behavioral;

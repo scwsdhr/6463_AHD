@@ -11,12 +11,10 @@ end flipflop;
 
 architecture Behavioral of flipflop is
 begin
-
     process(clk)
     begin
         if (clk'event and clk = '1') then
             o <= i;
         end if;
     end process;
-
 end Behavioral;

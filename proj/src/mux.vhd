@@ -12,14 +12,12 @@ end mux;
 
 architecture Behavioral of mux is
 begin
-
     process
     begin
         if (sel = '0') then
             o <= a;
-        elsif (sel = '1') then
+        else
             o <= b;
         end if;
     end process;
-
 end Behavioral;

@@ -4,20 +4,18 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity instruction_memory is
-	port (		
-		clr	: in STD_LOGIC;
-		A : in STD_LOGIC_VECTOR(31 DOWNTO 0);
-		RD : out STD_LOGIC_VECTOR(31 DOWNTO 0)
-	);
+    port (		
+        clr : in STD_LOGIC;
+        A : in STD_LOGIC_VECTOR(31 DOWNTO 0);
+        RD : out STD_LOGIC_VECTOR(31 DOWNTO 0)
+    );
 end instruction_memory;
 
 architecture Behavioral of instruction_memory is
-	
-	constant DATA_BITS : INTEGER := 32;			-- number of bits per word
-	constant DEPTH     : INTEGER := 256;		-- number of entries
-	
-	type rom is array (0 to DEPTH - 1) of STD_LOGIC_VECTOR(DATA_BITS - 1 downto 0);
-	signal inst_mem : rom := (x"00000000",	
+    constant DATA_BITS : INTEGER := 32;			-- number of bits per word
+    constant DEPTH     : INTEGER := 256;		-- number of entries
+    type rom is array (0 to DEPTH - 1) of STD_LOGIC_VECTOR(DATA_BITS - 1 downto 0);
+    signal inst_mem : rom := (x"00000000",	
         "00000100000000110000000000000100",
         "00000100000000010000000000000001",
         "00001000011000110000000000000001",
@@ -232,14 +230,13 @@ architecture Behavioral of instruction_memory is
         x"00000000",x"00000000",x"00000000",x"00000000",x"00000000");
 
 begin
-
-	process(clr)
-	begin
-		if (clr = '1') then
+    process(clr)
+    begin
+        if (clr = '0') then
+            -- TODO: reset function
             null;
- 		end if;
-	end process;
-	
-	RD <= inst_mem(conv_integer(A));	
-	
+        end if;
+    end process;
+    RD <= inst_mem(conv_integer(A));	
+
 end Behavioral;
