@@ -1,0 +1,30 @@
+Design, implement and demonstrate a counter on FPGA whose specification is given below. You need to answer ALL the questions listed as deliverables. Answers can only be in your report (submitted to NYU Classes).
+
+Specification: Will be given in the class¡­.(each one will potentially get a different counter specification). It will be a four-bit up-down counter.
+ 
+
+Deliverables
+
+1.  Draw the FSM or some conceptual diagram of your design. 1 point
+
+2.  Develop a VHDL model for the specification. 1 point
+
+3.  Perform functional simulation and show a screenshot of the waveform into your report. Perform simulation for at least THREE possible corner cases. Justify the ¡°interesting aspect¡± of the corner cases. 2.5 points (add all of these into your report)
+
+4.  Synthesize the design. Do timing simulation and insert a screenshot of the waveform into your report. 2 point
+
+6. What resources are used by your design and how much is being used? 0.5 points
+
+7. How fast can you run your design (critical path delay and clock frequency)? Provide timing analysis. 1 point
+
+8. Generate bit file and program your FPGA board to demonstrate your design to the TA. 2 points
+
+ 
+
+RULES:
+
+?  This is an open book test, but you are NOT ALLOWED TO CONNECT TO THE INTERNET on your laptops. SWITCH OFF THE INTERNET CONNECTION.
+
+?  Switch OFF your cell phones and leave them with the TAs for the duration of the exam (20% of the points will be taken off if you fail to do so).
+
+?  Once you are done with the test, show the result to one of the PROCTORS. Once you get their permission, then you are allowed to connect to NYU classes to submit the exam. This is a paperless exam.

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>EL6463 Advanced Hardware Design</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="el6463-advanced-hardware-design">EL6463 Advanced Hardware Design</h1>
+<h2 id="midterm">Midterm</h2>
+<p>Name: Chen Shen</p>
+<p>netID: cs5236</p>
+<hr>
+<h2 id="fsm-diagram">FSM Diagram</h2>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/FSM.png" alt="FSM_diag"></p>
+<h2 id="corner-cases">Corner Cases</h2>
+<h3 id="case-1-functional-simulation">Case 1 (Functional Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner1_func.png" alt="mid_corner1_func"></p>
+<h3 id="case-1-timing-simulation">Case 1 (Timing Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner1_timing.png" alt="mid_corner1_timing"></p>
+<p>The first case shows the function of <code>reset</code>.</p>
+<p>As is said in the specification, when the <code>reset</code> signal is LOW, the counter should output <code>1</code>, which can be seen in the figure.</p>
+<p>Besides, since <code>reset</code> is synchronous, we can see that the counter will change only at a rising edge of clock signal <code>clk</code>.</p>
+<h3 id="case-2-functional-simulation">Case 2 (Functional Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner2_func.png" alt="mid_corner2_func"></p>
+<h3 id="case-2-timing-simulation">Case 2 (Timing Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner2_timing.png" alt="mid_corner2_timing"></p>
+<p>The second case also shows a part of synchronous feature.</p>
+<p>We can see that <code>reset</code> is LOW within a clock period.
+Because it is synchronous, nothing happened to the output signal <code>counter</code> at that moment.</p>
+<h3 id="case-3-functional-simulation">Case 3 (Functional Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner3_func.png" alt="mid_corner3_func"></p>
+<h3 id="case-3-timing-simulation">Case 3 (Timing Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner3_timing.png" alt="mid_corner3_timing"></p>
+<p>The third case shows the behavior when <code>UP</code> changes.</p>
+<p>From the figures, we can find the counter began counting down after <code>UP</code> is LOW.
+This also happened at the rising edge of clock signal.</p>
+<h3 id="case-4-functional-simulation">Case 4 (Functional Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner4_func.png" alt="mid_corner4_func"></p>
+<h3 id="case-4-timing-simulation">Case 4 (Timing Simulation)</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_corner4_timing.png" alt="mid_corner4_timing"></p>
+<p>The last case is just the result when normally working.</p>
+<p>We can see that if it counted down to 1, it would start from 9 again, which meets the specification.</p>
+<h3 id="function-simulation">Function Simulation</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_func.png" alt="mid_func"></p>
+<h3 id="timing-simulation">Timing Simulation</h3>
+<p><img src="file:///c%3A/Users/shenc/OneDrive%20-%20nyu.edu/6463_AHD/midterm/image/mid_timing.png" alt="mid_func"></p>
+<p>I also put the figures of the whole simulation to show the tabs of function and timing.</p>
+<p>In this project, since there is not so much computation, they seem to be similar to each other.</p>
+<h2 id="resource-utilization">Resource Utilization</h2>
+<p>Since the down counter shares a common basic architecture with the up counter, they have the same resource utilization.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Synthesis stage</th>
+<th style="text-align:center">Place and Route stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LUT and FF pairs usage</td>
+<td style="text-align:left">26 LUTs and 41 FFs</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:left">IOB usage</td>
+<td style="text-align:left">24</td>
+<td style="text-align:center">23</td>
+</tr>
+<tr>
+<td style="text-align:left">RAM/DSP blocks used (if any)</td>
+<td style="text-align:left">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="speed-of-the-design">Speed of the design</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Setup</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Hold</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Pulse Width</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Worst Negative Slack (WNS):</td>
+<td style="text-align:left">5.548 ns</td>
+<td style="text-align:left">Worst Hold Slack (WHS):</td>
+<td style="text-align:left">0.114 ns</td>
+<td style="text-align:left">Worst Pulse Width Slack (WPWS):</td>
+<td style="text-align:left">4.500 ns</td>
+</tr>
+<tr>
+<td style="text-align:left">Total Negative Slack (TNS):</td>
+<td style="text-align:left">0.000 ns</td>
+<td style="text-align:left">Total Hold Slack (THS):</td>
+<td style="text-align:left">0.000 ns</td>
+<td style="text-align:left">Total Pulse Width Negative Slack (TPWS):</td>
+<td style="text-align:left">0.000 ns</td>
+</tr>
+<tr>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Number of Falling Endpoints:</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Total Number of Endpoints</td>
+<td style="text-align:left">30</td>
+</tr>
+</tbody>
+</table>
+<p>Critical path delay: 4.452 ns
+Maximum clock frequency: 224.618 Hz</p>
+
+    </body>
+    </html>

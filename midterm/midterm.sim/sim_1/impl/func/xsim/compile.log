@@ -1,0 +1,9 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/midterm/midterm.sim/sim_1/impl/func/xsim/mid_counter_tb_func_impl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Hex2LED
+INFO: [VRFC 10-307] analyzing entity mid_counter
+INFO: [VRFC 10-307] analyzing entity mid_counter_fpga
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/midterm/midterm.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity mid_counter
+WARNING: [VRFC 10-1193] overwriting existing primary unit mid_counter [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/midterm/midterm.vhd:33]
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/midterm/midterm_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity mid_counter_tb
