@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-- This block is used to select one 32-bit output from two 32-bit inputs.
 entity mux is
 	port (
 		a : in STD_LOGIC_VECTOR(31 downto 0);

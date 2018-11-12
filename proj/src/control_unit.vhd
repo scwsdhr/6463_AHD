@@ -4,6 +4,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 library work;
 use work.header.ALL;
 
+-- This block takes as input some or all of the 32 bits of the instruction, 
+-- and computes the proper control signals to be utilized for other blocks. 
+-- These signals are generated based on the type and the content of the instruction being executed. 
 entity control_unit is
 	port (
         clr : in STD_LOGIC;

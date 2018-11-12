@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-- This package is designed to define some constant used in the project.
 package header is	
 	constant OP_ADD_SUB_AND_OR_NOR 	: std_logic_vector(5 downto 0) := "00" & x"0";
 	constant OP_ADDI   				: std_logic_vector(5 downto 0) := "00" & x"1";

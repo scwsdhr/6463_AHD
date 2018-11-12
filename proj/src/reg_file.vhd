@@ -2,6 +2,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
+-- This block contains 32 32-bit registers. 
+-- The register file supports two independent register reads and one register write in one clock cycle. 
+-- 5 bits are used to address the register file.
 entity reg_file is
 	port (
         clr : in STD_LOGIC;

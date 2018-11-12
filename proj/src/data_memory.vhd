@@ -3,6 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
+-- This block stores the data and is accessed using load word and store word instructions.
 entity data_memory is
 	port (		
 		clr	: in STD_LOGIC;

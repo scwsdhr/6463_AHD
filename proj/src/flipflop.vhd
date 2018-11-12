@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-- This block is used to provide synchronous signals.
 entity flipflop is
 	port (
         clk : in STD_LOGIC;

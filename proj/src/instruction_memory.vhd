@@ -3,6 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
+-- This block is initialized to contain the program to be executed. 
 entity instruction_memory is
     port (		
         clr : in STD_LOGIC;

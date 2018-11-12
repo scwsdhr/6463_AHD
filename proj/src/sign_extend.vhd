@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-- This block is used to extend a signed 16-bit input to a signed 32-bit output.
 entity sign_extend is
 	port (
 		imm : in STD_LOGIC_VECTOR(15 downto 0);
