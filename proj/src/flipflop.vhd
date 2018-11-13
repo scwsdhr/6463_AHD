@@ -2,20 +2,20 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 -- This block is used to provide synchronous signals.
-entity flipflop is
+entity Flipflop is
 	port (
         clk : in STD_LOGIC;
-		i : in STD_LOGIC_VECTOR(31 DOWNTO 0);
-		o : out STD_LOGIC_VECTOR(31 DOWNTO 0)
+		I : in STD_LOGIC_VECTOR(31 downto 0);
+		O : out STD_LOGIC_VECTOR(31 downto 0)
 	);
-end flipflop;
+end Flipflop;
 
-architecture Behavioral of flipflop is
+architecture Behavioral of Flipflop is
 begin
     process(clk)
     begin
         if (clk'event and clk = '1') then
-            o <= i;
+            O <= I;
         end if;
     end process;
 end Behavioral;

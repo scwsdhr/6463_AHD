@@ -2,23 +2,23 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 -- This block is used to select one 32-bit output from two 32-bit inputs.
-entity mux is
+entity Mux is
 	port (
-		a : in STD_LOGIC_VECTOR(31 downto 0);
-		b : in STD_LOGIC_VECTOR(31 downto 0);
-        sel : in STD_LOGIC;
-		o : out STD_LOGIC_VECTOR(31 downto 0)
+		A : in STD_LOGIC_VECTOR(31 downto 0);
+		B : in STD_LOGIC_VECTOR(31 downto 0);
+        Sel : in STD_LOGIC;
+		O : out STD_LOGIC_VECTOR(31 downto 0)
 	);
-end mux;
+end Mux;
 
-architecture Behavioral of mux is
+architecture Behavioral of Mux is
 begin
     process
     begin
-        if (sel = '0') then
-            o <= a;
+        if (Sel = '0') then
+            O <= A;
         else
-            o <= b;
+            O <= B;
         end if;
     end process;
 end Behavioral;

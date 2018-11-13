@@ -5,7 +5,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- This block contains 32 32-bit registers. 
 -- The register file supports two independent register reads and one register write in one clock cycle. 
 -- 5 bits are used to address the register file.
-entity reg_file is
+entity Reg_File is
 	port (
         clr : in STD_LOGIC;
         clk : in STD_LOGIC;
@@ -17,9 +17,9 @@ entity reg_file is
 		RD1 : out STD_LOGIC_VECTOR(31 DOWNTO 0)
 		RD2 : out STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
-end reg_file;
+end Reg_File;
 
-architecture Behavioral of reg_file is
+architecture Behavioral of Reg_File is
     type ram is array (0 to 31) of STD_LOGIC_VECTOR(31 downto 0);
     signal reg : ram := (others => (others => '0'));
 begin

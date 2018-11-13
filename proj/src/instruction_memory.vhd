@@ -4,15 +4,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 -- This block is initialized to contain the program to be executed. 
-entity instruction_memory is
+entity Instruction_Memory is
     port (		
         clr : in STD_LOGIC;
-        A : in STD_LOGIC_VECTOR(31 DOWNTO 0);
-        RD : out STD_LOGIC_VECTOR(31 DOWNTO 0)
+        A : in STD_LOGIC_VECTOR(31 downto 0);
+        RD : out STD_LOGIC_VECTOR(31 downto 0)
     );
-end instruction_memory;
+end Instruction_Memory;
 
-architecture Behavioral of instruction_memory is
+architecture Behavioral of Instruction_Memory is
     constant DATA_BITS : INTEGER := 32;			-- number of bits per word
     constant DEPTH     : INTEGER := 256;		-- number of entries
     type rom is array (0 to DEPTH - 1) of STD_LOGIC_VECTOR(DATA_BITS - 1 downto 0);

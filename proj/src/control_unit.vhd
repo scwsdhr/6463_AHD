@@ -7,7 +7,7 @@ use work.header.ALL;
 -- This block takes as input some or all of the 32 bits of the instruction, 
 -- and computes the proper control signals to be utilized for other blocks. 
 -- These signals are generated based on the type and the content of the instruction being executed. 
-entity control_unit is
+entity Control_Unit is
 	port (
         clr : in STD_LOGIC;
 		Op : in STD_LOGIC_VECTOR(5 downto 0);
@@ -20,9 +20,9 @@ entity control_unit is
         RegDst : out STD_LOGIC;
         RegWrite : out STD_LOGIC;
 	);
-end control_unit;
+end Control_Unit;
 
-architecture Behavioral of control_unit is
+architecture Behavioral of Control_Unit is
 begin
     -- MemtoReg
     process

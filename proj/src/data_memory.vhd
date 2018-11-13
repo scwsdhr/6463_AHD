@@ -4,8 +4,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 -- This block stores the data and is accessed using load word and store word instructions.
-entity data_memory is
-	port (		
+entity Data_Memory is
+	port (
 		clr	: in STD_LOGIC;
 		clk	: in STD_LOGIC;
 		A : in STD_LOGIC_VECTOR(31 downto 0);
@@ -13,9 +13,9 @@ entity data_memory is
         WE : in STD_LOGIC;
 		RD : out STD_LOGIC_VECTOR(31 downto 0)
 	);
-end data_memory;
+end Data_Memory;
 
-architecture Behavioral of data_memory is
+architecture Behavioral of Data_Memory is
 	
 	constant DATA_BITS : INTEGER := 32;			-- number of bits per word
 	constant DEPTH     : INTEGER := 256;		-- number of entries
