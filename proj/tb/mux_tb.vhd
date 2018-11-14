@@ -12,11 +12,11 @@ architecture Behavioral of Mux_tb is
 
     component Mux
         port (
-		A : in STD_LOGIC_VECTOR(31 downto 0);
-		B : in STD_LOGIC_VECTOR(31 downto 0);
-        Sel : in STD_LOGIC;
-		O : out STD_LOGIC_VECTOR(31 downto 0)
-	);
+            A : in STD_LOGIC_VECTOR(31 downto 0);
+            B : in STD_LOGIC_VECTOR(31 downto 0);
+            Sel : in STD_LOGIC;
+            O : out STD_LOGIC_VECTOR(31 downto 0)
+        );
     end component;
 
 begin

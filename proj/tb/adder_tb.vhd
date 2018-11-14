@@ -12,10 +12,10 @@ architecture Behavioral of Adder_tb is
 
     component Adder
         port ( 
-		A : in STD_LOGIC_VECTOR(31 downto 0);
-		B : in STD_LOGIC_VECTOR(31 downto 0);
-        O : out STD_LOGIC_VECTOR(31 downto 0)
-	);
+            A : in STD_LOGIC_VECTOR(31 downto 0);
+            B : in STD_LOGIC_VECTOR(31 downto 0);
+            O : out STD_LOGIC_VECTOR(31 downto 0)
+        );
     end component;
 
 begin

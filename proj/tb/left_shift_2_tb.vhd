@@ -10,9 +10,9 @@ architecture Behavioral of Left_Shift_2_tb is
 
     component Left_shift_2
         port (
-		A : in STD_LOGIC_VECTOR(31 downto 0);
-		O : out STD_LOGIC_VECTOR(31 downto 0)
-	);
+            A : in STD_LOGIC_VECTOR(31 downto 0);
+            O : out STD_LOGIC_VECTOR(31 downto 0)
+        );
     end component;
 
 begin

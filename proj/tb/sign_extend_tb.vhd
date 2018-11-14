@@ -10,9 +10,9 @@ architecture Behavioral of Sign_Extend_tb is
 
     component Sign_Extend
         port (
-		Imm : in STD_LOGIC_VECTOR(15 downto 0);
-		SignImm : out STD_LOGIC_VECTOR(31 downto 0)
-	);
+            Imm : in STD_LOGIC_VECTOR(15 downto 0);
+            SignImm : out STD_LOGIC_VECTOR(31 downto 0)
+        );
     end component;
 
 begin

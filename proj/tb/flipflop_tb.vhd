@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity Flipflop_tb is
 end Flipflop_tb;
@@ -13,10 +12,10 @@ architecture Behavioral of Flipflop_tb is
 
     component Flipflop
         port (
-        Clk : in STD_LOGIC;
-		I : in STD_LOGIC_VECTOR(31 downto 0);
-		O : out STD_LOGIC_VECTOR(31 downto 0)
-	);
+            Clk : in STD_LOGIC;
+            I : in STD_LOGIC_VECTOR(31 downto 0);
+            O : out STD_LOGIC_VECTOR(31 downto 0)
+        );
     end component;
 
 begin
@@ -35,7 +34,7 @@ begin
 
     process
     begin
-        Clk <= not Clk;
         wait for T/2; 
+        Clk <= not Clk;
     end process;
 end Behavioral;

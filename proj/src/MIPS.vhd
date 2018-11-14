@@ -27,8 +27,6 @@ architecture Behavioral of MIPS is
     signal WriteReg_ext : STD_LOGIC_VECTOR(31 downto 0);
     signal SignImm : STD_LOGIC_VECTOR(31 downto 0);
     signal SignImm_LS2 : STD_LOGIC_VECTOR(31 downto 0);
-    signal Op : STD_LOGIC_VECTOR(5 downto 0);
-    signal Funct : STD_LOGIC_VECTOR(5 downto 0);
     signal SrcA : STD_LOGIC_VECTOR(31 downto 0);
     signal SrcB : STD_LOGIC_VECTOR(31 downto 0);
     signal Zero : STD_LOGIC;
@@ -56,7 +54,7 @@ architecture Behavioral of MIPS is
         );
     end component;
 
-    component Instruction_Memory
+    component Instruction_Mem
         port (
             Clr : in STD_LOGIC;
             A : in STD_LOGIC_VECTOR(31 downto 0);
@@ -126,7 +124,7 @@ architecture Behavioral of MIPS is
         );
     end component;
 
-    component Data_Memory 
+    component Data_Mem 
         port (
             Clr	: in STD_LOGIC;
             Clk	: in STD_LOGIC;
@@ -151,7 +149,7 @@ begin
         O => PC
     );
 
-    Instruction_Memory_uut : Instruction_Memory port map (
+    Instruction_Mem_uut : Instruction_Mem port map (
         Clr => Clr,
         A => PC,
         RD => Instr
@@ -165,8 +163,8 @@ begin
 
     Control_Unit_uut : Control_Unit port map (
         Clr => Clr,
-		Op => Op,
-		Funct => Funct,
+		Op => Instr(31 downto 26),
+		Funct => Instr(5 downto 0),
 		MemtoReg => MemtoReg,
         MemWrite => MemWrite,
         Branch => Branch,
@@ -232,7 +230,7 @@ begin
 
     PCSrc <= Branch and Zero;
 
-    Data_Memory_uut : Data_Memory port map (
+    Data_Mem_uut : Data_Mem port map (
         Clr => Clr,
         Clk => Clk,
         A => ALUResult,

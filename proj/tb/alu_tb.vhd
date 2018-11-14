@@ -17,13 +17,13 @@ architecture Behavioral of ALU_tb is
 
     component ALU
         port (
-		Clr	: in STD_LOGIC;
-		SrcA : in STD_LOGIC_VECTOR(31 downto 0);
-		SrcB : in STD_LOGIC_VECTOR(31 downto 0);
-		ALUControl 	: in STD_LOGIC_VECTOR(3 downto 0);
-		Zero : out STD_LOGIC;
-		ALUResult : out STD_LOGIC_VECTOR(31 downto 0)
-	);
+            Clr	: in STD_LOGIC;
+            SrcA : in STD_LOGIC_VECTOR(31 downto 0);
+            SrcB : in STD_LOGIC_VECTOR(31 downto 0);
+            ALUControl : in STD_LOGIC_VECTOR(3 downto 0);
+            Zero : out STD_LOGIC;
+            ALUResult : out STD_LOGIC_VECTOR(31 downto 0)
+        );
     end component;
 
 begin

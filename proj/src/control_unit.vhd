@@ -92,7 +92,7 @@ begin
                     ALUControl <= ALU_SHR;
                 when OP_BLT => 
                     ALUControl <= ALU_BLT;
-                when OP_BE => 
+                when OP_BEQ => 
                     ALUControl <= ALU_BE;
                 when OP_BNE => 
                     ALUControl <= ALU_BNE;
@@ -135,9 +135,9 @@ begin
             -- TODO: reset function
             null;
         elsif (Op = OP_SW or Op = OP_BLT or Op = OP_BEQ or Op = OP_BNE or Op = OP_JMP or Op = OP_HAL) then
-            MemWrite <= '0';
+            RegWrite <= '0';
         else
-            MemWrite <= '1';
+            RegWrite <= '1';
         end if;
     end process;
 end Behavioral;

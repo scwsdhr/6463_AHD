@@ -9,13 +9,13 @@ entity Reg_File is
 	port (
         Clr : in STD_LOGIC;
         Clk : in STD_LOGIC;
-		A1 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
-		A2 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
-		A3 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
-		WD3 : in STD_LOGIC_VECTOR(31 DOWNTO 0);
+		A1 : in STD_LOGIC_VECTOR(4 downto 0);
+		A2 : in STD_LOGIC_VECTOR(4 downto 0);
+		A3 : in STD_LOGIC_VECTOR(4 downto 0);
+		WD3 : in STD_LOGIC_VECTOR(31 downto 0);
         WE3 : in STD_LOGIC;
-		RD1 : out STD_LOGIC_VECTOR(31 DOWNTO 0);
-		RD2 : out STD_LOGIC_VECTOR(31 DOWNTO 0)
+		RD1 : out STD_LOGIC_VECTOR(31 downto 0);
+		RD2 : out STD_LOGIC_VECTOR(31 downto 0)
 	);
 end Reg_File;
 
