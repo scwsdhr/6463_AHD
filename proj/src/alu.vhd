@@ -55,79 +55,7 @@ begin
                 when ALU_NOR =>
                     ALUResult <= SrcA nor SrcB;
                     Zero <= '0';
-
-                -- shift left
-                when ALU_SHL =>
-                    Zero <= '0';
-                    case SrcB(4 downto 0) is
-                        when "00000" =>
-                            ALUResult <= SrcA;
-                        when "00001" =>
-                            ALUResult <= SrcA(30 downto 0) & '0'; 
-                        when "00010" =>
-                            ALUResult <= SrcA(29 downto 0) & "00"; 
-                        when "00011" =>
-                            ALUResult <= SrcA(28 downto 0) & "000"; 
-                        when "00100" =>
-                            ALUResult <= SrcA(27 downto 0) & "0000"; 
-                        when "00101" =>
-                            ALUResult <= SrcA(26 downto 0) & "00000"; 
-                        when "00110" =>
-                            ALUResult <= SrcA(25 downto 0) & "000000"; 
-                        when "00111" =>
-                            ALUResult <= SrcA(24 downto 0) & "0000000"; 
-                        when "01000" =>
-                            ALUResult <= SrcA(23 downto 0) & "00000000"; 
-                        when "01001" =>
-                            ALUResult <= SrcA(22 downto 0) & "000000000"; 
-                        when "01010" =>
-                            ALUResult <= SrcA(21 downto 0) & "0000000000"; 
-                        when "01011" =>
-                            ALUResult <= SrcA(20 downto 0) & "00000000000";
-                        when "01100" =>
-                            ALUResult <= SrcA(19 downto 0) & "000000000000"; 
-                        when "01101" =>
-                            ALUResult <= SrcA(18 downto 0) & "0000000000000"; 
-                        when "01110" =>
-                            ALUResult <= SrcA(17 downto 0) & "00000000000000"; 
-                        when "01111" =>
-                            ALUResult <= SrcA(16 downto 0) & "000000000000000"; 
-                        when "10000" =>
-                            ALUResult <= SrcA(15 downto 0) & "0000000000000000"; 
-                        when "10001" =>
-                            ALUResult <= SrcA(14 downto 0) & "00000000000000000"; 
-                        when "10010" =>
-                            ALUResult <= SrcA(13 downto 0) & "000000000000000000"; 
-                        when "10011" =>
-                            ALUResult <= SrcA(12 downto 0) & "0000000000000000000"; 
-                        when "10100" =>
-                            ALUResult <= SrcA(11 downto 0) & "00000000000000000000"; 
-                        when "10101" =>
-                            ALUResult <= SrcA(10 downto 0) & "000000000000000000000"; 
-                        when "10110" =>
-                            ALUResult <= SrcA(9 downto 0) & "0000000000000000000000"; 
-                        when "10111" =>
-                            ALUResult <= SrcA(8 downto 0) & "00000000000000000000000"; 
-                        when "11000" =>
-                            ALUResult <= SrcA(7 downto 0) & "000000000000000000000000";
-                        when "11001" =>
-                            ALUResult <= SrcA(6 downto 0) & "0000000000000000000000000";
-                        when "11010" =>
-                            ALUResult <= SrcA(5 downto 0) & "00000000000000000000000000";
-                        when "11011" =>
-                            ALUResult <= SrcA(4 downto 0) & "000000000000000000000000000"; 
-                        when "11100" =>
-                            ALUResult <= SrcA(3 downto 0) & "0000000000000000000000000000";
-                        when "11101" =>
-                            ALUResult <= SrcA(2 downto 0) & "00000000000000000000000000000";
-                        when "11110" =>
-                            ALUResult <= SrcA(1 downto 0) & "000000000000000000000000000000"; 
-                        when "11111" =>
-                            ALUResult <= SrcA(0) & "0000000000000000000000000000000";
-                        when others =>
-                            AUResult <= "00000000000000000000000000000000";
-                    end case;
-                    
+                
                 -- shift right
                 when ALU_SHR =>
                     Zero <= '0';
@@ -223,9 +151,6 @@ begin
                     else
                         Zero <= '1';
                     end if;
-                else
-                    ALUResult <= x"00000000";
-                    Zero <= '0';
 
                 -- others
                 when others =>

@@ -7,14 +7,14 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- 5 bits are used to address the register file.
 entity Reg_File is
 	port (
-        clr : in STD_LOGIC;
-        clk : in STD_LOGIC;
+        Clr : in STD_LOGIC;
+        Clk : in STD_LOGIC;
 		A1 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
 		A2 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
 		A3 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
 		WD3 : in STD_LOGIC_VECTOR(31 DOWNTO 0);
         WE3 : in STD_LOGIC;
-		RD1 : out STD_LOGIC_VECTOR(31 DOWNTO 0)
+		RD1 : out STD_LOGIC_VECTOR(31 DOWNTO 0);
 		RD2 : out STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
 end Reg_File;
@@ -24,34 +24,34 @@ architecture Behavioral of Reg_File is
     signal reg : ram := (others => (others => '0'));
 begin
     -- read RD1 from A1
-    process(clk)
+    process(Clk)
     begin
-        if (clr = '0') then 
+        if (Clr = '0') then 
             -- TODO: reset function
             null;
-        elsif (clk'event and clk = '1') then
+        elsif (Clk'event and Clk = '1') then
             RD1 <= reg(conv_integer(A1));
         end if;
     end process;
 
     -- read RD2 from A2
-    process(clk)
+    process(Clk)
     begin
-        if (clr = '0') then 
+        if (Clr = '0') then 
             -- TODO: reset function
             null;
-        elsif (clk'event and clk = '1') then
+        elsif (Clk'event and Clk = '1') then
             RD2 <= reg(conv_integer(A2));
         end if;
     end process;
 
     -- write WD3 to A3
-    process(clk)
+    process(Clk)
     begin
-        if (clr = '0') then 
+        if (Clr = '0') then 
             -- TODO: reset function
             null;
-        elsif (clk'event and clk = '1') then
+        elsif (Clk'event and Clk = '1') then
             if (WE3 = '1') then 
                 reg(conv_integer(A3)) <= WD3;
             end if;

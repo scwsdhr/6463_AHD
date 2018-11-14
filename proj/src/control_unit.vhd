@@ -9,7 +9,7 @@ use work.header.ALL;
 -- These signals are generated based on the type and the content of the instruction being executed. 
 entity Control_Unit is
 	port (
-        clr : in STD_LOGIC;
+        Clr : in STD_LOGIC;
 		Op : in STD_LOGIC_VECTOR(5 downto 0);
 		Funct : in STD_LOGIC_VECTOR(5 downto 0);
 		MemtoReg : out STD_LOGIC;
@@ -18,21 +18,21 @@ entity Control_Unit is
         ALUControl : out STD_LOGIC_VECTOR(3 downto 0);
         ALUSrc : out STD_LOGIC;
         RegDst : out STD_LOGIC;
-        RegWrite : out STD_LOGIC;
+        RegWrite : out STD_LOGIC
 	);
 end Control_Unit;
 
 architecture Behavioral of Control_Unit is
 begin
     -- MemtoReg
-    process
+    process(clr)
         if (clr = '0') then
             -- TODO: reset function
             null;
         elsif (Op = OP_LW) then
-            MemtoReg <= '1';
+            MemWrite <= '1';
         else
-            MemtoReg <= '0';
+            MemWrite <= '0';
         end if;
     end process;
 

@@ -6,10 +6,10 @@ use IEEE.NUMERIC_STD.ALL;
 -- This block stores the data and is accessed using load word and store word instructions.
 entity Data_Memory is
 	port (
-		clr	: in STD_LOGIC;
-		clk	: in STD_LOGIC;
+		Clr	: in STD_LOGIC;
+		Clk	: in STD_LOGIC;
 		A : in STD_LOGIC_VECTOR(31 downto 0);
-        WD : in STD_LOGIC;
+        WD : in STD_LOGIC_VECTOR(31 downto 0);
         WE : in STD_LOGIC;
 		RD : out STD_LOGIC_VECTOR(31 downto 0)
 	);
@@ -25,21 +25,21 @@ architecture Behavioral of Data_Memory is
 
 begin
 
-	process(clr)
+	process(Clr)
 	begin
-        if (clr = '0') then
+		if (Clr = '0') then
 			-- TODO: reset function
-            null;
-		elsif (clk'event and clk = '1') then
-            -- read mode
-            if (WE = '0') then
-                RD <= data_mem(conv_integer(A));
-            -- write enabled
-            else
-                RD <= (others => '0');
-                data_mem(conv_integer(A)) <= WD;
-            end if;
- 		end if;
+			null;
+		elsif (Clk'event and Clk = '1') then
+			-- read mode
+			if (WE = '0') then
+				RD <= data_mem(conv_integer(A));
+			-- write enabled
+			else
+				RD <= (others => '0');
+				data_mem(conv_integer(A)) <= WD;
+			end if;
+		end if;
 	end process;
 	
 	RD <= ram(conv_integer(A));	

@@ -13,12 +13,7 @@ end Mux;
 
 architecture Behavioral of Mux is
 begin
-    process
-    begin
-        if (Sel = '0') then
-            O <= A;
-        else
-            O <= B;
-        end if;
-    end process;
+    with Sel select
+        O <= A when '0',
+            B when others;
 end Behavioral;

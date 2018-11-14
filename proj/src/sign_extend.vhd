@@ -11,12 +11,7 @@ end Sign_Extend;
 
 architecture Behavioral of Sign_Extend is
 begin
-    process
-    begin
-        if (Imm(15) = '0') then
-            SignImm <= x"0000" & Imm;
-        else
-            SignImm <= x"ffff" & Imm;
-        end if;
-    end process;
+    with Imm(15) select
+        SignImm <= x"0000" & Imm when '0',
+                    x"ffff" & Imm when others;
 end Behavioral;
