@@ -7,7 +7,7 @@ end Flipflop_tb;
 
 architecture Behavioral of Flipflop_tb is
     constant T : time := 20 ns;
-    signal Clk : STD_LOGIC := '0';
+    signal Clk : STD_LOGIC := '1';
     signal I : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
     signal O : STD_LOGIC_VECTOR(31 downto 0);
 
@@ -35,7 +35,7 @@ begin
 
     process
     begin
-        wait for T/2; 
         Clk <= not Clk;
+        wait for T/2; 
     end process;
 end Behavioral;

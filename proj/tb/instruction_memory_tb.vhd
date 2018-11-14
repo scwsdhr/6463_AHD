@@ -8,7 +8,7 @@ end Instruction_Memory_tb;
 architecture Behavioral of Instruction_Memory_tb is
     constant T : time := 20 ns;
     signal Clr : STD_LOGIC := '0';
-    signal Clk : STD_LOGIC := '0';
+    signal Clk : STD_LOGIC := '1';
     signal A : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
     signal RD : STD_LOGIC_VECTOR(31 downto 0);
 
@@ -33,7 +33,7 @@ begin
     process(Clk)
     begin
         if (Clk'event and Clk = '1') then 
-            A <= A + '1';
+            A <= A + x"00000002";
         end if;
     end process;
 

@@ -1,6 +1,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+library work;
+use work.header.ALL;
+
 entity ALU_tb is
 end ALU_tb;
 
@@ -36,15 +39,14 @@ begin
     Clr <= '1';
     SrcA <= x"00000001";
     SrcB <= x"00001001";
-    ALUControl <= x"0", 
-                x"1" after 10 ns, 
-                x"2" after 20 ns,
-                x"3" after 30 ns,
-                x"4" after 40 ns,
-                x"5" after 50 ns,
-                x"6" after 60 ns,
-                x"7" after 70 ns,
-                x"8" after 80 ns,
-                x"9" after 90 ns,
-                x"a" after 100 ns;
+    ALUControl <= ALU_ADD, 
+                ALU_SUB after 10 ns, 
+                ALU_AND after 20 ns,
+                ALU_OR	 after 30 ns,
+                ALU_NOR after 40 ns,
+                ALU_SHR after 50 ns,
+                ALU_BLT after 60 ns,
+                ALU_BE	 after 70 ns,
+                ALU_BNE after 80 ns,
+                ALU_NDEF after 90 ns;
 end Behavioral;

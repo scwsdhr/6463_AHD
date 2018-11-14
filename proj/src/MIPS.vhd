@@ -12,7 +12,7 @@ end MIPS;
 architecture Behavioral of MIPS is
     signal PC_buf : STD_LOGIC_VECTOR(31 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
-    signal PCPlus4 : STD_LOGIC_VECTOR(31 downto 0);
+    signal PCPlus : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
     signal MemtoReg : STD_LOGIC;
     signal MemWrite : STD_LOGIC;
@@ -139,7 +139,7 @@ architecture Behavioral of MIPS is
 
 begin
     Mux1 : Mux port map (
-        A => PCPlus4,
+        A => PCPlus,
         B => PCBranch,
         Sel => PCSrc,
         O => PC_buf
@@ -159,8 +159,8 @@ begin
 
     Adder1 : Adder port map (
         A => PC,
-        B => x"00000004",
-        O => PCPlus4
+        B => PCDelta,
+        O => PCPlus
     );
 
     Control_Unit_uut : Control_Unit port map (
@@ -226,7 +226,7 @@ begin
 
     Adder2 : Adder port map (
         A => SignImm_LS2,
-        B => PCPlus4,
+        B => PCPlus,
         O => PCBranch
     );
 

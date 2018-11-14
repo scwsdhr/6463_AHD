@@ -25,19 +25,21 @@ end Control_Unit;
 architecture Behavioral of Control_Unit is
 begin
     -- MemtoReg
-    process(clr)
+    process(clr, Op, Funct)
+    begin
         if (clr = '0') then
             -- TODO: reset function
             null;
         elsif (Op = OP_LW) then
-            MemWrite <= '1';
+            MemtoReg <= '1';
         else
-            MemWrite <= '0';
+            MemtoReg <= '0';
         end if;
     end process;
 
     -- MemWrite 
-    process
+    process(clr, Op, Funct)
+    begin
         if (clr = '0') then
             -- TODO: reset function
             null;
@@ -49,7 +51,8 @@ begin
     end process;
 
     -- Branch
-    process
+    process(clr, Op, Funct)
+    begin
         if (clr = '0') then
             -- TODO: reset function
             null;
@@ -61,7 +64,8 @@ begin
     end process;
 
     -- ALUControl
-    process
+    process(clr, Op, Funct)
+    begin
         if (clr = '0') then
             -- TODO: reset function
             null;
@@ -84,8 +88,6 @@ begin
                     ALUControl <= ALU_AND;
                 when OP_ORI =>
                     ALUControl <= ALU_OR;
-                when OP_SHL => 
-                    ALUControl <= ALU_SHL;
                 when OP_SHR => 
                     ALUControl <= ALU_SHR;
                 when OP_BLT => 
@@ -101,7 +103,8 @@ begin
     end process;
 
     -- ALUSrc
-    process
+    process(clr, Op, Funct)
+    begin
         if (clr = '0') then
             -- TODO: reset function
             null;
@@ -113,7 +116,8 @@ begin
     end process;
 
     -- RegDst
-    process
+    process(clr, Op, Funct)
+    begin
         if (clr = '0') then
             -- TODO: reset function
             null;
@@ -125,7 +129,8 @@ begin
     end process;
 
     -- RegWrite 
-    process
+    process(clr, Op, Funct)
+    begin
         if (clr = '0') then
             -- TODO: reset function
             null;

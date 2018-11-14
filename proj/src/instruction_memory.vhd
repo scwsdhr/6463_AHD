@@ -3,6 +3,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
+library work;
+use work.header.ALL;
+
 -- This block is initialized to contain the program to be executed. 
 entity Instruction_Memory is
     port (		
@@ -13,15 +16,13 @@ entity Instruction_Memory is
 end Instruction_Memory;
 
 architecture Behavioral of Instruction_Memory is
-    constant DATA_BITS : INTEGER := 32;			-- number of bits per word
-    constant DEPTH     : INTEGER := 256;		-- number of entries
-    type rom is array (0 to DEPTH - 1) of STD_LOGIC_VECTOR(DATA_BITS - 1 downto 0);
+    type rom is array (0 to ENTRIES - 1) of STD_LOGIC_VECTOR(MEM_BITS - 1 downto 0);
     signal instr_mem : rom := (
-        "00000100000000010000000000000111",
-        "00000100000000100000000000001000",
-        "00000000010000010001100000010000",
-        "11111100000000000000000000000000",
-        others => x"00000000"
+        "0000010000000001","0000000000000111",
+        "0000010000000010","0000000000001000",
+        "0000000001000001","0001100000010000",
+        "1111110000000000","0000000000000000",
+        others => x"0000"
     );
 
 begin
@@ -32,6 +33,6 @@ begin
             null;
         end if;
     end process;
-    RD <= instr_mem(conv_integer(A));	
+    RD <= instr_mem(conv_integer(A)) & instr_mem(conv_integer(A + '1'));	
 
 end Behavioral;

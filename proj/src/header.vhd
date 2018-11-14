@@ -2,7 +2,13 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 -- This package is designed to define some constant used in the project.
-package header is	
+package header is
+	constant MEM_BITS 				: INTEGER := 16;								-- number of bits per word
+	-- TODO: set ENTRIES to be equal to 2^32*(32/MEM_BITS)
+	constant ENTRIES     			: INTEGER := 2 ** 33;							-- number of entries
+	-- TODO: set PCDelta to be equal to 32/MEM_BITS
+	constant PCDelta				: std_logic_vector(31 downto 0) := x"00000002"; -- number of PC added in each cycle
+
 	constant OP_ADD_SUB_AND_OR_NOR 	: std_logic_vector(5 downto 0) := "00" & x"0";
 	constant OP_ADDI   				: std_logic_vector(5 downto 0) := "00" & x"1";
 --	constant OP_SUB   	    		: std_logic_vector(5 downto 0) := "00" & x"0";
@@ -17,7 +23,7 @@ package header is
 	constant OP_LW   	    		: std_logic_vector(5 downto 0) := "00" & x"7";
 	constant OP_SW   	    		: std_logic_vector(5 downto 0) := "00" & x"8";
 	constant OP_BLT   	    		: std_logic_vector(5 downto 0) := "00" & x"9";
-	constant OP_BE   	    		: std_logic_vector(5 downto 0) := "00" & x"A";
+	constant OP_BEQ   	    		: std_logic_vector(5 downto 0) := "00" & x"A";
 	constant OP_BNE   	    		: std_logic_vector(5 downto 0) := "00" & x"B";
 	constant OP_JMP   	    		: std_logic_vector(5 downto 0) := "00" & x"C";
 
