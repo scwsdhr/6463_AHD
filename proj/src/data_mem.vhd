@@ -19,11 +19,11 @@ end Data_Mem;
 
 architecture Behavioral of Data_Mem is
 	type ram is array (0 to ENTRIES - 1) of STD_LOGIC_VECTOR(MEM_BITS - 1 downto 0);
-	signal data_mem : ram := (others => (others => '0'));
+	signal data_mem : ram := (others => (others => '1'));
 
 begin
 
-	process(Clr)
+	process(Clr, Clk)
 	begin
 		if (Clr = '0') then
 			-- TODO: reset function

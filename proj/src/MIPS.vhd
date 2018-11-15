@@ -1,6 +1,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+library work;
+use work.header.ALL;
+
 -- This is the top level of a single-cycle MIPS processor design.
 entity MIPS is
     port(
@@ -10,8 +13,11 @@ entity MIPS is
 end MIPS;
 
 architecture Behavioral of MIPS is
+    signal Clk_1 : STD_LOGIC;
+    signal Clk_2 : STD_LOGIC;
+    signal Clk_3 : STD_LOGIC;
     signal PC_buf : STD_LOGIC_VECTOR(31 downto 0);
-    signal PC : STD_LOGIC_VECTOR(31 downto 0);
+    signal PC : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
     signal PCPlus : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
     signal MemtoReg : STD_LOGIC;
@@ -50,7 +56,7 @@ architecture Behavioral of MIPS is
         port (
             Clk : in STD_LOGIC;
             I : in STD_LOGIC_VECTOR(31 downto 0);
-            O : in STD_LOGIC_VECTOR(31 downto 0)
+            O : out STD_LOGIC_VECTOR(31 downto 0)
         );
     end component;
 
@@ -143,8 +149,8 @@ begin
         O => PC_buf
     );
 
-    Flipflop1 : Flipflop port map (
-        Clk => Clk,
+    Flipflop_uut : Flipflop port map (
+        Clk => Clk_1,
         I => PC_buf,
         O => PC
     );
@@ -176,7 +182,7 @@ begin
 
     Reg_File_uut : Reg_File port map (
         Clr => Clr,
-        Clk => Clk,
+        Clk => Clk_2,
         A1 => Instr(25 downto 21),
         A2 => Instr(20 downto 16),
         A3 => WriteReg,
@@ -199,7 +205,7 @@ begin
         Sel => RegDst,
         O => WriteReg_ext
     );
-    WriteReg <= WriteReg_ext(5 downto 0);
+    WriteReg <= WriteReg_ext(4 downto 0);
 
     Mux3 : Mux port map (
         A => WriteData,
@@ -213,7 +219,7 @@ begin
         O => SignImm_LS2
     );
 
-    ALU0 : ALU port map (
+    ALU_uut : ALU port map (
         Clr => Clr,
         SrcA => SrcA,
         SrcB => SrcB,
@@ -232,7 +238,7 @@ begin
 
     Data_Mem_uut : Data_Mem port map (
         Clr => Clr,
-        Clk => Clk,
+        Clk => Clk_3,
         A => ALUResult,
         WD => WriteData,
         WE => MemWrite,
@@ -245,5 +251,11 @@ begin
         Sel => MemtoReg,
         O => Result
     );
+
+    process(Clr, Clk)
+    begin
+        if (Clr = '0') then
+        end if;
+    end process;
 
 end Behavioral;
