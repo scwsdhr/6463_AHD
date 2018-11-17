@@ -4,8 +4,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- This package is designed to define some constant used in the project.
 package header is
 	constant MEM_BITS 				: INTEGER := 16;								-- number of bits per word
+	constant ADDR_BITS				: INTEGER := 8;									-- number of bits per address in memory
 	-- TODO: set ENTRIES to be equal to 2^32*(32/MEM_BITS)
-	constant ENTRIES     			: INTEGER := 256;								-- number of entries
+	constant ENTRIES     			: INTEGER := 2 ** ADDR_BITS;					-- number of entries
 	-- TODO: set PCDelta to be equal to 32/MEM_BITS
 	constant PCDelta				: STD_LOGIC_VECTOR(31 downto 0) := x"00000002"; -- number of PC added in each cycle
 

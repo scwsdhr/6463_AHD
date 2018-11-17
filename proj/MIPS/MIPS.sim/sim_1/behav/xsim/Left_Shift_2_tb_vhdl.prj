@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../../src/left_shift_2.vhd" \
-"../../../../../tb/left_shift_2_tb.vhd" \
-
-# Do not sort compile order
-nosort

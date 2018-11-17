@@ -18,10 +18,12 @@ entity Data_Mem is
 end Data_Mem;
 
 architecture Behavioral of Data_Mem is
+	signal A_short : STD_LOGIC_VECTOR(ADDR_BITS - 1 downto 0);
 	type ram is array (0 to ENTRIES - 1) of STD_LOGIC_VECTOR(MEM_BITS - 1 downto 0);
-	signal data_mem : ram := (others => (others => '1'));
+	signal data_mem : ram := (others => (others => '0'));
 
 begin
+	A_short <= A(ADDR_BITS -1 downto 0);
 
 	process(Clr, Clk)
 	begin
@@ -32,11 +34,11 @@ begin
 			-- write enabled
 			if (WE = '1') then
 				RD <= (others => '0');
-				data_mem(conv_integer(A)) <= WD(31 downto 16);
-				data_mem(conv_integer(A + '1')) <= WD(15 downto 0);
+				data_mem(conv_integer(A_short)) <= WD(31 downto 16);
+				data_mem(conv_integer(A_short + '1')) <= WD(15 downto 0);
 			-- read mode
 			else
-				RD <= data_mem(conv_integer(A)) & data_mem(conv_integer(A + '1'));
+				RD <= data_mem(conv_integer(A_short)) & data_mem(conv_integer(A_short + '1'));
 			end if;
 		end if;
 	end process;
