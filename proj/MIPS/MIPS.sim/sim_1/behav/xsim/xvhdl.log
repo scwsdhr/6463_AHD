@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity MIPS
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/instruction_mem.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Instruction_Mem

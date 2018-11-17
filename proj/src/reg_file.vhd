@@ -27,8 +27,7 @@ begin
     process(Clk)
     begin
         if (Clr = '0') then 
-            -- TODO: reset function
-            null;
+            RD1 <= (others => '0');
         elsif (Clk'event and Clk = '1') then
             RD1 <= reg(conv_integer(A1));
         end if;
@@ -38,8 +37,7 @@ begin
     process(Clk)
     begin
         if (Clr = '0') then 
-            -- TODO: reset function
-            null;
+            RD2 <= (others => '0');
         elsif (Clk'event and Clk = '1') then
             RD2 <= reg(conv_integer(A2));
         end if;
@@ -49,8 +47,7 @@ begin
     process(Clk)
     begin
         if (Clr = '0') then 
-            -- TODO: reset function
-            null;
+            reg <= (others => (others => '0'));
         elsif (Clk'event and Clk = '1') then
             if (WE3 = '1') then 
                 reg(conv_integer(A3)) <= WD3;

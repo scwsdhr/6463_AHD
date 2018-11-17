@@ -54,6 +54,7 @@ architecture Behavioral of MIPS is
 
     component Flipflop
         port (
+            Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
             I : in STD_LOGIC_VECTOR(31 downto 0);
             O : out STD_LOGIC_VECTOR(31 downto 0)
@@ -141,6 +142,13 @@ architecture Behavioral of MIPS is
         );
     end component;
 
+    TYPE StateType IS ( 
+        ST_READY,                        -- idle state
+        ST_IF,                          -- instruction fetch
+        ST_RF,                          -- register file
+        ST_WB);                         -- write back
+    SIGNAL state : StateType;
+
 begin
     Mux1 : Mux port map (
         A => PCPlus,
@@ -150,6 +158,7 @@ begin
     );
 
     Flipflop_uut : Flipflop port map (
+        Clr => Clr,
         Clk => Clk_1,
         I => PC_buf,
         O => PC
@@ -252,9 +261,67 @@ begin
         O => Result
     );
 
+    -- finite state machine
     process(Clr, Clk)
     begin
         if (Clr = '0') then
+            state <= ST_READY;
+        elsif (Clk'event and Clk = '1') then
+            case state is
+                when ST_READY => 
+                    if (Instr(31 downto 26) = OP_HAL) then
+                        -- do nothing
+                        null;
+                    else 
+                        state <= ST_RF;
+                    end if;
+                when ST_IF => 
+                    if (Instr(31 downto 26) = OP_HAL) then
+                        state <= ST_READY;
+                    else
+                        state <= ST_RF;
+                    end if;
+                when ST_RF => state <= ST_WB;
+                when others => state <= ST_IF;
+            end case;
+        end if;
+    end process;
+
+    -- IF
+    process(Clr, Clk, state)
+    begin
+        if (state = ST_READY) then
+            Clk_1 <= '0';
+        elsif (state = ST_IF) then
+            Clk_1 <= '1';
+        else 
+            Clk_1 <= '0';
+        end if;
+    end process;
+
+    -- RF
+    process(Clr, Clk, state)
+    begin
+        if (Clr = '0') then
+            Clk_2 <= '0';
+        elsif (state = ST_RF) then
+            Clk_2 <= Clk;
+        elsif (state = ST_WB) then
+            Clk_2 <= Clk;
+        else 
+            Clk_2 <= '0';
+        end if;
+    end process;
+
+    -- WB
+    process(Clr, Clk, state)
+    begin
+        if (Clr = '0') then
+            Clk_3 <= '0';
+        elsif (state = ST_WB) then
+            Clk_3 <= '1';
+        else
+            Clk_3 <= '0';
         end if;
     end process;
 

@@ -28,8 +28,7 @@ begin
     process(clr, Op, Funct)
     begin
         if (clr = '0') then
-            -- TODO: reset function
-            null;
+            MemtoReg <= '0';
         elsif (Op = OP_LW) then
             MemtoReg <= '1';
         else
@@ -41,8 +40,7 @@ begin
     process(clr, Op, Funct)
     begin
         if (clr = '0') then
-            -- TODO: reset function
-            null;
+            MemWrite <= '0';
         elsif (Op = OP_SW) then
             MemWrite <= '1';
         else
@@ -54,8 +52,7 @@ begin
     process(clr, Op, Funct)
     begin
         if (clr = '0') then
-            -- TODO: reset function
-            null;
+            Branch <= '0';
         elsif (Op = OP_BLT or Op = OP_BEQ or Op = OP_BNE) then
             Branch <= '1';
         else
@@ -67,8 +64,7 @@ begin
     process(clr, Op, Funct)
     begin
         if (clr = '0') then
-            -- TODO: reset function
-            null;
+            ALUControl <= ALU_NDEF;
         else
             case Op is
                 when OP_ADD_SUB_AND_OR_NOR =>
@@ -106,8 +102,7 @@ begin
     process(clr, Op, Funct)
     begin
         if (clr = '0') then
-            -- TODO: reset function
-            null;
+            ALUSrc <= '0';
         elsif (Op = OP_ADDI or Op = OP_SUBI or Op = OP_ANDI or Op = OP_ORI) then
             ALUSrc <= '1';
         else
@@ -119,12 +114,11 @@ begin
     process(clr, Op, Funct)
     begin
         if (clr = '0') then
-            -- TODO: reset function
-            null;
-        elsif (Op = OP_ADD_SUB_AND_OR_NOR) then
             RegDst <= '0';
-        else
+        elsif (Op = OP_ADD_SUB_AND_OR_NOR) then
             RegDst <= '1';
+        else
+            RegDst <= '0';
         end if;
     end process;
 
@@ -132,8 +126,7 @@ begin
     process(clr, Op, Funct)
     begin
         if (clr = '0') then
-            -- TODO: reset function
-            null;
+            RegWrite <= '0';
         elsif (Op = OP_SW or Op = OP_BLT or Op = OP_BEQ or Op = OP_BNE or Op = OP_JMP or Op = OP_HAL) then
             RegWrite <= '0';
         else

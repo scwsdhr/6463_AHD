@@ -1,0 +1,18 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../src/header.vhd" \
+"../../../../../src/MIPS.vhd" \
+"../../../../../src/adder.vhd" \
+"../../../../../src/alu.vhd" \
+"../../../../../src/control_unit.vhd" \
+"../../../../../src/data_mem.vhd" \
+"../../../../../src/flipflop.vhd" \
+"../../../../../src/instruction_mem.vhd" \
+"../../../../../src/left_shift_2.vhd" \
+"../../../../../src/mux.vhd" \
+"../../../../../src/reg_file.vhd" \
+"../../../../../src/sign_extend.vhd" \
+"../../../../../tb/MIPS_tb.vhd" \
+
+# Do not sort compile order
+nosort

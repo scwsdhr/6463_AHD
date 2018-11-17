@@ -26,8 +26,8 @@ begin
 	process(Clr, Clk)
 	begin
 		if (Clr = '0') then
-			-- TODO: reset function
-			null;
+			data_mem <= (others => (others => '0'));
+			RD <= (others => '0');
 		elsif (Clk'event and Clk = '1') then
 			-- write enabled
 			if (WE = '1') then
