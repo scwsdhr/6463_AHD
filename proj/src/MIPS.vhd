@@ -63,7 +63,6 @@ architecture Behavioral of MIPS is
 
     component Instruction_Mem
         port (
-            Clr : in STD_LOGIC;
             A : in STD_LOGIC_VECTOR(31 downto 0);
             RD : out STD_LOGIC_VECTOR(31 downto 0)
         );
@@ -165,7 +164,6 @@ begin
     );
 
     Instruction_Mem_uut : Instruction_Mem port map (
-        Clr => Clr,
         A => PC,
         RD => Instr
     );

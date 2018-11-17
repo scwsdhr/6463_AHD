@@ -23,6 +23,7 @@ architecture Behavioral of Data_Mem is
 	signal data_mem : ram := (others => (others => '0'));
 
 begin
+	-- fix address out of range
 	A_short <= A(ADDR_BITS -1 downto 0);
 
 	process(Clr, Clk)

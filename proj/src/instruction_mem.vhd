@@ -8,14 +8,14 @@ use work.header.ALL;
 
 -- This block is initialized to contain the program to be executed. 
 entity Instruction_Mem is
-    port (		
-        Clr : in STD_LOGIC;
+    port (
         A : in STD_LOGIC_VECTOR(31 downto 0);
         RD : out STD_LOGIC_VECTOR(31 downto 0)
     );
 end Instruction_Mem;
 
 architecture Behavioral of Instruction_Mem is
+    signal A_short : STD_LOGIC_VECTOR(ADDR_BITS - 1 downto 0);
     type rom is array (0 to ENTRIES - 1) of STD_LOGIC_VECTOR(MEM_BITS - 1 downto 0);
     -- signal instr_mem : rom := (
     --     "0000010000000001","0000000000000111",
@@ -52,13 +52,9 @@ architecture Behavioral of Instruction_Mem is
 );
 
 begin
-    process(Clr)
-    begin
-        if (Clr = '0') then
-            -- TODO: reset function
-            null;
-        end if;
-    end process;
+    -- fix address out of range
+    A_short <= A(ADDR_BITS -1 downto 0);
+
     RD <= instr_mem(conv_integer(A)) & instr_mem(conv_integer(A + '1'));	
 
 end Behavioral;
