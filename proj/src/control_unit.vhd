@@ -120,7 +120,7 @@ begin
     begin
         if (Clr = '0') then
             ALUSrc <= '0';
-        elsif (Op = OP_ADDI or Op = OP_SUBI or Op = OP_ANDI or Op = OP_ORI or Op = OP_LW or OP = OP_SW) then
+        elsif (Op = OP_ADDI or Op = OP_SUBI or Op = OP_ANDI or Op = OP_ORI or Op = OP_SHRor Op = OP_LW or OP = OP_SW) then
             ALUSrc <= '1';
         else
             ALUSrc <= '0';

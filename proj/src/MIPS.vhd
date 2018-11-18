@@ -8,7 +8,17 @@ use work.header.ALL;
 entity MIPS is
     port(
         Clr : in STD_LOGIC;
-        Clk : in STD_LOGIC
+        Clk : in STD_LOGIC;
+        PC_out : out STD_LOGIC_VECTOR(31 downto 0);
+        Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
+        A1_out : out STD_LOGIC_VECTOR(4 downto 0);
+        A2_out : out STD_LOGIC_VECTOR(4 downto 0);
+        A3_out : out STD_LOGIC_VECTOR(4 downto 0);
+        SrcA_out : out STD_LOGIC_VECTOR(31 downto 0);
+        SrcB_out : out STD_LOGIC_VECTOR(31 downto 0);
+        ALUResult_out : out STD_LOGIC_VECTOR(31 downto 0);
+        Result_out : out STD_LOGIC_VECTOR(31 downto 0);
+        Stage_out : out STD_LOGIC_VECTOR(4 downto 0)
     );
 end MIPS;
 
@@ -360,4 +370,21 @@ begin
         end if;
     end process;
 
+    -- output signals
+    PC_out <= PC;
+    Instr_out <= Instr;
+    A1_out <= Instr(25 downto 21);
+    A2_out <= Instr(20 downto 16);
+    A3_out <= WriteReg;
+    SrcA_out <= SrcA;
+    SrcB_out <= SrcB;
+    ALUResult_out <= ALUResult;
+    Result_out <= Result;
+    with state select
+        Stage_out <= "10000" when ST_READY,
+            "01000" when ST_IF,
+            "00100" when ST_RF,
+            "00010" when ST_WB,
+            "00001" when ST_HALT;
+    
 end Behavioral;
