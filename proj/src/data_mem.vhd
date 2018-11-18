@@ -31,15 +31,15 @@ begin
 		if (Clr = '0') then
 			data_mem <= (others => (others => '0'));
 			RD <= (others => '0');
+		elsif (WE = '0') then
+			-- read mode
+			RD <= data_mem(conv_integer(A_short)) & data_mem(conv_integer(A_short + '1'));
 		elsif (Clk'event and Clk = '1') then
 			-- write enabled
 			if (WE = '1') then
 				RD <= (others => '0');
 				data_mem(conv_integer(A_short)) <= WD(31 downto 16);
 				data_mem(conv_integer(A_short + '1')) <= WD(15 downto 0);
-			-- read mode
-			else
-				RD <= data_mem(conv_integer(A_short)) & data_mem(conv_integer(A_short + '1'));
 			end if;
 		end if;
 	end process;
