@@ -55,6 +55,6 @@ begin
     -- fix address out of range
     A_short <= A(ADDR_BITS -1 downto 0);
 
-    RD <= instr_mem(conv_integer(A)) & instr_mem(conv_integer(A + '1'));	
+    RD <= instr_mem(conv_integer(A_short)) & instr_mem(conv_integer(A_short + '1'));	
 
 end Behavioral;

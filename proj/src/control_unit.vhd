@@ -99,6 +99,10 @@ begin
                     ALUControl <= ALU_OR;
                 when OP_SHR => 
                     ALUControl <= ALU_SHR;
+                when OP_SW => 
+                    ALUControl <= ALU_ADD;
+                when OP_LW =>
+                    ALUControl <= ALU_ADD;
                 when OP_BLT => 
                     ALUControl <= ALU_BLT;
                 when OP_BEQ => 
@@ -116,7 +120,7 @@ begin
     begin
         if (Clr = '0') then
             ALUSrc <= '0';
-        elsif (Op = OP_ADDI or Op = OP_SUBI or Op = OP_ANDI or Op = OP_ORI) then
+        elsif (Op = OP_ADDI or Op = OP_SUBI or Op = OP_ANDI or Op = OP_ORI or Op = OP_LW or OP = OP_SW) then
             ALUSrc <= '1';
         else
             ALUSrc <= '0';

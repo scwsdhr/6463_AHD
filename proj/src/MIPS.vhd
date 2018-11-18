@@ -266,7 +266,7 @@ begin
         O => Result
     );
 
-    Left_Shift_2_uut2 : Left_Shift_2 port map (
+    Left_Shift_2_jmp : Left_Shift_2 port map (
         A => Instr,
         O => Target_PC_buf
     );
