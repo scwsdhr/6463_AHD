@@ -29,6 +29,7 @@ architecture Behavioral of MIPS is
     signal ALUSrc : STD_LOGIC;
     signal RegDst : STD_LOGIC;
     signal RegWrite : STD_LOGIC;
+    signal RegWrite_delay : STD_LOGIC;
     signal Mux2_A : STD_LOGIC_VECTOR(31 downto 0);
     signal Mux2_B : STD_LOGIC_VECTOR(31 downto 0);
     signal WriteReg : STD_LOGIC_VECTOR(4 downto 0);
@@ -162,7 +163,7 @@ begin
         O => PC_buf_buf
     );
 
-    Flipflop_uut : Flipflop port map (
+    Flipflop1 : Flipflop port map (
         Clr => Clr,
         Clk => Clk_1,
         I => PC_buf,
@@ -192,6 +193,13 @@ begin
         ALUSrc => ALUSrc,
         RegDst => RegDst,
         RegWrite => RegWrite
+    );
+
+    Flipflop2 : Flipflop port map (
+        Clr => Clr,
+        Clk => Clk_3,
+        I => RegWrite,
+        O => RegWrite_delay
     );
 
     Reg_File_uut : Reg_File port map (
