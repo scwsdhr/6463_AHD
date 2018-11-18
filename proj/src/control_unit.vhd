@@ -106,7 +106,7 @@ begin
                 when OP_BLT => 
                     ALUControl <= ALU_BLT;
                 when OP_BEQ => 
-                    ALUControl <= ALU_BE;
+                    ALUControl <= ALU_BEQ;
                 when OP_BNE => 
                     ALUControl <= ALU_BNE;
                 when others =>

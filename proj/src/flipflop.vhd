@@ -13,7 +13,7 @@ end Flipflop;
 
 architecture Behavioral of Flipflop is
 begin
-    process(Clk)
+    process(Clr, Clk)
     begin
         if (Clr = '0') then
             O <= (others => '0');

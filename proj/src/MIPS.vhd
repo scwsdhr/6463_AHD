@@ -163,7 +163,7 @@ begin
         O => PC_buf_buf
     );
 
-    Flipflop1 : Flipflop port map (
+    Flipflop_uut : Flipflop port map (
         Clr => Clr,
         Clk => Clk_1,
         I => PC_buf,
@@ -195,12 +195,20 @@ begin
         RegWrite => RegWrite
     );
 
-    Flipflop2 : Flipflop port map (
-        Clr => Clr,
-        Clk => Clk_3,
-        I => RegWrite,
-        O => RegWrite_delay
-    );
+    -- WB buffer
+    process(Clr, Clk)
+    begin
+        if (Clr = '0') then
+            RegWrite_delay <= '0';
+        elsif (Clk'event and Clk = '1') then
+            case state is
+                when ST_RF => 
+                    RegWrite_delay <= RegWrite;
+                when others => 
+                    RegWrite_delay <= '0';
+            end case;
+        end if;
+    end process;
 
     Reg_File_uut : Reg_File port map (
         Clr => Clr,
@@ -209,7 +217,7 @@ begin
         A2 => Instr(20 downto 16),
         A3 => WriteReg,
         WD3 => Result,
-        WE3 => RegWrite,
+        WE3 => RegWrite_delay,
         RD1 => SrcA,
         RD2 => WriteData
     );
@@ -315,7 +323,7 @@ begin
     end process;
 
     -- IF
-    process(Clr, Clk, state)
+    process(Clr, state)
     begin
         if (state = ST_READY) then
             Clk_1 <= '0';
@@ -327,13 +335,13 @@ begin
     end process;
 
     -- RF
-    process(Clr, Clk, state)
+    process(Clr, Clk)
     begin
         if (Clr = '0') then
             Clk_2 <= '0';
-        elsif (state = ST_RF) then
+        elsif (state = ST_IF) then
             Clk_2 <= Clk;
-        elsif (state = ST_WB) then
+        elsif (state = ST_RF) then
             Clk_2 <= Clk;
         else 
             Clk_2 <= '0';
@@ -341,7 +349,7 @@ begin
     end process;
 
     -- WB
-    process(Clr, Clk, state)
+    process(Clr, state)
     begin
         if (Clr = '0') then
             Clk_3 <= '0';

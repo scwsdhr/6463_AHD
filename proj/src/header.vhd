@@ -44,7 +44,7 @@ package header is
 	constant ALU_NOR				: STD_LOGIC_VECTOR(3 downto 0) := x"4";
 	constant ALU_SHR				: STD_LOGIC_VECTOR(3 downto 0) := x"5";
 	constant ALU_BLT				: STD_LOGIC_VECTOR(3 downto 0) := x"6";
-	constant ALU_BE		    		: STD_LOGIC_VECTOR(3 downto 0) := x"7";
+	constant ALU_BEQ		    	: STD_LOGIC_VECTOR(3 downto 0) := x"7";
 	constant ALU_BNE				: STD_LOGIC_VECTOR(3 downto 0) := x"8";
 	constant ALU_NDEF				: STD_LOGIC_VECTOR(3 downto 0) := x"9";
 		

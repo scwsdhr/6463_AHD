@@ -137,7 +137,7 @@ begin
                     end if;
                     
                 -- branch if equal
-                when ALU_BE =>
+                when ALU_BEQ =>
                     if (SrcA = SrcB) then
                         Zero <= '1';
                     else
