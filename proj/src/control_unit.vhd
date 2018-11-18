@@ -15,6 +15,7 @@ entity Control_Unit is
 		MemtoReg : out STD_LOGIC;
         MemWrite : out STD_LOGIC;
         Branch : out STD_LOGIC;
+        Jump : out STD_LOGIC;
         ALUControl : out STD_LOGIC_VECTOR(3 downto 0);
         ALUSrc : out STD_LOGIC;
         RegDst : out STD_LOGIC;
@@ -25,9 +26,9 @@ end Control_Unit;
 architecture Behavioral of Control_Unit is
 begin
     -- MemtoReg
-    process(clr, Op, Funct)
+    process(Clr, Op)
     begin
-        if (clr = '0') then
+        if (Clr = '0') then
             MemtoReg <= '0';
         elsif (Op = OP_LW) then
             MemtoReg <= '1';
@@ -37,9 +38,9 @@ begin
     end process;
 
     -- MemWrite 
-    process(clr, Op, Funct)
+    process(Clr, Op)
     begin
-        if (clr = '0') then
+        if (Clr = '0') then
             MemWrite <= '0';
         elsif (Op = OP_SW) then
             MemWrite <= '1';
@@ -49,9 +50,9 @@ begin
     end process;
 
     -- Branch
-    process(clr, Op, Funct)
+    process(Clr, Op)
     begin
-        if (clr = '0') then
+        if (Clr = '0') then
             Branch <= '0';
         elsif (Op = OP_BLT or Op = OP_BEQ or Op = OP_BNE) then
             Branch <= '1';
@@ -59,11 +60,23 @@ begin
             Branch <= '0';
         end if;
     end process;
+    
+    -- Jump
+    process(Clr, Op, Funct)
+    begin
+        if (Clr = '0') then
+            Jump <= '0';
+        elsif (Op = OP_JMP) then
+            Jump <= '1';
+        else 
+            Jump <= '0';
+        end if;
+    end process;
 
     -- ALUControl
-    process(clr, Op, Funct)
+    process(Clr, Op, Funct)
     begin
-        if (clr = '0') then
+        if (Clr = '0') then
             ALUControl <= ALU_NDEF;
         else
             case Op is
@@ -99,9 +112,9 @@ begin
     end process;
 
     -- ALUSrc
-    process(clr, Op, Funct)
+    process(Clr, Op)
     begin
-        if (clr = '0') then
+        if (Clr = '0') then
             ALUSrc <= '0';
         elsif (Op = OP_ADDI or Op = OP_SUBI or Op = OP_ANDI or Op = OP_ORI) then
             ALUSrc <= '1';
@@ -111,9 +124,9 @@ begin
     end process;
 
     -- RegDst
-    process(clr, Op, Funct)
+    process(Clr, Op)
     begin
-        if (clr = '0') then
+        if (Clr = '0') then
             RegDst <= '0';
         elsif (Op = OP_ADD_SUB_AND_OR_NOR) then
             RegDst <= '1';
@@ -123,9 +136,9 @@ begin
     end process;
 
     -- RegWrite 
-    process(clr, Op, Funct)
+    process(Clr, Op, Funct)
     begin
-        if (clr = '0') then
+        if (Clr = '0') then
             RegWrite <= '0';
         elsif (Op = OP_SW or Op = OP_BLT or Op = OP_BEQ or Op = OP_BNE or Op = OP_JMP or Op = OP_HAL) then
             RegWrite <= '0';

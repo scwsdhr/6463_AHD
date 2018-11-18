@@ -1,0 +1,11 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/header.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity MIPS
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/alu.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/control_unit.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Control_Unit
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/data_mem.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Data_Mem
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/instruction_mem.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Instruction_Mem

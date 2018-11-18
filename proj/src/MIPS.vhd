@@ -16,6 +16,7 @@ architecture Behavioral of MIPS is
     signal Clk_1 : STD_LOGIC;
     signal Clk_2 : STD_LOGIC;
     signal Clk_3 : STD_LOGIC;
+    signal PC_buf_buf : STD_LOGIC_VECTOR(31 downto 0);
     signal PC_buf : STD_LOGIC_VECTOR(31 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
     signal PCPlus : STD_LOGIC_VECTOR(31 downto 0);
@@ -23,6 +24,7 @@ architecture Behavioral of MIPS is
     signal MemtoReg : STD_LOGIC;
     signal MemWrite : STD_LOGIC;
     signal Branch : STD_LOGIC;
+    signal Jump : STD_LOGIC;
     signal ALUControl : STD_LOGIC_VECTOR(3 downto 0);
     signal ALUSrc : STD_LOGIC;
     signal RegDst : STD_LOGIC;
@@ -31,6 +33,8 @@ architecture Behavioral of MIPS is
     signal Mux2_B : STD_LOGIC_VECTOR(31 downto 0);
     signal WriteReg : STD_LOGIC_VECTOR(4 downto 0);
     signal WriteReg_ext : STD_LOGIC_VECTOR(31 downto 0);
+    signal Target_PC_buf : STD_LOGIC_VECTOR(31 downto 0);
+    signal Target_PC : STD_LOGIC_VECTOR(31 downto 0);
     signal SignImm : STD_LOGIC_VECTOR(31 downto 0);
     signal SignImm_LS2 : STD_LOGIC_VECTOR(31 downto 0);
     signal SrcA : STD_LOGIC_VECTOR(31 downto 0);
@@ -84,6 +88,7 @@ architecture Behavioral of MIPS is
             MemtoReg : out STD_LOGIC;
             MemWrite : out STD_LOGIC;
             Branch : out STD_LOGIC;
+            Jump : out STD_LOGIC;
             ALUControl : out STD_LOGIC_VECTOR(3 downto 0);
             ALUSrc : out STD_LOGIC;
             RegDst : out STD_LOGIC;
@@ -142,10 +147,11 @@ architecture Behavioral of MIPS is
     end component;
 
     TYPE StateType IS ( 
-        ST_READY,                        -- idle state
+        ST_READY,                       -- idle state
         ST_IF,                          -- instruction fetch
         ST_RF,                          -- register file
-        ST_WB);                         -- write back
+        ST_WB,                          -- write back
+        ST_HALT);                       -- halt
     SIGNAL state : StateType;
 
 begin
@@ -153,7 +159,7 @@ begin
         A => PCPlus,
         B => PCBranch,
         Sel => PCSrc,
-        O => PC_buf
+        O => PC_buf_buf
     );
 
     Flipflop_uut : Flipflop port map (
@@ -181,6 +187,7 @@ begin
 		MemtoReg => MemtoReg,
         MemWrite => MemWrite,
         Branch => Branch,
+        Jump => Jump,
         ALUControl => ALUControl,
         ALUSrc => ALUSrc,
         RegDst => RegDst,
@@ -259,6 +266,20 @@ begin
         O => Result
     );
 
+    Left_Shift_2_uut2 : Left_Shift_2 port map (
+        A => Instr,
+        O => Target_PC_buf
+    );
+
+    Target_PC <= PC(31 downto 28) & Target_PC_buf(27 downto 0);
+
+    Mux5 : Mux port map (
+        A => PC_buf_buf,
+        B => Target_PC,
+        Sel => Jump,
+        O => PC_buf
+    );
+
     -- finite state machine
     process(Clr, Clk)
     begin
@@ -275,7 +296,7 @@ begin
                     end if;
                 when ST_IF => 
                     if (Instr(31 downto 26) = OP_HAL) then
-                        state <= ST_READY;
+                        state <= ST_HALT;
                     else
                         state <= ST_RF;
                     end if;
