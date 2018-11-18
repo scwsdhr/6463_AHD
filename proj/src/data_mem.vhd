@@ -26,18 +26,25 @@ begin
 	-- fix address out of range
 	A_short <= A(ADDR_BITS -1 downto 0);
 
-	process(Clr, Clk)
+	-- read function
+	process(Clr, A, A_short)
+	begin
+		if (Clr = '0') then
+			RD <= (others => '0');
+		else
+			-- read mode
+			RD <= data_mem(conv_integer(A_short)) & data_mem(conv_integer(A_short + '1'));
+		end if;
+	end process;
+
+	-- write function
+	process(Clr, Clk, WE)
 	begin
 		if (Clr = '0') then
 			data_mem <= (others => (others => '0'));
-			RD <= (others => '0');
-		elsif (WE = '0') then
-			-- read mode
-			RD <= data_mem(conv_integer(A_short)) & data_mem(conv_integer(A_short + '1'));
 		elsif (Clk'event and Clk = '1') then
 			-- write enabled
 			if (WE = '1') then
-				RD <= (others => '0');
 				data_mem(conv_integer(A_short)) <= WD(31 downto 16);
 				data_mem(conv_integer(A_short + '1')) <= WD(15 downto 0);
 			end if;
