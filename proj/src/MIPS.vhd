@@ -315,8 +315,7 @@ begin
             case state is
                 when ST_READY => 
                     if (Instr(31 downto 26) = OP_HAL) then
-                        -- do nothing
-                        null;
+                        state <= ST_HALT;
                     else 
                         state <= ST_RF;
                     end if;
