@@ -14,12 +14,12 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 16304 
+INFO: Helper process launched with PID 9512 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 357.523 ; gain = 99.168
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 358.004 ; gain = 99.609
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'MIPS_FPGA' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:17]
-INFO: [Synth 8-3491] module 'MIPS' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd:8' bound to instance 'MIPS_uut' of component 'MIPS' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:61]
+INFO: [Synth 8-638] synthesizing module 'MIPS_FPGA' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:18]
+INFO: [Synth 8-3491] module 'MIPS' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd:8' bound to instance 'MIPS_uut' of component 'MIPS' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:62]
 INFO: [Synth 8-638] synthesizing module 'MIPS' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd:25]
 INFO: [Synth 8-3491] module 'Mux' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/mux.vhd:5' bound to instance 'Mux1' of component 'Mux' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd:169]
 INFO: [Synth 8-638] synthesizing module 'Mux' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/mux.vhd:14]
@@ -64,21 +64,21 @@ INFO: [Synth 8-3491] module 'Left_Shift_2' declared at 'C:/Users/shenc/OneDrive 
 INFO: [Synth 8-3491] module 'Mux' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/mux.vhd:5' bound to instance 'Mux5' of component 'Mux' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd:302]
 WARNING: [Synth 8-614] signal 'state' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd:348]
 INFO: [Synth 8-256] done synthesizing module 'MIPS' (11#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS.vhd:25]
-INFO: [Synth 8-3491] module 'Hex2LED' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:6' bound to instance 'Hex2LED_uut' of component 'Hex2LED' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:76]
+INFO: [Synth 8-3491] module 'Hex2LED' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:6' bound to instance 'Hex2LED_uut' of component 'Hex2LED' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:77]
 INFO: [Synth 8-638] synthesizing module 'Hex2LED' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:14]
 WARNING: [Synth 8-614] signal 'X' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'Hex2LED' (12#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:14]
-WARNING: [Synth 8-614] signal 'PC' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'Instr' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'A1_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'A2_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'A3_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'SrcA' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'SrcB' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'ALUResult' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-614] signal 'Result' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:118]
-WARNING: [Synth 8-6014] Unused sequential element Disp_Clk_reg was removed.  [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:77]
-INFO: [Synth 8-256] done synthesizing module 'MIPS_FPGA' (13#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:17]
+WARNING: [Synth 8-614] signal 'PC' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'Instr' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'A1_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'A2_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'A3_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'SrcA' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'SrcB' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'ALUResult' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-614] signal 'Result' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:119]
+WARNING: [Synth 8-6014] Unused sequential element Disp_Clk_reg was removed.  [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:78]
+INFO: [Synth 8-256] done synthesizing module 'MIPS_FPGA' (13#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:18]
 WARNING: [Synth 8-3331] design Hex2LED has unconnected port Clk
 WARNING: [Synth 8-3331] design Left_Shift_2 has unconnected port A[31]
 WARNING: [Synth 8-3331] design Left_Shift_2 has unconnected port A[30]
@@ -133,7 +133,7 @@ WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[9]
 WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[8]
 WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[7]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 422.391 ; gain = 164.035
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 422.336 ; gain = 163.941
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -146,10 +146,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 422.391 ; gain = 164.035
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 422.336 ; gain = 163.941
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 422.391 ; gain = 164.035
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 422.336 ; gain = 163.941
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -157,26 +157,8 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc]
-WARNING: [Vivado 12-584] No ports matched 'CLK100MHZ'. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:7]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:7]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 WARNING: [Vivado 12-507] No nets matched 'Clk_IBUF'. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:9]
 CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:9]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_stage[0]'. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:44]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:44]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_stage[1]'. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:45]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:45]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_stage[2]'. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:46]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:46]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_stage[3]'. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:47]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:47]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_stage[4]'. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:48]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc:48]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/xdc/Nexys-4-DDR-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/MIPS_FPGA_propImpl.xdc].
@@ -186,22 +168,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 782.188 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 782.711 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:29 . Memory (MB): peak = 782.188 ; gain = 523.832
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 782.711 ; gain = 524.316
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:29 . Memory (MB): peak = 782.188 ; gain = 523.832
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 782.711 ; gain = 524.316
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:29 . Memory (MB): peak = 782.188 ; gain = 523.832
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:25 . Memory (MB): peak = 782.711 ; gain = 524.316
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "instr_mem" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "instr_mem" won't be mapped to RAM because it is too sparse
@@ -259,9 +241,9 @@ WARNING: [Synth 8-327] inferring latch for variable 'ALUControl_reg' [C:/Users/s
                  iSTATE0 |                            10000 |                              100
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'MIPS'
-WARNING: [Synth 8-327] inferring latch for variable 'Disp_Bits_reg' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:99]
+WARNING: [Synth 8-327] inferring latch for variable 'Disp_Bits_reg' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/MIPS_FPGA.vhd:100]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:35 . Memory (MB): peak = 782.188 ; gain = 523.832
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:30 . Memory (MB): peak = 782.711 ; gain = 524.316
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -679,7 +661,7 @@ WARNING: [Synth 8-3332] Sequential element (reg_reg[12][30]) is unused and will 
 WARNING: [Synth 8-3332] Sequential element (reg_reg[12][29]) is unused and will be removed from module Reg_File.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:16 ; elapsed = 00:01:29 . Memory (MB): peak = 782.188 ; gain = 523.832
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:17 . Memory (MB): peak = 782.711 ; gain = 524.316
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -691,13 +673,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:30 ; elapsed = 00:01:45 . Memory (MB): peak = 782.188 ; gain = 523.832
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:21 ; elapsed = 00:01:32 . Memory (MB): peak = 782.711 ; gain = 524.316
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:39 ; elapsed = 00:01:55 . Memory (MB): peak = 786.848 ; gain = 528.492
+Finished Timing Optimization : Time (s): cpu = 00:01:29 ; elapsed = 00:01:40 . Memory (MB): peak = 788.457 ; gain = 530.063
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -709,7 +691,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:47 ; elapsed = 00:02:03 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished Technology Mapping : Time (s): cpu = 00:01:35 ; elapsed = 00:01:46 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -733,7 +715,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:49 ; elapsed = 00:02:07 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished IO Insertion : Time (s): cpu = 00:01:38 ; elapsed = 00:01:49 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -746,7 +728,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:50 ; elapsed = 00:02:07 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:38 ; elapsed = 00:01:49 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -758,25 +740,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:50 ; elapsed = 00:02:07 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:39 ; elapsed = 00:01:49 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:50 ; elapsed = 00:02:07 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:39 ; elapsed = 00:01:49 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:51 ; elapsed = 00:02:08 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:39 ; elapsed = 00:01:50 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:51 ; elapsed = 00:02:08 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:39 ; elapsed = 00:01:50 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -792,14 +774,14 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |BUFG   |     4|
+|1     |BUFG   |     5|
 |2     |CARRY4 |    36|
 |3     |LUT1   |     7|
-|4     |LUT2   |    73|
-|5     |LUT3   |   287|
-|6     |LUT4   |   300|
-|7     |LUT5   |  1095|
-|8     |LUT6   |  2312|
+|4     |LUT2   |    72|
+|5     |LUT3   |   284|
+|6     |LUT4   |   293|
+|7     |LUT5   |  1098|
+|8     |LUT6   |  2314|
 |9     |MUXF7  |   634|
 |10    |MUXF8  |   256|
 |11    |FDCE   |  2404|
@@ -809,7 +791,7 @@ Report Cell Usage:
 |15    |LD     |    32|
 |16    |LDC    |     2|
 |17    |LDP    |     2|
-|18    |IBUF   |     6|
+|18    |IBUF   |     7|
 |19    |OBUF   |    21|
 +------+-------+------+
 
@@ -817,29 +799,29 @@ Report Instance Areas:
 +------+---------------------+-------------+------+
 |      |Instance             |Module       |Cells |
 +------+---------------------+-------------+------+
-|1     |top                  |             |  7503|
+|1     |top                  |             |  7499|
 |2     |  Hex2LED_uut        |Hex2LED      |     7|
-|3     |  MIPS_uut           |MIPS         |  7371|
+|3     |  MIPS_uut           |MIPS         |  7365|
 |4     |    Adder1           |Adder        |     8|
 |5     |    Adder2           |Adder_0      |    38|
-|6     |    Control_Unit_uut |Control_Unit |  2341|
+|6     |    Control_Unit_uut |Control_Unit |  2335|
 |7     |    Data_Mem_uut     |Data_Mem     |  3937|
-|8     |    Flipflop_uut     |Flipflop     |   256|
+|8     |    Flipflop_uut     |Flipflop     |   253|
 |9     |    Mux1             |Mux          |     4|
 |10    |    Mux2             |Mux_1        |     4|
 |11    |    Mux3             |Mux_2        |    32|
 |12    |    Mux4             |Mux_3        |    32|
 |13    |    Mux5             |Mux_4        |    23|
-|14    |    Reg_File_uut     |Reg_File     |   687|
+|14    |    Reg_File_uut     |Reg_File     |   690|
 +------+---------------------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:51 ; elapsed = 00:02:08 . Memory (MB): peak = 858.609 ; gain = 600.254
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:39 ; elapsed = 00:01:50 . Memory (MB): peak = 862.340 ; gain = 603.945
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 725 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:33 ; elapsed = 00:01:52 . Memory (MB): peak = 858.609 ; gain = 240.457
-Synthesis Optimization Complete : Time (s): cpu = 00:01:51 ; elapsed = 00:02:08 . Memory (MB): peak = 858.609 ; gain = 600.254
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:24 ; elapsed = 00:01:37 . Memory (MB): peak = 862.340 ; gain = 243.570
+Synthesis Optimization Complete : Time (s): cpu = 00:01:40 ; elapsed = 00:01:50 . Memory (MB): peak = 862.340 ; gain = 603.945
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 968 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 969 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -850,11 +832,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   LDP => LDPE: 2 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-234 Infos, 225 Warnings, 7 Critical Warnings and 0 Errors encountered.
+234 Infos, 219 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:56 ; elapsed = 00:02:15 . Memory (MB): peak = 858.609 ; gain = 612.895
+synth_design: Time (s): cpu = 00:01:44 ; elapsed = 00:01:56 . Memory (MB): peak = 862.340 ; gain = 616.527
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/MIPS/MIPS.runs/synth_1/MIPS_FPGA.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file MIPS_FPGA_utilization_synth.rpt -pb MIPS_FPGA_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.288 . Memory (MB): peak = 858.609 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sun Nov 18 18:26:55 2018...
+report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.197 . Memory (MB): peak = 862.340 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 18 19:29:37 2018...

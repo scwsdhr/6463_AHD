@@ -6,9 +6,10 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity MIPS_FPGA is
     port(
         Clr : in STD_LOGIC;                                 -- reset signal
+        Sysclk : in STD_LOGIC;                              -- system clock
         Clk : in STD_LOGIC;                                 -- clock signal
         Disp_SW : in STD_LOGIC_VECTOR(3 downto 0);          -- display content switch
-        LED_Stage : out STD_LOGIC_VECTOR(4 downto 0);       -- LED display to show the current stage
+        LED_State : out STD_LOGIC_VECTOR(4 downto 0);       -- LED display to show the current stage
         Disp_Sel : out STD_LOGIC_VECTOR(7 downto 0);        -- select the digit to lit
         Disp_Val : out STD_LOGIC_VECTOR(7 downto 0)         -- the value to display
     );
@@ -45,7 +46,7 @@ architecture Behavioral of MIPS_FPGA is
             SrcB_out : out STD_LOGIC_VECTOR(31 downto 0);
             ALUResult_out : out STD_LOGIC_VECTOR(31 downto 0);
             Result_out : out STD_LOGIC_VECTOR(31 downto 0);
-            Stage_out : out STD_LOGIC_VECTOR(4 downto 0)
+            State_out : out STD_LOGIC_VECTOR(4 downto 0)
         );
     end component;
 
@@ -70,7 +71,7 @@ begin
         SrcB_out => SrcB,
         ALUResult_out => ALUResult,
         Result_out => Result,
-        Stage_out => LED_Stage
+        State_out => LED_State
     );
 
     Hex2LED_uut : Hex2LED port map (
@@ -80,12 +81,12 @@ begin
     );
 
     -- generate a low-frequency clock for display 
-    process(Clr, Clk)
+    process(Clr, Sysclk)
     begin
         if (Clr'event and Clr = '0') then
             Disp_Clk <= (others => '0');
         end if;
-        if (clk'event and clk = '1') then
+        if (Sysclk'event and Sysclk = '1') then
             Disp_Clk <= Disp_Clk + '1';
         end if;
     end process;

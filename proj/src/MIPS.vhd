@@ -18,7 +18,7 @@ entity MIPS is
         SrcB_out : out STD_LOGIC_VECTOR(31 downto 0);
         ALUResult_out : out STD_LOGIC_VECTOR(31 downto 0);
         Result_out : out STD_LOGIC_VECTOR(31 downto 0);
-        Stage_out : out STD_LOGIC_VECTOR(4 downto 0)
+        State_out : out STD_LOGIC_VECTOR(4 downto 0)
     );
 end MIPS;
 
@@ -381,7 +381,7 @@ begin
     ALUResult_out <= ALUResult;
     Result_out <= Result;
     with state select
-        Stage_out <= "10000" when ST_READY,
+        State_out <= "10000" when ST_READY,
             "01000" when ST_IF,
             "00100" when ST_RF,
             "00010" when ST_WB,
