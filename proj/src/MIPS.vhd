@@ -327,7 +327,8 @@ begin
                         state <= ST_RF;
                     end if;
                 when ST_RF => state <= ST_WB;
-                when others => state <= ST_IF;
+                when ST_WB => state <= ST_IF;
+                when others => null;
             end case;
         end if;
     end process;
