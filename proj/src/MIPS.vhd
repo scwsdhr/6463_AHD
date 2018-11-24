@@ -212,6 +212,8 @@ begin
             RegWrite_delay <= '0';
         elsif (Clk'event and Clk = '1') then
             case state is
+                when ST_IF => 
+                    RegWrite_delay <= RegWrite;
                 when ST_RF => 
                     RegWrite_delay <= RegWrite;
                 when others => 

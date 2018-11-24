@@ -42,11 +42,11 @@ begin
     ALUControl <= ALU_ADD, 
                 ALU_SUB after 10 ns, 
                 ALU_AND after 20 ns,
-                ALU_OR	 after 30 ns,
+                ALU_OR after 30 ns,
                 ALU_NOR after 40 ns,
                 ALU_SHR after 50 ns,
                 ALU_BLT after 60 ns,
-                ALU_BE	 after 70 ns,
+                ALU_BEQ	after 70 ns,
                 ALU_BNE after 80 ns,
                 ALU_NDEF after 90 ns;
 end Behavioral;

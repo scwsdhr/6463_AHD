@@ -80,7 +80,7 @@ begin
             ALUControl <= ALU_NDEF;
         else
             case Op is
-                when OP_ADD_SUB_AND_OR_NOR =>
+                when OP_RType =>
                     case Funct is
                         when FUNC_ADD => ALUControl <= ALU_ADD;
                         when FUNC_SUB => ALUControl <= ALU_SUB;
@@ -99,6 +99,8 @@ begin
                     ALUControl <= ALU_OR;
                 when OP_SHR => 
                     ALUControl <= ALU_SHR;
+                -- when OP_SHL =>
+                --     ALUControl <= ALU_SHL;
                 when OP_SW => 
                     ALUControl <= ALU_ADD;
                 when OP_LW =>
@@ -132,7 +134,7 @@ begin
     begin
         if (Clr = '0') then
             RegDst <= '0';
-        elsif (Op = OP_ADD_SUB_AND_OR_NOR) then
+        elsif (Op = OP_RType) then
             RegDst <= '1';
         else
             RegDst <= '0';

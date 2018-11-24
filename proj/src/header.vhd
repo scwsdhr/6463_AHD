@@ -11,7 +11,7 @@ package header is
 	-- TODO: set PCDelta to be equal to 32/MEM_BITS
 	constant PCDelta				: STD_LOGIC_VECTOR(31 downto 0) := x"00000002"; -- number of PC added in each cycle
 
-	constant OP_ADD_SUB_AND_OR_NOR 	: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"0";
+	constant OP_RType 				: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"0";
 	constant OP_ADDI   				: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"1";
 --	constant OP_SUB   	    		: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"0";
 	constant OP_SUBI   				: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"2";
@@ -21,6 +21,7 @@ package header is
 --	constant OP_NOR   	    		: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"0";
 	constant OP_ORI   	    		: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"4";
 	constant OP_SHR   	    		: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"5";
+	constant OP_SHL					: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"6";
 		
 	constant OP_LW   	    		: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"7";
 	constant OP_SW   	    		: STD_LOGIC_VECTOR(5 downto 0) := "00" & x"8";
@@ -43,9 +44,11 @@ package header is
 	constant ALU_OR		    		: STD_LOGIC_VECTOR(3 downto 0) := x"3";
 	constant ALU_NOR				: STD_LOGIC_VECTOR(3 downto 0) := x"4";
 	constant ALU_SHR				: STD_LOGIC_VECTOR(3 downto 0) := x"5";
-	constant ALU_BLT				: STD_LOGIC_VECTOR(3 downto 0) := x"6";
-	constant ALU_BEQ		    	: STD_LOGIC_VECTOR(3 downto 0) := x"7";
-	constant ALU_BNE				: STD_LOGIC_VECTOR(3 downto 0) := x"8";
-	constant ALU_NDEF				: STD_LOGIC_VECTOR(3 downto 0) := x"9";
+	-- constant ALU_SHL				: STD_LOGIC_VECTOR(3 downto 0) := x"6";
+	constant ALU_BLT				: STD_LOGIC_VECTOR(3 downto 0) := x"7";
+	constant ALU_BEQ		    	: STD_LOGIC_VECTOR(3 downto 0) := x"8";
+	constant ALU_BNE				: STD_LOGIC_VECTOR(3 downto 0) := x"9";
+	constant ALU_XOR				: STD_LOGIC_VECTOR(3 downto 0) := x"a";
+	constant ALU_NDEF				: STD_LOGIC_VECTOR(3 downto 0) := x"f";
 		
 end header;
