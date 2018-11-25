@@ -9,7 +9,7 @@ entity RC5_ENC is
     port(
         Clr : in STD_LOGIC;
         Clk : in STD_LOGIC;
-        BD : in STD_LOGIC_VECTOR(64 downto 0);
+        BackDoor : in STD_LOGIC_VECTOR(63 downto 0);
         PC_out : out STD_LOGIC_VECTOR(31 downto 0);
         Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
         A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -147,14 +147,14 @@ architecture Behavioral of RC5_ENC is
         );
     end component;
 
-    component Data_Mem 
+    component Data_Mem_BD 
         port (
             Clr	: in STD_LOGIC;
             Clk	: in STD_LOGIC;
             A : in STD_LOGIC_VECTOR(31 downto 0);
             WD : in STD_LOGIC_VECTOR(31 downto 0);
             WE : in STD_LOGIC;
-            BD : in STD_LOGIC_VECTOR(64 downto 0);
+            BD : in STD_LOGIC_VECTOR(63 downto 0);
             RD : out STD_LOGIC_VECTOR(31 downto 0)
         );
     end component;
@@ -280,7 +280,7 @@ begin
 
     PCSrc <= Branch and Zero;
 
-    Data_Mem_uut : Data_Mem port map (
+    Data_Mem_BD_uut : Data_Mem_BD port map (
         Clr => Clr,
         Clk => Clk_3,
         A => ALUResult,

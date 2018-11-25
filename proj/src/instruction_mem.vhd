@@ -82,7 +82,8 @@ architecture Behavioral of Instruction_Mem is
         "0000010000001010","0000000000001100",          -- ADDI R10, R0, 12
         
         -- encryption loop begin
-
+        -- R3 = R3 + 1
+        "0000010001100011","0000000000000001",          -- ADDI R3, R3, 1
         -- R4 stores 2*i
         "0000000001100011","0010000000000001",          -- ADD R4, R3, R3
         -- R5 stores 2*i+1
@@ -93,7 +94,7 @@ architecture Behavioral of Instruction_Mem is
         -- R6 stores S[2*i]
         "0001110010000110","0000000000000000",          -- LW R6, 0(R4)
         -- R7 stores S[2*i+1]
-        "0001110010100111","0000000000000001",          -- LW R7, 0(R5)
+        "0001110010100111","0000000000000000",          -- LW R7, 0(R5)
 
         -- A = A xor B
         -- R11 stores A nor B

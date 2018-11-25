@@ -8,7 +8,7 @@ architecture Behavioral of RC5_ENC_tb is
     constant T : time := 20 ns;
     signal Clr : STD_LOGIC := '0';
     signal Clk : STD_LOGIC := '1';
-    signal BackDoor : STD_LOGIC_VECTOR(64 downto 0) := x"0000000000000000";
+    signal BackDoor : STD_LOGIC_VECTOR(63 downto 0) := x"0000000000000000";
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
     signal A1 : STD_LOGIC_VECTOR(4 downto 0);
@@ -24,7 +24,7 @@ architecture Behavioral of RC5_ENC_tb is
         port(
             Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
-            BD : in STD_LOGIC_VECTOR(64 downto 0);
+            BackDoor : in STD_LOGIC_VECTOR(63 downto 0);
             PC_out : out STD_LOGIC_VECTOR(31 downto 0);
             Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
             A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -43,7 +43,7 @@ begin
     uut : RC5_ENC port map (
         Clr => Clr,
         Clk => Clk,
-        BD => BackDoor,
+        BackDoor => BackDoor,
         PC_out => PC,
         Instr_out => Instr,
         A1_out => A1,

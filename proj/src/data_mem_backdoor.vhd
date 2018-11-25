@@ -6,19 +6,19 @@ library work;
 use work.header.ALL;
 
 -- This block stores the data and is accessed using load word and store word instructions.
-entity Data_Mem is
+entity Data_Mem_BD is
 	port (
 		Clr	: in STD_LOGIC;
 		Clk	: in STD_LOGIC;
 		A : in STD_LOGIC_VECTOR(31 downto 0);
 		WD : in STD_LOGIC_VECTOR(31 downto 0);
 		WE : in STD_LOGIC;
-		BD : in STD_LOGIC_VECTOR(64 downto 0);		-- back door
+		BD : in STD_LOGIC_VECTOR(63 downto 0);		-- back door
 		RD : out STD_LOGIC_VECTOR(31 downto 0)
 	);
-end Data_Mem;
+end Data_Mem_BD;
 
-architecture Behavioral of Data_Mem is
+architecture Behavioral of Data_Mem_BD is
 	signal A_short : STD_LOGIC_VECTOR(ADDR_BITS - 1 downto 0);
 	type ram is array (0 to ENTRIES - 1) of STD_LOGIC_VECTOR(MEM_BITS - 1 downto 0);
 	signal data_mem : ram := (others => (others => '0'));
@@ -72,7 +72,7 @@ begin
 				x"F6CC", x"1431", 		-- 48
 				x"6504", x"6380", 		-- 50
 				-- backdoor for A
-				BD(64 downto 32),		-- 52
+				BD(63 downto 32),		-- 52
 				-- backdoor for B
 				BD(31 downto 0),		-- 54
 				others => x"0000");
