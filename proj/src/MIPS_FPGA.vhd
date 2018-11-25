@@ -54,7 +54,7 @@ architecture Behavioral of MIPS_FPGA is
         port ( 
             Clk : in STD_LOGIC;                             -- display clock signal
             X : in STD_LOGIC_VECTOR (3 downto 0);           -- display hex
-            Y : out STD_LOGIC_VECTOR (7 downto 0)         -- display binary bits
+            Y : out STD_LOGIC_VECTOR (7 downto 0)           -- display binary bits
         );
     end component;
 

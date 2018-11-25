@@ -159,13 +159,13 @@ architecture Behavioral of RC5_ENC is
         );
     end component;
 
-    TYPE StateType IS ( 
+    type StateType is ( 
         ST_READY,                       -- idle state
         ST_IF,                          -- instruction fetch
         ST_RF,                          -- register file
         ST_WB,                          -- write back
         ST_HALT);                       -- halt
-    SIGNAL state : StateType;
+    signal state : StateType;
 
 begin
     Mux1 : Mux port map (

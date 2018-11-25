@@ -71,9 +71,9 @@ begin
 				x"4319", x"2304", 		-- 46
 				x"F6CC", x"1431", 		-- 48
 				x"6504", x"6380", 		-- 50
-				-- hardcoded A
+				-- backdoor for A
 				BD(64 downto 32),		-- 52
-				-- hardcoded B
+				-- backdoor for B
 				BD(31 downto 0),		-- 54
 				others => x"0000");
 		elsif (Clk'event and Clk = '1') then
