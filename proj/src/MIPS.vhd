@@ -128,7 +128,7 @@ architecture Behavioral of MIPS is
         );
     end component;
 
-    component Left_Shift_2
+    component Left_Shift_1
         port (
             A : in STD_LOGIC_VECTOR(31 downto 0);
             O : out STD_LOGIC_VECTOR(31 downto 0)
@@ -256,7 +256,7 @@ begin
         O => SrcB
     );
 
-    Left_Shift_2_uut : Left_Shift_2 port map (
+    Left_Shift_1_uut : Left_Shift_1 port map (
         A => SignImm,
         O => SignImm_LS2
     );
@@ -294,7 +294,7 @@ begin
         O => Result
     );
 
-    Left_Shift_2_jmp : Left_Shift_2 port map (
+    Left_Shift_1_jmp : Left_Shift_1 port map (
         A => Instr,
         O => Target_PC_buf
     );

@@ -1,0 +1,17 @@
+0.6
+2018.2
+Jun 14 2018
+20:41:02
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd,1543185695,vhdl,,,,rc5_enc,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/adder.vhd,1542070696,vhdl,,,,adder,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/alu.vhd,1543099477,vhdl,,,,alu,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/control_unit.vhd,1543099494,vhdl,,,,control_unit,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/data_mem_backdoor.vhd,1543183064,vhdl,,,,data_mem_bd,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/flipflop.vhd,1542523117,vhdl,,,,flipflop,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/header.vhd,1543099466,vhdl,C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/instruction_mem.vhd,,,header,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/instruction_mem.vhd,1543185852,vhdl,,,,instruction_mem,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/left_shift_1.vhd,1543185659,vhdl,,,,left_shift_1,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/mux.vhd,1542226617,vhdl,,,,mux,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/reg_file.vhd,1542483574,vhdl,,,,reg_file,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/sign_extend.vhd,1542226869,vhdl,,,,sign_extend,,,,,,,,
+C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/tb/RC5_ENC_tb.vhd,1543181910,vhdl,,,,rc5_enc_tb,,,,,,,,
