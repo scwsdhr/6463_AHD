@@ -5,11 +5,11 @@ library work;
 use work.header.ALL;
 
 -- This is the top level of a single-cycle MIPS processor design.
-entity MIPS is
+entity RC5_ENC is
     port(
         Clr : in STD_LOGIC;
         Clk : in STD_LOGIC;
-        BD  : in STD_LOGIC_VECTOR(64 downto 0);
+        BD : in STD_LOGIC_VECTOR(64 downto 0);
         PC_out : out STD_LOGIC_VECTOR(31 downto 0);
         Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
         A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -21,9 +21,9 @@ entity MIPS is
         Result_out : out STD_LOGIC_VECTOR(31 downto 0);
         State_out : out STD_LOGIC_VECTOR(4 downto 0)
     );
-end MIPS;
+end RC5_ENC;
 
-architecture Behavioral of MIPS is
+architecture Behavioral of RC5_ENC is
     signal Clk_1 : STD_LOGIC;
     signal Clk_2 : STD_LOGIC;
     signal Clk_3 : STD_LOGIC;

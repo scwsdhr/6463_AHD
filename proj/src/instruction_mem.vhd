@@ -86,7 +86,7 @@ architecture Behavioral of Instruction_Mem is
         -- R4 stores 2*i
         -- ADD R4, R3, R3
         -- R5 stores 2*i+1
-        -- ADDi R5, R4, 1
+        -- ADDI R5, R4, 1
         -- R4 and R5 multiplied by 2 because 16-bit addressable
         -- ADD R4, R4, R4
         -- ADD R5, R5, R5
