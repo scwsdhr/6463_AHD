@@ -1,7 +1,22 @@
+/* What you should know */
 // In our assembly codes, we used Intel style,
 // in which the destination register is located first,
 // the register name and immediate number remains the same.
 
+/* Definations of registers
+    R0              - constant zero
+    R1              - input A 
+    R2              - input B
+    R3              - loop variable i
+    R4              - address (2*i)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
+    R5              - address (2*i+1)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
+    R6              - Skey[2*i]
+    R7              - Skey[2*i+1]
+    R8              - intermediate and final result of A
+    R9              - intermediate and final result of B
+    R10             - constant 12 (used as the stop condition of encryption loop)
+    R11, R12, R13   - temporary variables
+*/
 // initialize
 SUB R0, R0, R0          // R0 <= 0
 LW R1 52(R0)            // R1 <= Mem[R0 + 52]
