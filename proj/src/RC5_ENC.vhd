@@ -9,17 +9,17 @@ entity RC5_ENC is
     port(
         Clr : in STD_LOGIC;
         Clk : in STD_LOGIC;
-        BackDoor : in STD_LOGIC_VECTOR(63 downto 0)
-        -- PC_out : out STD_LOGIC_VECTOR(31 downto 0);
-        -- Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
-        -- A1_out : out STD_LOGIC_VECTOR(4 downto 0);
-        -- A2_out : out STD_LOGIC_VECTOR(4 downto 0);
-        -- A3_out : out STD_LOGIC_VECTOR(4 downto 0);
-        -- SrcA_out : out STD_LOGIC_VECTOR(31 downto 0);
-        -- SrcB_out : out STD_LOGIC_VECTOR(31 downto 0);
-        -- ALUResult_out : out STD_LOGIC_VECTOR(31 downto 0);
-        -- Result_out : out STD_LOGIC_VECTOR(31 downto 0);
-        -- State_out : out STD_LOGIC_VECTOR(4 downto 0)
+        BackDoor : in STD_LOGIC_VECTOR(63 downto 0);
+        PC_out : out STD_LOGIC_VECTOR(31 downto 0);
+        Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
+        A1_out : out STD_LOGIC_VECTOR(4 downto 0);
+        A2_out : out STD_LOGIC_VECTOR(4 downto 0);
+        A3_out : out STD_LOGIC_VECTOR(4 downto 0);
+        SrcA_out : out STD_LOGIC_VECTOR(31 downto 0);
+        SrcB_out : out STD_LOGIC_VECTOR(31 downto 0);
+        ALUResult_out : out STD_LOGIC_VECTOR(31 downto 0);
+        Result_out : out STD_LOGIC_VECTOR(31 downto 0);
+        State_out : out STD_LOGIC_VECTOR(4 downto 0)
     );
 end RC5_ENC;
 
@@ -350,7 +350,7 @@ begin
     end process;
 
     -- RF
-    process(Clr, Clk)
+    process(Clr, Clk, state)
     begin
         if (Clr = '0') then
             Clk_2 <= '0';
@@ -376,20 +376,20 @@ begin
     end process;
 
     -- output signals, used on FPGA
-    -- PC_out <= PC;
-    -- Instr_out <= Instr;
-    -- A1_out <= Instr(25 downto 21);
-    -- A2_out <= Instr(20 downto 16);
-    -- A3_out <= WriteReg;
-    -- SrcA_out <= SrcA;
-    -- SrcB_out <= SrcB;
-    -- ALUResult_out <= ALUResult;
-    -- Result_out <= Result;
-    -- with state select
-    --     State_out <= "10000" when ST_READY,
-    --         "01000" when ST_IF,
-    --         "00100" when ST_RF,
-    --         "00010" when ST_WB,
-    --         "00001" when ST_HALT;
+    PC_out <= PC;
+    Instr_out <= Instr;
+    A1_out <= Instr(25 downto 21);
+    A2_out <= Instr(20 downto 16);
+    A3_out <= WriteReg;
+    SrcA_out <= SrcA;
+    SrcB_out <= SrcB;
+    ALUResult_out <= ALUResult;
+    Result_out <= Result;
+    with state select
+        State_out <= "10000" when ST_READY,
+            "01000" when ST_IF,
+            "00100" when ST_RF,
+            "00010" when ST_WB,
+            "00001" when ST_HALT;
     
 end Behavioral;

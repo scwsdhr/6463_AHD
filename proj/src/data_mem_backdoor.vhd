@@ -28,7 +28,7 @@ begin
 	A_short <= A(ADDR_BITS -1 downto 0);
 
 	-- read function
-	process(Clr, Clk, A, A_short)
+	process(Clr, Clk, A, A_short, data_mem)
 	begin
 		if (Clr = '0') then
 			RD <= (others => '0');
@@ -39,7 +39,7 @@ begin
 	end process;
 
 	-- write function
-	process(Clr, Clk, WE)
+	process(Clr, Clk, WE, BD)
 	begin
 		if (Clr = '0') then
 			-- data_mem <= (others => (others => '0'));

@@ -24,7 +24,7 @@ architecture Behavioral of Reg_File is
     signal reg : ram := (others => (others => '0'));
 begin
     -- read RD1 from A1
-    process(Clk)
+    process(Clr, Clk)
     begin
         if (Clr = '0') then 
             RD1 <= (others => '0');
@@ -34,7 +34,7 @@ begin
     end process;
 
     -- read RD2 from A2
-    process(Clk)
+    process(Clr, Clk)
     begin
         if (Clr = '0') then 
             RD2 <= (others => '0');
@@ -44,7 +44,7 @@ begin
     end process;
 
     -- write WD3 to A3
-    process(Clk)
+    process(Clr, Clk)
     begin
         if (Clr = '0') then 
             reg <= (others => (others => '0'));

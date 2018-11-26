@@ -22,6 +22,7 @@ architecture Behavioral of RC5_ENC_FPGA is
     signal Clk_Btn_buf : STD_LOGIC;                         -- clock button buffer
     signal Cycle_Btn_buf : STD_LOGIC;                       -- cycle button buffer
     signal ALL_Btn_buf : STD_LOGIC;                         -- end button buffer
+    signal BackDoor : STD_LOGIC_VECTOR(63 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
     signal A1 : STD_LOGIC_VECTOR(4 downto 0);
@@ -34,6 +35,7 @@ architecture Behavioral of RC5_ENC_FPGA is
     signal SrcB : STD_LOGIC_VECTOR(31 downto 0);
     signal ALUResult : STD_LOGIC_VECTOR(31 downto 0);
     signal Result : STD_LOGIC_VECTOR(31 downto 0);
+    signal MIPS_State : STD_LOGIC_VECTOR(4 downto 0);
 
     signal Disp_Clk : STD_LOGIC_VECTOR(18 downto 0);       -- display clock
     signal Disp_Hex : STD_LOGIC_VECTOR(3 downto 0);        -- display hex number
@@ -50,6 +52,7 @@ architecture Behavioral of RC5_ENC_FPGA is
         port(
             Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
+            BackDoor : in STD_LOGIC_VECTOR(63 downto 0);
             PC_out : out STD_LOGIC_VECTOR(31 downto 0);
             Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
             A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -67,14 +70,15 @@ architecture Behavioral of RC5_ENC_FPGA is
         port ( 
             Clk : in STD_LOGIC;                             -- display clock signal
             X : in STD_LOGIC_VECTOR (3 downto 0);           -- display hex
-            Y : out STD_LOGIC_VECTOR (7 downto 0)         -- display binary bits
+            Y : out STD_LOGIC_VECTOR (7 downto 0)           -- display binary bits
         );
     end component;
 
 begin
-    RC5_ENC_uut : MIPS port map (
+    RC5_ENC_uut : RC5_ENC port map (
         Clr => Clr,
         Clk => Clk,
+        BackDoor => BackDoor,
         PC_out => PC,
         Instr_out => Instr,
         A1_out => A1,
@@ -84,14 +88,17 @@ begin
         SrcB_out => SrcB,
         ALUResult_out => ALUResult,
         Result_out => Result,
-        State_out => LED_State
+        State_out => MIPS_State
     );
+    LED_State <= MIPS_State;
 
     Hex2LED_uut : Hex2LED port map (
         Clk => Disp_Clk(15),
         X => Disp_Hex,
         Y => Disp_Val
     );
+
+    BackDoor <= x"0123456789abcdef";
 
     -- the buffers of buttons, used to detect the rising edge
     process(Sysclk)
@@ -117,7 +124,7 @@ begin
                         state <= ST_ALL;
                     end if;
                 when ST_INSTR =>
-                    if (State_out = "00010") then
+                    if (MIPS_State = "00010") then
                         state <= ST_STEP;
                     end if;
                 when others => null;

@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1543194467">
-  <File Type="PA-TCL" Name="RC5_ENC.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="RC5_ENC_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="RC5_ENC_reports.tcl"/>
-  <File Type="RDS-RDS" Name="RC5_ENC.vds"/>
-  <File Type="RDS-UTIL" Name="RC5_ENC_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="RC5_ENC_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="RC5_ENC.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="RC5_ENC_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="RC5_ENC_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1543199683">
+  <File Type="PA-TCL" Name="RC5_ENC_FPGA.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="RC5_ENC_FPGA_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="RC5_ENC_FPGA_reports.tcl"/>
+  <File Type="RDS-RDS" Name="RC5_ENC_FPGA.vds"/>
+  <File Type="RDS-UTIL" Name="RC5_ENC_FPGA_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="RC5_ENC_FPGA_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="RC5_ENC_FPGA.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="RC5_ENC_FPGA_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="RC5_ENC_FPGA_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../src/Hex2LED.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../src/header.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/RC5_ENC.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -77,32 +88,24 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../src/RC5_ENC.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../src/Hex2LED.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../src/RC5_ENC_FPGA.vhd">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
       </FileInfo>
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="RC5_ENC"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="RC5_ENC_FPGA"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
     <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../xdc/Nexys-4-DDR-RC5-ENC.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>

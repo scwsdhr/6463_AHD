@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log RC5_ENC.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source RC5_ENC.tcl
+EAStep vivado -log RC5_ENC_FPGA.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source RC5_ENC_FPGA.tcl
