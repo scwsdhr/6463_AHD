@@ -10,6 +10,10 @@ entity RC5_ENC_FPGA is
         Clk_Btn : in STD_LOGIC;                             -- button as clock signal
         Cycle_Btn : in STD_LOGIC;                           -- button to provide a cycle run
         All_Btn : in STD_LOGIC;                             -- button to provide run all
+        Up_Btn : in STD_LOGIC;                              -- add 1 to targeted variable
+        Down_Btn : in STD_LOGIC;                            -- minus 1 to targeted variable
+        Mod_Hex : in std_logic_vector (7 downto 0);         -- select the hex bits to modify
+
         Disp_SW : in STD_LOGIC_VECTOR(3 downto 0);          -- display content switch
         LED_State : out STD_LOGIC_VECTOR(4 downto 0);       -- LED display to show the current stage
         Disp_Sel : out STD_LOGIC_VECTOR(7 downto 0);        -- select the digit to lit
@@ -22,6 +26,8 @@ architecture Behavioral of RC5_ENC_FPGA is
     signal Clk_Btn_buf : STD_LOGIC;                         -- clock button buffer
     signal Cycle_Btn_buf : STD_LOGIC;                       -- cycle button buffer
     signal All_Btn_buf : STD_LOGIC;                         -- end button buffer
+    signal Up_Btn_buf : STD_LOGIC;                          -- up button buffer
+    signal Down_Btn_buf : STD_LOGIC;                        -- down button buffer
     signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0);
     signal BackDoor_out : STD_LOGIC_VECTOR(63 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
@@ -101,8 +107,6 @@ begin
         Y => Disp_Val
     );
 
-    BackDoor_in <= x"0123456789abcdef";
-
     -- the buffers of buttons, used to detect the rising edge
     process(Sysclk)
     begin
@@ -123,7 +127,7 @@ begin
                 when ST_STEP =>
                     if (Cycle_Btn_buf = '0' and Cycle_Btn = '1') then
                         state <= ST_INSTR;
-                    elsif (ALL_Btn_buf = '0' and ALL_Btn = '1') then
+                    elsif (All_Btn_buf = '0' and All_Btn = '1') then
                         state <= ST_ALL;
                     end if;
                 when ST_INSTR =>
@@ -176,7 +180,7 @@ begin
     end process;
 
     -- disp content switch
-    process(Disp_SW, A1, A2, A3)
+    process(Disp_SW, PC, A1, A2, A3, BackDoor_in, BackDoor_out)
     begin
         case Disp_SW is
             when x"0" => Disp_Bits <= PC;
@@ -188,6 +192,8 @@ begin
             when x"6" => Disp_Bits <= SrcB;
             when x"7" => Disp_Bits <= ALUResult;
             when x"8" => Disp_Bits <= Result;
+            when x"c" => Disp_Bits <= BackDoor_in(63 downto 32);
+            when x"d" => Disp_Bits <= BackDoor_in(31 downto 0);
             when x"e" => Disp_Bits <= BackDoor_out(63 downto 32);
             when x"f" => Disp_Bits <= BackDoor_out(31 downto 0);
             when others => null;
@@ -200,6 +206,60 @@ begin
         A1_Disp <= x"a10" & "000" & A1(4) & "000" & A1(3) & "000" & A1(2) & "000" & A1(1) & "000" & A1(0);
         A2_Disp <= x"a20" & "000" & A2(4) & "000" & A2(3) & "000" & A2(2) & "000" & A2(1) & "000" & A2(0);
         A3_Disp <= x"a30" & "000" & A3(4) & "000" & A3(3) & "000" & A3(2) & "000" & A3(1) & "000" & A3(0);
+    end process;
+
+    -- select the targeted hex bits to modify
+    process(Clr, Sysclk)
+    begin
+        if (Clr = '0') then
+            BackDoor_in <= (others => '0');
+        elsif (Sysclk'event and Sysclk = '1') then
+            if (Disp_SW = x"c") then 
+                -- rising edge of up button
+                if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                    BackDoor_in(63 downto 60) <= BackDoor_in(63 downto 60) + ("000" & Mod_Hex(7));
+                    BackDoor_in(59 downto 56) <= BackDoor_in(59 downto 56) + ("000" & Mod_Hex(6));
+                    BackDoor_in(55 downto 52) <= BackDoor_in(55 downto 52) + ("000" & Mod_Hex(5));
+                    BackDoor_in(51 downto 48) <= BackDoor_in(51 downto 48) + ("000" & Mod_Hex(4));
+                    BackDoor_in(47 downto 44) <= BackDoor_in(47 downto 44) + ("000" & Mod_Hex(3));
+                    BackDoor_in(43 downto 40) <= BackDoor_in(43 downto 40) + ("000" & Mod_Hex(2));
+                    BackDoor_in(39 downto 36) <= BackDoor_in(39 downto 36) + ("000" & Mod_Hex(1));
+                    BackDoor_in(35 downto 32) <= BackDoor_in(35 downto 32) + ("000" & Mod_Hex(0));
+                -- rising edge of down button
+                elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                    BackDoor_in(63 downto 60) <= BackDoor_in(63 downto 60) - ("000" & Mod_Hex(7));
+                    BackDoor_in(59 downto 56) <= BackDoor_in(59 downto 56) - ("000" & Mod_Hex(6));
+                    BackDoor_in(55 downto 52) <= BackDoor_in(55 downto 52) - ("000" & Mod_Hex(5));
+                    BackDoor_in(51 downto 48) <= BackDoor_in(51 downto 48) - ("000" & Mod_Hex(4));
+                    BackDoor_in(47 downto 44) <= BackDoor_in(47 downto 44) - ("000" & Mod_Hex(3));
+                    BackDoor_in(43 downto 40) <= BackDoor_in(43 downto 40) - ("000" & Mod_Hex(2));
+                    BackDoor_in(39 downto 36) <= BackDoor_in(39 downto 36) - ("000" & Mod_Hex(1));
+                    BackDoor_in(35 downto 32) <= BackDoor_in(35 downto 32) - ("000" & Mod_Hex(0));
+                end if;
+            elsif (Disp_SW = x"d") then 
+                -- rising edge of up button
+                if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                    BackDoor_in(31 downto 28) <= BackDoor_in(31 downto 28) + ("000" & Mod_Hex(7));
+                    BackDoor_in(27 downto 24) <= BackDoor_in(27 downto 24) + ("000" & Mod_Hex(6));
+                    BackDoor_in(23 downto 20) <= BackDoor_in(23 downto 20) + ("000" & Mod_Hex(5));
+                    BackDoor_in(19 downto 16) <= BackDoor_in(19 downto 16) + ("000" & Mod_Hex(4));
+                    BackDoor_in(15 downto 12) <= BackDoor_in(15 downto 12) + ("000" & Mod_Hex(3));
+                    BackDoor_in(11 downto 8)  <= BackDoor_in(11 downto 8)  + ("000" & Mod_Hex(2));
+                    BackDoor_in(7 downto 4)   <= BackDoor_in(7 downto 4)   + ("000" & Mod_Hex(1));
+                    BackDoor_in(3 downto 0)   <= BackDoor_in(3 downto 0)   + ("000" & Mod_Hex(0));
+                -- rising edge of down button
+                elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                    BackDoor_in(31 downto 28) <= BackDoor_in(31 downto 28) - ("000" & Mod_Hex(7));
+                    BackDoor_in(27 downto 24) <= BackDoor_in(27 downto 24) - ("000" & Mod_Hex(6));
+                    BackDoor_in(23 downto 20) <= BackDoor_in(23 downto 20) - ("000" & Mod_Hex(5));
+                    BackDoor_in(19 downto 16) <= BackDoor_in(19 downto 16) - ("000" & Mod_Hex(4));
+                    BackDoor_in(15 downto 12) <= BackDoor_in(15 downto 12) - ("000" & Mod_Hex(3));
+                    BackDoor_in(11 downto 8)  <= BackDoor_in(11 downto 8)  - ("000" & Mod_Hex(2));
+                    BackDoor_in(7 downto 4)   <= BackDoor_in(7 downto 4)   - ("000" & Mod_Hex(1));
+                    BackDoor_in(3 downto 0)   <= BackDoor_in(3 downto 0)   - ("000" & Mod_Hex(0));
+                end if;
+            end if;
+        end if;
     end process;
 
 end Behavioral;

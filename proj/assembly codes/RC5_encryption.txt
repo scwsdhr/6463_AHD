@@ -1,3 +1,6 @@
+// In our assembly codes, we used Intel style,
+// in which the destination register is located first,
+// the register name and immediate number remains the same.
 
 SUB R0, R0, R0          // R0 <= 0
 LW R1 52(R0)            // R1 <= Mem[R0 + 52]
@@ -50,7 +53,7 @@ BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6
 ADD R12, R12, R12       // R12 <= R12 + R12
 SUBI R13, R13, 1        // R13 <= R13 - 1
 BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6
-OR R9, R11, R12         // R9 <= R11 + R12
+OR R9, R11, R12         // R9 <= R11 | R12
 ADD R9, R9, R7          // R9 <= R9 + R7
 BLT R3, R10, -44        // if R3 < R10, jump to PC + 2 - 88
 HAL                     // Halt

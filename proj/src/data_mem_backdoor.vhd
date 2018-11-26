@@ -73,9 +73,11 @@ begin
 				x"F6CC", x"1431", 		-- 48
 				x"6504", x"6380", 		-- 50
 				-- backdoor for A
-				BD_in(63 downto 32),		-- 52
+				BD_in(63 downto 48),	-- 52
+				BD_in(47 downto 32),	-- 53
 				-- backdoor for B
-				BD_in(31 downto 0),		-- 54
+				BD_in(31 downto 16),	-- 54
+				BD_in(15 downto 0),		-- 55
 				others => x"0000");
 		elsif (Clk'event and Clk = '1') then
 			-- write enabled
@@ -87,6 +89,6 @@ begin
 	end process;
 
 	-- output backdoor
-	BD_out <= data_mem(56) & data_mem(57) & data_mem(58) & data_mem(58);
+	BD_out <= data_mem(56) & data_mem(57) & data_mem(58) & data_mem(59);
 	
 end Behavioral;

@@ -14,12 +14,12 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 3560 
+INFO: Helper process launched with PID 11384 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 357.871 ; gain = 99.488
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 357.770 ; gain = 100.125
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'RC5_ENC_FPGA' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:20]
-INFO: [Synth 8-3491] module 'RC5_ENC' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd:8' bound to instance 'RC5_ENC_uut' of component 'RC5_ENC' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:80]
+INFO: [Synth 8-638] synthesizing module 'RC5_ENC_FPGA' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:24]
+INFO: [Synth 8-3491] module 'RC5_ENC' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd:8' bound to instance 'RC5_ENC_uut' of component 'RC5_ENC' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:86]
 INFO: [Synth 8-638] synthesizing module 'RC5_ENC' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd:27]
 INFO: [Synth 8-3491] module 'Mux' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/mux.vhd:5' bound to instance 'Mux1' of component 'Mux' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd:173]
 INFO: [Synth 8-638] synthesizing module 'Mux' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/mux.vhd:14]
@@ -59,24 +59,24 @@ INFO: [Synth 8-3491] module 'Mux' declared at 'C:/Users/shenc/OneDrive - nyu.edu
 INFO: [Synth 8-3491] module 'Left_Shift_1' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/left_shift_1.vhd:5' bound to instance 'Left_Shift_1_jmp' of component 'Left_Shift_1' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd:303]
 INFO: [Synth 8-3491] module 'Mux' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/mux.vhd:5' bound to instance 'Mux5' of component 'Mux' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd:310]
 INFO: [Synth 8-256] done synthesizing module 'RC5_ENC' (11#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC.vhd:27]
-INFO: [Synth 8-3491] module 'Hex2LED' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:6' bound to instance 'Hex2LED_uut' of component 'Hex2LED' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:98]
+INFO: [Synth 8-3491] module 'Hex2LED' declared at 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:6' bound to instance 'Hex2LED_uut' of component 'Hex2LED' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:104]
 INFO: [Synth 8-638] synthesizing module 'Hex2LED' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:14]
 WARNING: [Synth 8-614] signal 'X' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'Hex2LED' (12#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/Hex2LED.vhd:14]
-WARNING: [Synth 8-614] signal 'Clr' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:117]
-WARNING: [Synth 8-614] signal 'PC' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'Instr' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'A1_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'A2_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'A3_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'SrcA' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'SrcB' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'ALUResult' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'Result' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-614] signal 'BackDoor_out' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:179]
-WARNING: [Synth 8-6014] Unused sequential element Clk_Btn_buf_reg was removed.  [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:110]
-WARNING: [Synth 8-6014] Unused sequential element Disp_Clk_reg was removed.  [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:99]
-INFO: [Synth 8-256] done synthesizing module 'RC5_ENC_FPGA' (13#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:20]
+WARNING: [Synth 8-614] signal 'Clr' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:121]
+WARNING: [Synth 8-614] signal 'Instr' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-614] signal 'A1_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-614] signal 'A2_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-614] signal 'A3_Disp' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-614] signal 'SrcA' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-614] signal 'SrcB' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-614] signal 'ALUResult' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-614] signal 'Result' is read in the process but is not in the sensitivity list [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:183]
+WARNING: [Synth 8-6014] Unused sequential element Clk_Btn_buf_reg was removed.  [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:114]
+WARNING: [Synth 8-6014] Unused sequential element Disp_Clk_reg was removed.  [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:105]
+WARNING: [Synth 8-3848] Net Up_Btn_buf in module/entity RC5_ENC_FPGA does not have driver. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:29]
+WARNING: [Synth 8-3848] Net Down_Btn_buf in module/entity RC5_ENC_FPGA does not have driver. [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:30]
+INFO: [Synth 8-256] done synthesizing module 'RC5_ENC_FPGA' (13#1) [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:24]
 WARNING: [Synth 8-3331] design Hex2LED has unconnected port Clk
 WARNING: [Synth 8-3331] design Left_Shift_1 has unconnected port A[31]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[31]
@@ -104,38 +104,6 @@ WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[10]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[9]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[8]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[7]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[63]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[62]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[61]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[60]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[59]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[58]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[57]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[56]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[55]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[54]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[53]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[52]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[51]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[50]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[49]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[48]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[31]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[30]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[29]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[28]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[27]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[26]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[25]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[24]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[23]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[22]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[21]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[20]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[19]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[18]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[17]
-WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port BD_in[16]
 WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[31]
 WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[30]
 WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[29]
@@ -162,7 +130,7 @@ WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[9]
 WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[8]
 WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[7]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 423.039 ; gain = 164.656
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 422.746 ; gain = 165.102
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -175,10 +143,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 423.039 ; gain = 164.656
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 422.746 ; gain = 165.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 423.039 ; gain = 164.656
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 422.746 ; gain = 165.102
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -197,22 +165,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 782.707 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 791.816 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:32 ; elapsed = 00:00:50 . Memory (MB): peak = 782.707 ; gain = 524.324
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 791.816 ; gain = 534.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:32 ; elapsed = 00:00:50 . Memory (MB): peak = 782.707 ; gain = 524.324
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 791.816 ; gain = 534.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:51 . Memory (MB): peak = 782.707 ; gain = 524.324
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 791.816 ; gain = 534.172
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "instr_mem" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "instr_mem" won't be mapped to RAM because it is too sparse
@@ -280,9 +248,9 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
                   iSTATE |                               10 |                               10
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'RC5_ENC_FPGA'
-WARNING: [Synth 8-327] inferring latch for variable 'Disp_Bits_reg' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:160]
+WARNING: [Synth 8-327] inferring latch for variable 'Disp_Bits_reg' [C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/src/RC5_ENC_FPGA.vhd:164]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:40 ; elapsed = 00:01:05 . Memory (MB): peak = 782.707 ; gain = 524.324
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:36 . Memory (MB): peak = 791.816 ; gain = 534.172
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -298,20 +266,24 @@ Detailed RTL Component Info :
 	   2 Input     32 Bit       Adders := 2     
 	   3 Input     32 Bit       Adders := 1     
 	   2 Input      7 Bit       Adders := 1     
+	   3 Input      4 Bit       Adders := 16    
+	   2 Input      4 Bit       Adders := 16    
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Registers : 
+	               64 Bit    Registers := 1     
 	               32 Bit    Registers := 35    
 	               16 Bit    Registers := 128   
 	                8 Bit    Registers := 1     
 	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 8     
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 12    
 	  11 Input     32 Bit        Muxes := 1     
 	   7 Input     32 Bit        Muxes := 1     
 	 129 Input     16 Bit        Muxes := 2     
-	   2 Input     16 Bit        Muxes := 11    
+	   2 Input     16 Bit        Muxes := 15    
 	   9 Input      8 Bit        Muxes := 1     
 	   4 Input      5 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 2     
@@ -320,12 +292,13 @@ Detailed RTL Component Info :
 	  11 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 230   
-	  12 Input      1 Bit        Muxes := 2     
+	  12 Input      1 Bit        Muxes := 1     
 	   6 Input      1 Bit        Muxes := 1     
 	   4 Input      1 Bit        Muxes := 1     
 	   3 Input      1 Bit        Muxes := 68    
 	   5 Input      1 Bit        Muxes := 1     
 	   8 Input      1 Bit        Muxes := 1     
+	  14 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -335,17 +308,23 @@ Start RTL Hierarchical Component Statistics
 Hierarchical RTL Component report 
 Module RC5_ENC_FPGA 
 Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      4 Bit       Adders := 16    
+	   2 Input      4 Bit       Adders := 16    
 +---Registers : 
+	               64 Bit    Registers := 1     
 	                8 Bit    Registers := 1     
 	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 2     
 +---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 4     
 	   9 Input      8 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 2     
 	   3 Input      1 Bit        Muxes := 1     
 	   8 Input      1 Bit        Muxes := 1     
-	  12 Input      1 Bit        Muxes := 1     
+	  14 Input      1 Bit        Muxes := 1     
 Module Mux 
 Detailed RTL Component Info : 
 +---Muxes : 
@@ -400,7 +379,7 @@ Detailed RTL Component Info :
 	               16 Bit    Registers := 128   
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 11    
+	   2 Input     16 Bit        Muxes := 15    
 	   2 Input      1 Bit        Muxes := 190   
 	   3 Input      1 Bit        Muxes := 64    
 Module RC5_ENC 
@@ -428,7 +407,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-5546] ROM "O130" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "O140" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "O730" won't be mapped to RAM because it is too sparse
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[31]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[30]
@@ -446,283 +425,36 @@ WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[19]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[18]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[17]
 WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[16]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[15]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[14]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[13]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[12]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[11]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[10]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[9]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[8]
+WARNING: [Synth 8-3331] design Data_Mem_BD has unconnected port A[7]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[31]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[30]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[29]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[28]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[27]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[26]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[25]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[24]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[23]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[22]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[21]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[20]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[19]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[18]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[17]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[16]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[15]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[14]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[13]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[12]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[11]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[10]
+WARNING: [Synth 8-3331] design Instruction_Mem has unconnected port A[9]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-WARNING: [Synth 8-3332] Sequential element (O_reg[0]) is unused and will be removed from module Flipflop.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][31]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][30]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][29]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][28]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][27]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][26]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][25]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][24]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][23]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][22]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][21]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][20]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][19]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][18]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][17]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][16]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][15]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][14]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][13]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][12]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][11]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][10]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][9]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][8]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][7]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][6]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][5]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][4]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][3]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][2]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][1]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[16][0]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][31]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][30]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][29]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][28]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][27]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][26]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][25]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][24]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][23]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][22]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][21]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][20]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][19]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][18]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][17]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][16]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][15]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][14]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][13]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][12]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][11]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][10]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][9]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][8]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][7]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][6]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][5]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][4]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][3]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][2]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][1]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[17][0]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][31]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][30]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][29]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][28]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][27]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][26]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][25]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][24]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][23]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][22]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][21]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][20]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][19]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][18]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][17]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][16]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][15]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][14]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][13]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][12]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][11]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][10]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][9]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][8]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][7]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][6]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][5]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][4]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][3]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][2]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][1]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[18][0]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[19][31]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[19][30]) is unused and will be removed from module Reg_File.
-WARNING: [Synth 8-3332] Sequential element (reg_reg[19][29]) is unused and will be removed from module Reg_File.
-INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
----------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:04 ; elapsed = 00:02:39 . Memory (MB): peak = 783.215 ; gain = 524.832
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start Applying XDC Timing Constraints
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:17 ; elapsed = 00:02:53 . Memory (MB): peak = 783.215 ; gain = 524.832
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Timing Optimization
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:27 ; elapsed = 00:03:03 . Memory (MB): peak = 790.016 ; gain = 531.633
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start Technology Mapping
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:39 ; elapsed = 00:03:15 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:42 ; elapsed = 00:03:18 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
-
-Report Check Netlist: 
-+------+------------------+-------+---------+-------+------------------+
-|      |Item              |Errors |Warnings |Status |Description       |
-+------+------------------+-------+---------+-------+------------------+
-|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
-+------+------------------+-------+---------+-------+------------------+
----------------------------------------------------------------------------------
-Start Renaming Generated Instances
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:42 ; elapsed = 00:03:18 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start Rebuilding User Hierarchy
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:42 ; elapsed = 00:03:19 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Ports
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:42 ; elapsed = 00:03:19 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:44 ; elapsed = 00:03:20 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Nets
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:44 ; elapsed = 00:03:20 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Writing Synthesis Report
----------------------------------------------------------------------------------
-
-Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
-
-Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     4|
-|2     |CARRY4 |    36|
-|3     |LUT1   |     7|
-|4     |LUT2   |    69|
-|5     |LUT3   |   372|
-|6     |LUT4   |   309|
-|7     |LUT5   |  1052|
-|8     |LUT6   |  2381|
-|9     |MUXF7  |   644|
-|10    |MUXF8  |   320|
-|11    |FDCE   |  2287|
-|12    |FDPE   |   376|
-|13    |FDRE   |    26|
-|14    |FDSE   |     7|
-|15    |LD     |    32|
-|16    |LDP    |     4|
-|17    |IBUF   |     9|
-|18    |OBUF   |    21|
-+------+-------+------+
-
-Report Instance Areas: 
-+------+---------------------+-------------+------+
-|      |Instance             |Module       |Cells |
-+------+---------------------+-------------+------+
-|1     |top                  |             |  7956|
-|2     |  Hex2LED_uut        |Hex2LED      |     7|
-|3     |  RC5_ENC_uut        |RC5_ENC      |  7816|
-|4     |    Adder1           |Adder        |     8|
-|5     |    Adder2           |Adder_0      |    38|
-|6     |    Control_Unit_uut |Control_Unit |  2297|
-|7     |    Data_Mem_BD_uut  |Data_Mem_BD  |  3965|
-|8     |    Flipflop_uut     |Flipflop     |   201|
-|9     |    Mux1             |Mux          |     4|
-|10    |    Mux2             |Mux_1        |     5|
-|11    |    Mux3             |Mux_2        |    32|
-|12    |    Mux4             |Mux_3        |    25|
-|13    |    Mux5             |Mux_4        |    26|
-|14    |    Reg_File_uut     |Reg_File     |  1201|
-+------+---------------------+-------------+------+
----------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:44 ; elapsed = 00:03:20 . Memory (MB): peak = 870.973 ; gain = 612.590
----------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 597 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:19 ; elapsed = 00:02:54 . Memory (MB): peak = 870.973 ; gain = 252.922
-Synthesis Optimization Complete : Time (s): cpu = 00:02:44 ; elapsed = 00:03:21 . Memory (MB): peak = 870.973 ; gain = 612.590
-INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 1045 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 36 instances were transformed.
-  LD => LDCE: 32 instances
-  LDP => LDPE: 4 instances
-
-INFO: [Common 17-83] Releasing license: Synthesis
-110 Infos, 217 Warnings, 1 Critical Warnings and 0 Errors encountered.
-synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:49 ; elapsed = 00:03:28 . Memory (MB): peak = 870.973 ; gain = 625.359
-WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.runs/synth_1/RC5_ENC_FPGA.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file RC5_ENC_FPGA_utilization_synth.rpt -pb RC5_ENC_FPGA_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.291 . Memory (MB): peak = 870.973 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sun Nov 25 22:18:09 2018...
