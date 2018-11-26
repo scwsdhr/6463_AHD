@@ -2,6 +2,7 @@
 // in which the destination register is located first,
 // the register name and immediate number remains the same.
 
+// initialize
 SUB R0, R0, R0          // R0 <= 0
 LW R1 52(R0)            // R1 <= Mem[R0 + 52]
 LW R2 54(R0)            // R2 <= Mem[R0 + 54]
@@ -12,48 +13,58 @@ ADD R8, R1, R6          // R8 <= R1 + R6
 ADD R9, R2, R7          // R9 <= R2 + R7
 ADDI R10, R0, 12        // R10 <= R0 + 12
 
+// encryption loop begin
 ADDI R3, R3, 1          // R3 <= R3 + 1
-ADD R4, R3, R3          // R4 <= R3 + R3
+ADD R4, R3, R3          // R4 <= R3 + R3 (left shift by 1 bit)
 ADDI R5, R4, 1          // R5 <= R4 + 1
-ADD R4, R4, R4          // R4 <= R4 + R4
-ADD R5, R5, R5          // R5 <= R5 + R5
+ADD R4, R4, R4          // R4 <= R4 + R4 (left shift by 1 bit)
+ADD R5, R5, R5          // R5 <= R5 + R5 (left shift by 1 bit)
 LW R6, 0(R4)            // R6 <= Mem[R4 + 0]
 LW R7, 0(R5)            // R7 <= Mem[R5 + 0]
+// A = A XOR B
 NOR R11, R8, R9         // R11 <= !(R8 | R9)
 AND R12, R8, R9         // R12 <= R8 & R9
 NOR R8, R11, R12        // R8 <= !(R11 | R12)
+// A = A <<< B
 ADDI R11, R8, 0         // R11 <= R8 + 0
 ANDI R13, R9, 31        // R13 <= R9 & x"0000001F"
 SUBI R13, R13, 32       // R13 <= R13 - 32
-BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6
+BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6 (R11 loop begin)
 SHR R11, R11, 1         // R11 >> 1
 ADDI R13, R13, 1        // R13 <= R13 + 1
-BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6
+BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6 (R11 loop end)
 ADDI R12, R8, 0         // R12 <= R8 + 0
 ANDI R13, R9, 31        // R13 <= R9 & x"0000001F"
-BEQ R13, R0, 3          // if R13 != R0, jump to PC + 2 + 6
+BEQ R13, R0, 3          // if R13 != R0, jump to PC + 2 + 6 (R12 loop begin)
 ADD R12, R12, R12       // R12 <= R12 + R12
 SUBI R13, R13, 1        // R13 <= R13 - 1
-BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6
+BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6 (R12 loop end)
 OR R8, R11, R12         // R8 <= R11 | 12
+// A = A + S[2*i]
 ADD R8, R8, R6          // R8 <= R8 + R6
+// B = B XOR A
 NOR R11, R9, R8         // R11 <= !(R9 | R8)
 AND R12, R9, R8         // R12 <= R9 & R8
 NOR R9, R11, R12        // R9 <= !(R11 | R12)
+// B = B <<< A
 ADDI R11, R9, 0         // R11 <= R9 + 0
 ANDI R13, R8, 31        // R13 <= R8 & x"0000001F"
 SUBI R13, R13, 32       // R13 <= R13 - 32
-BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6
+BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6 (R11 loop begin)
 SHR R11, R11, 1         // R11 >> 1
 ADDI R13, R13, 1        // R13 <= R13 + 1
-BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6
+BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6 (R11 loop end)
 ADDI R12, R9, 0         // R12 <= R9 + 0
 ANDI R13, R8, 31        // R13 <= R8 & x"0000001F"
-BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6
+BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6 (R12 loop begin)
 ADD R12, R12, R12       // R12 <= R12 + R12
 SUBI R13, R13, 1        // R13 <= R13 - 1
-BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6
+BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6 (R12 loop end)
 OR R9, R11, R12         // R9 <= R11 | R12
+// B = B + S[2*i+1]
 ADD R9, R9, R7          // R9 <= R9 + R7
+// encryption loop end
 BLT R3, R10, -44        // if R3 < R10, jump to PC + 2 - 88
+SW R8, 56(R0)           // Mem[56] <= R8
+SW R9, 58(R0)           // Mem[58] <= R9
 HAL                     // Halt

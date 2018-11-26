@@ -28,7 +28,7 @@ architecture Behavioral of RC5_ENC_FPGA is
     signal All_Btn_buf : STD_LOGIC;                         -- end button buffer
     signal Up_Btn_buf : STD_LOGIC;                          -- up button buffer
     signal Down_Btn_buf : STD_LOGIC;                        -- down button buffer
-    signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0);
+    signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0) := x"0123456789abcdef";
     signal BackDoor_out : STD_LOGIC_VECTOR(63 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
@@ -114,6 +114,8 @@ begin
             Clk_Btn_buf <= Clk_Btn;
             Cycle_Btn_buf <= Cycle_Btn;
             All_Btn_buf <= All_Btn;
+            Up_Btn_buf <= Up_Btn;
+            Down_Btn_buf <= Down_Btn;
         end if;
     end process;
 
@@ -211,9 +213,7 @@ begin
     -- select the targeted hex bits to modify
     process(Clr, Sysclk)
     begin
-        if (Clr = '0') then
-            BackDoor_in <= (others => '0');
-        elsif (Sysclk'event and Sysclk = '1') then
+        if (Sysclk'event and Sysclk = '1') then
             if (Disp_SW = x"c") then 
                 -- rising edge of up button
                 if (Up_Btn = '1' and Up_Btn_buf = '0') then 
