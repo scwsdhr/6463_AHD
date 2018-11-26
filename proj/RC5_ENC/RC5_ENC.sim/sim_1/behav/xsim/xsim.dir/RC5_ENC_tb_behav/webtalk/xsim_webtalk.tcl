@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.sim/sim_1/behav/xsim/xsim.dir/RC5_ENC_tb_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Sun Nov 25 17:44:24 2018" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Sun Nov 25 19:37:31 2018" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2018.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2258646" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "b5bb4c12-9898-4d6d-8b1f-1499cb4dfd32" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "d381dcdbfd6a4a69a0f9549ed366123d" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "14" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "34" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Microsoft Windows 8 or later , 64-bit" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz" -context "user_environment"
@@ -37,6 +37,6 @@ webtalk_add_data -client xsim -key Total_Processes -value "51" -context "xsim\\u
 webtalk_add_data -client xsim -key Total_Instances -value "25" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip " -context "xsim\\usage"
 webtalk_add_data -client xsim -key Compiler_Time -value "1.23_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "54032_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 919247158 -regid "" -xml C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.sim/sim_1/behav/xsim/xsim.dir/RC5_ENC_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.sim/sim_1/behav/xsim/xsim.dir/RC5_ENC_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.sim/sim_1/behav/xsim/xsim.dir/RC5_ENC_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Memory -value "54120_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 2169486424 -regid "" -xml C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.sim/sim_1/behav/xsim/xsim.dir/RC5_ENC_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.sim/sim_1/behav/xsim/xsim.dir/RC5_ENC_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/proj/RC5_ENC/RC5_ENC.sim/sim_1/behav/xsim/xsim.dir/RC5_ENC_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

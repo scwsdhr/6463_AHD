@@ -1,4 +1,4 @@
-Running: xsim.dir/RC5_ENC_tb_behav/xsimk.exe -simmode gui -wdb RC5_ENC_tb_behav.wdb -simrunnum 0 -socket 50265
+Running: xsim.dir/RC5_ENC_tb_behav/xsimk.exe -simmode gui -wdb RC5_ENC_tb_behav.wdb -simrunnum 0 -socket 50759
 Design successfully loaded
-Design Loading Memory Usage: 4984 KB (Peak: 4984 KB)
-Design Loading CPU Usage: 31 ms
+Design Loading Memory Usage: 4960 KB (Peak: 4960 KB)
+Design Loading CPU Usage: 0 ms
