@@ -13,7 +13,8 @@ entity Data_Mem_BD is
 		A : in STD_LOGIC_VECTOR(31 downto 0);
 		WD : in STD_LOGIC_VECTOR(31 downto 0);
 		WE : in STD_LOGIC;
-		BD : in STD_LOGIC_VECTOR(63 downto 0);		-- back door
+		BD_in : in STD_LOGIC_VECTOR(63 downto 0);		-- back door for input
+		BD_out : out STD_LOGIC_VECTOR(63 downto 0);		-- back door for output
 		RD : out STD_LOGIC_VECTOR(31 downto 0)
 	);
 end Data_Mem_BD;
@@ -39,7 +40,7 @@ begin
 	end process;
 
 	-- write function
-	process(Clr, Clk, WE, BD)
+	process(Clr, Clk, WE, BD_in)
 	begin
 		if (Clr = '0') then
 			-- data_mem <= (others => (others => '0'));
@@ -72,9 +73,9 @@ begin
 				x"F6CC", x"1431", 		-- 48
 				x"6504", x"6380", 		-- 50
 				-- backdoor for A
-				BD(63 downto 32),		-- 52
+				BD_in(63 downto 32),		-- 52
 				-- backdoor for B
-				BD(31 downto 0),		-- 54
+				BD_in(31 downto 0),		-- 54
 				others => x"0000");
 		elsif (Clk'event and Clk = '1') then
 			-- write enabled
@@ -84,5 +85,8 @@ begin
 			end if;
 		end if;
 	end process;
+
+	-- output backdoor
+	BD_out <= data_mem(56) & data_mem(57) & data_mem(58) & data_mem(58);
 	
 end Behavioral;

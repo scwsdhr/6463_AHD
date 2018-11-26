@@ -9,7 +9,7 @@ entity RC5_ENC_FPGA is
         Sysclk : in STD_LOGIC;                              -- system clock
         Clk_Btn : in STD_LOGIC;                             -- button as clock signal
         Cycle_Btn : in STD_LOGIC;                           -- button to provide a cycle run
-        ALL_Btn : in STD_LOGIC;                             -- button to provide run all
+        All_Btn : in STD_LOGIC;                             -- button to provide run all
         Disp_SW : in STD_LOGIC_VECTOR(3 downto 0);          -- display content switch
         LED_State : out STD_LOGIC_VECTOR(4 downto 0);       -- LED display to show the current stage
         Disp_Sel : out STD_LOGIC_VECTOR(7 downto 0);        -- select the digit to lit
@@ -21,8 +21,9 @@ architecture Behavioral of RC5_ENC_FPGA is
     signal Clk : STD_LOGIC;                                 -- clock signal
     signal Clk_Btn_buf : STD_LOGIC;                         -- clock button buffer
     signal Cycle_Btn_buf : STD_LOGIC;                       -- cycle button buffer
-    signal ALL_Btn_buf : STD_LOGIC;                         -- end button buffer
-    signal BackDoor : STD_LOGIC_VECTOR(63 downto 0);
+    signal All_Btn_buf : STD_LOGIC;                         -- end button buffer
+    signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0);
+    signal BackDoor_out : STD_LOGIC_VECTOR(63 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
     signal A1 : STD_LOGIC_VECTOR(4 downto 0);
@@ -52,7 +53,8 @@ architecture Behavioral of RC5_ENC_FPGA is
         port(
             Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
-            BackDoor : in STD_LOGIC_VECTOR(63 downto 0);
+            BackDoor_in : in STD_LOGIC_VECTOR(63 downto 0);
+            BackDoor_out : out STD_LOGIC_VECTOR(63 downto 0);
             PC_out : out STD_LOGIC_VECTOR(31 downto 0);
             Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
             A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -78,7 +80,8 @@ begin
     RC5_ENC_uut : RC5_ENC port map (
         Clr => Clr,
         Clk => Clk,
-        BackDoor => BackDoor,
+        BackDoor_in => BackDoor_in,
+        BackDoor_out => BackDoor_out,
         PC_out => PC,
         Instr_out => Instr,
         A1_out => A1,
@@ -98,7 +101,7 @@ begin
         Y => Disp_Val
     );
 
-    BackDoor <= x"0123456789abcdef";
+    BackDoor_in <= x"0123456789abcdef";
 
     -- the buffers of buttons, used to detect the rising edge
     process(Sysclk)
@@ -106,7 +109,7 @@ begin
         if (Sysclk'event and Sysclk = '1') then
             Clk_Btn_buf <= Clk_Btn;
             Cycle_Btn_buf <= Cycle_Btn;
-            ALL_Btn_buf <= ALL_Btn;
+            All_Btn_buf <= All_Btn;
         end if;
     end process;
 
@@ -185,6 +188,8 @@ begin
             when x"6" => Disp_Bits <= SrcB;
             when x"7" => Disp_Bits <= ALUResult;
             when x"8" => Disp_Bits <= Result;
+            when x"e" => Disp_Bits <= BackDoor_out(63 downto 32);
+            when x"f" => Disp_Bits <= BackDoor_out(31 downto 0);
             when others => null;
         end case;
     end process;

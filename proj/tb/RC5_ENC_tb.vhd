@@ -8,7 +8,8 @@ architecture Behavioral of RC5_ENC_tb is
     constant T : time := 20 ns;
     signal Clr : STD_LOGIC := '0';
     signal Clk : STD_LOGIC := '1';
-    signal BackDoor : STD_LOGIC_VECTOR(63 downto 0) := x"0000000000000000";
+    signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0) := x"0000000000000000";
+    signal BackDoor_out : STD_LOGIC_VECTOR(63 downto 0);
 --    signal PC : STD_LOGIC_VECTOR(31 downto 0);
 --    signal Instr : STD_LOGIC_VECTOR(31 downto 0);
 --    signal A1 : STD_LOGIC_VECTOR(4 downto 0);
@@ -24,7 +25,8 @@ architecture Behavioral of RC5_ENC_tb is
         port(
             Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
-            BackDoor : in STD_LOGIC_VECTOR(63 downto 0)
+            BackDoor_in : in STD_LOGIC_VECTOR(63 downto 0);
+            BackDoor_out : out STD_LOGIC_VECTOR(63 downto 0)
 --            PC_out : out STD_LOGIC_VECTOR(31 downto 0);
 --            Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
 --            A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -43,7 +45,8 @@ begin
     uut : RC5_ENC port map (
         Clr => Clr,
         Clk => Clk,
-        BackDoor => BackDoor
+        BackDoor_in => BackDoor_in,
+        BackDoor_out => BackDoor_out
 --        PC_out => PC,
 --        Instr_out => Instr,
 --        A1_out => A1,
@@ -58,7 +61,7 @@ begin
 
     Clr <= '0', '1' after 5 ns;
 
-    BackDoor <= x"0123456789abcdef";
+    BackDoor_in <= x"0123456789abcdef";
 
     process
     begin
