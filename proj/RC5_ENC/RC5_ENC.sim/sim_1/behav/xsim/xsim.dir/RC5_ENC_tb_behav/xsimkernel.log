@@ -2,3 +2,6 @@ Running: xsim.dir/RC5_ENC_tb_behav/xsimk.exe -simmode gui -wdb RC5_ENC_tb_behav.
 Design successfully loaded
 Design Loading Memory Usage: 4960 KB (Peak: 4960 KB)
 Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 13312 KB (Peak: 13312 KB)
+Simulation CPU Usage: 124 ms
