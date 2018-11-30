@@ -1,22 +1,24 @@
 /* What you should know */
-// In our assembly codes, we used Intel style,
-// in which the destination register is located first,
-// the register name and immediate number remains the same.
+ * In our assembly codes, we used Intel style,
+ * in which the destination register is located first,
+ * the register name and immediate number remains the same.
+ */
 
 /* Definations of registers
-    R0              - constant zero
-    R1              - input A 
-    R2              - input B
-    R3              - loop variable i
-    R4              - address (2*i)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
-    R5              - address (2*i+1)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
-    R6              - Skey[2*i]
-    R7              - Skey[2*i+1]
-    R8              - intermediate and final result of A
-    R9              - intermediate and final result of B
-    R10             - constant 12 (used as the stop condition of encryption loop)
-    R11, R12, R13   - temporary variables
-*/
+ *  R0              - constant zero
+ *  R1              - input A 
+ *  R2              - input B
+ *  R3              - loop variable i
+ *  R4              - address (2*i)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
+ *  R5              - address (2*i+1)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
+ *  R6              - Skey[2*i]
+ *  R7              - Skey[2*i+1]
+ *  R8              - intermediate and final result of A
+ *  R9              - intermediate and final result of B
+ *  R10             - constant 12 (used as the stop condition of encryption loop)
+ *  R11, R12, R13   - temporary variables
+ */
+
 // initialize
 SUB R0, R0, R0          // R0 <= 0
 LW R1 52(R0)            // R1 <= Mem[R0 + 52]
@@ -50,7 +52,7 @@ ADDI R13, R13, 1        // R13 <= R13 + 1
 BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6 (R11 loop end)
 ADDI R12, R8, 0         // R12 <= R8 + 0
 ANDI R13, R9, 31        // R13 <= R9 & x"0000001F"
-BEQ R13, R0, 3          // if R13 != R0, jump to PC + 2 + 6 (R12 loop begin)
+BEQ R13, R0, 3          // if R13 = R0, jump to PC + 2 + 6 (R12 loop begin)
 ADD R12, R12, R12       // R12 <= R12 + R12
 SUBI R13, R13, 1        // R13 <= R13 - 1
 BNE R13, R0, -3         // if R13 != R0, jump to PC + 2 - 6 (R12 loop end)
