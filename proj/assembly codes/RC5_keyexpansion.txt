@@ -28,40 +28,29 @@
 
 // initialize
 SUB R0, R0, R1              // R0 <= 0
-ADDI R4, R0, 25             // R4 <= 26
-ADDI R5, R0, 3              // R5 <= 4
-ADDI R6, R0, 77             // R6 <= 78
+ADDI R4, R0, 26             // R4 <= 26
+ADDI R5, R0, 4              // R5 <= 4
+ADDI R6, R0, 78             // R6 <= 78
 
-// initialize L (hard coded user key = 0x915f4619be41b2516355a50110a9ce91)
-ADDI R1, R0, 60             // R1 <= 52 (address of L[0])
-ADDI R2, R0, 0x19465f91     // R2 <= 0x19465f91 (hard coded user key)
-SW R2, 0(R1)                // Mem[R1] <= R2
-ADDI R1, R1, 2              // R1 <= R1 + 2 (find address of L[1])
-ADDI R2, R0, 0x51b241be     // R2 <= 0x51b241be (hard coded user key)
-SW R2, 0(R1)                // Mem[R1] <= R2
-ADDI R1, R1, 2              // R1 <= R1 + 2 (find address of L[2])
-ADDI R2, R0, 0x01a55563     // R2 <= 0x01a55563 (hard coded user key)            
-SW R2, 0(R1)                // Mem[R1] <= R2
-ADDI R1, R1, 2              // R1 <= R1 + 2 (find address of L[3])
-ADDI R2, R0, 0x91cea910     // R2 <= 0x91cea910 (hard coded user key)            
-SW R2, 0(R1)                // Mem[R1] <= R2
+// L is initialized in data memory based on user input
 
 // initialize S
 SUB R1, R1, R1              // R1 <= 0
-ADDI R7, R0, 0xb7e15163     // R7 <= 0xb7e15163 (magic number P)
+LW R7, 68(R0)			    // R7 <= Mem[68] 0xb7e15163 (magic number P)
 SW R7, 0(R0)                // Mem[0] <= R7
-ADDI R7, R0, 0x9e3779b9     // R7 <= 0x9e3779b9 (magic number Q)
-ADD R1, R1, 1               // R1 <= R1 + 1 (i <= i + 1) (S loop begin)
-ADD R8, R1, R1              // R8 <= R1 << 1
+LW R7, 70(R0)     			// R7 <= Mem[70] 0x9e3779b9 (magic number Q)
+ADDI R1, R1, 1              // R1 <= R1 + 1 (i <= 1)
+ADD R8, R1, R1              // R8 <= R1 << 1 (S loop begin)
 LW R10, -2(R8)              // R10 <= Mem[R8 - 2] (R10 <= S[i-1])
 ADD R11, R10, R7            // R11 <= R10 + R7 (R11 <= S[i-1] + Q)
 SW R11, 0(R8)               // Mem[R8] <= R11 (S[i] <= R11)
+ADDI R1, R1, 1              // R1 <= R1 + 1 (i <= i + 1)
 BNE R1, R4, -6              // if R1 != R4, jump to PC + 2 - 12 (S loop end)
 
 // mix key into S
 SUB R1, R1, R1              // R1 <= 0 (i <= 0)
 SUB R2, R2, R2              // R2 <= 0 (j <= 0)
-SUB R3, R3, R1              // R3 <= 0 (k <= 0)
+SUB R3, R3, R3              // R3 <= 0 (k <= 0)
 SUB R10, R10, R10           // R10 <= 0 (A <= 0)
 SUB R11, R11, R11           // R11 <= 0 (B <= 0)
 // mix loop begin
@@ -72,7 +61,7 @@ LW R12, 0(R8)               // R12 <= Mem[R8] (R12 <= S[i])
 LW R13, 0(R9)               // R13 <= Mem[R9] (R13 <= L[j])
 // A <= S[i] + (A + B)
 ADD R16, R10, R11           // R16 <= R10 + R11
-ADD R10, R13, R16           // R10 <= R13 + R16
+ADD R10, R12, R16           // R10 <= R12 + R16
 // A <= A <<< 3
 ADDI R16, R0, 29            // R16 <= 29 (loop cycles)
 ADDI R14, R10, 0            // R14 <= R10 (copy A to R14)
@@ -87,7 +76,7 @@ BNE R16, R0, -3             // if R16 != R0, jump to PC + 2 - 6 (R15 loop end)
 OR R10, R14, R15            // R10 <= R14 | R15
 SW R10, 0(R8)               // Mem[R8] <= R10 (S[i] <= A)
 // R16 <= (A + B)
-ADD R16, R10, R11           // R16 <= R10 + R11
+ADD R15, R10, R11           // R15 <= R10 + R11
 // B <= L[j] + (A + B)
 ADD R11, R13, R15           // R11 <= R13 + R15
 // B <<< (A + B)
@@ -98,7 +87,7 @@ BEQ R16, R0, 3              // if R16 = R0, jump to PC + 2 + 6 (R14 loop begin)
 ADDI R16, R16, 1            // R16 <= R16 + 1
 SHR R14, R14, 1             // R14 <= R14 >> 1
 BNE R16, R0, -3             // if R16 != R0, jump to PC + 2 - 6 (R14 loop end)
-ADDI R16, R0, 3             // R16 <= R15 & 0x0000001f
+ANDI R16, R15, 31           // R16 <= R15 & 0x0000001f
 ADDI R15, R11, 0            // R15 <= R11 (copy B to R15)
 BEQ R16, R0, 3              // if R16 = R0, jump to PC + 2 + 6 (R15 loop begin)
 SUBI R16, R16, 1            // R16 <= R16 - 1
@@ -108,16 +97,16 @@ OR R11, R14, R15            // R11 <= R14 | R15
 SW R11, 0(R9)               // Mem[R9] <= R11 (L[j] <= B)
 // afterthought
 ADDI R1, R1, 1              // R1 <= R1 + 1 (i <= i + 1)
-BEQ R1, R4, 1               // if R1 = R4, jump to PC + 1 + 1 (if i == 4)
+BNE R1, R4, 1               // if R1 != R4, jump to PC + 1 + 1 (if i == 4)
 SUB R1, R1, R1              // R1 <= 0 (then i <= 0)
 ADDI R2, R2, 1              // R2 <= R2 + 1 (j <= j + 1)
-BEQ R2, R5, 1               // if R2 = R5, jump to PC + 1 + 1 (if j == 4)
+BNE R2, R5, 1               // if R2 != R5, jump to PC + 1 + 1 (if j == 4)
 SUB R2, R2, R2              // R2 <= 0 (then j <= 0)
 ADDI R3, R3, 1              // R3 <= R3 + 1 (k <= k + 1)
 BNE R3, R6, -44             // mix loop end
 
 // clear L
-ADDI R1, R0, 60             // R1 <= 52 (address of L[0])
+ADDI R1, R0, 60             // R1 <= 60 (address of L[0])
 SW R0, 0(R1)                // Mem[R1] <= R0
 ADDI R1, R1, 2              // R1 <= R1 + 2 (find address of L[1])
 SW R0, 0(R1)                // Mem[R1] <= R0

@@ -46,8 +46,8 @@ begin
             -- data_mem <= (others => (others => '0'));
             data_mem <= (
                 -- hardcoded round key
-                x"0000", x"0000",       -- 0
-                x"0000", x"0000",       -- 2
+                x"9bbb", x"d8c8",       -- 0
+                x"1a37", x"f7fb",       -- 2
                 x"46F8", x"E8C5",       -- 4
                 x"460C", x"6085",       -- 6
                 x"70F8", x"3B8A",       -- 8
@@ -85,14 +85,14 @@ begin
                 --x"1946", x"5f91",       -- 60
                 --x"51b2", x"41be",       -- 62
                 --x"01a5", x"5563",       -- 64
-                x"0000", x"0000",       -- 60
+                x"1111", x"1111",       -- 60
                 x"0000", x"0000",       -- 62
                 x"0000", x"0000",       -- 64
                 -- 32-bit user key
-                ukey32(23 downto 16)    -- 66
-                    & ukey32(31 downto 24),
-                ukey32(7 downto 0)      -- 67
+                ukey32(7 downto 0)      -- 66
                     & ukey32(15 downto 8),
+                ukey32(23 downto 16)    -- 67
+                    & ukey32(31 downto 24),
                 -- magic constant P
                 x"b7e1", x"5163",       -- 68
                 -- magic constant Q
