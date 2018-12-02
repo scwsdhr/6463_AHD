@@ -45,16 +45,24 @@ architecture Behavioral of RC5_FPGA is
     signal Result : STD_LOGIC_VECTOR(31 downto 0);
     signal MIPS_State : STD_LOGIC_VECTOR(4 downto 0);
 
-    signal Disp_Clk : STD_LOGIC_VECTOR(18 downto 0);       -- display clock
-    signal Disp_Hex : STD_LOGIC_VECTOR(3 downto 0);        -- display hex number
-    signal Disp_Bits : STD_LOGIC_VECTOR(31 downto 0);      -- display text in bits
+    signal Disp_Clk : STD_LOGIC_VECTOR(18 downto 0);                    -- display clock
+    signal Disp_Hex : STD_LOGIC_VECTOR(3 downto 0);                     -- display hex number
+    signal Disp_Bits : STD_LOGIC_VECTOR(31 downto 0);                   -- display text in bits
 
     type StateType is ( 
-        ST_STEP,                                            -- run by step
-        ST_INSTR,                                           -- run by instruction
-        ST_ALL                                              -- run all state
+        ST_STEP,                                                        -- run by step
+        ST_INSTR,                                                       -- run by instruction
+        ST_ALL                                                          -- run all state
     );
     signal state : StateType;
+
+    type pc_array is array (0 to 10) of STD_LOGIC_VECTOR(31 downto 0);  -- breakpoint array
+    signal bp_cnt : integer range 0 to 10;                              -- brakpoint counter
+    signal bp_array : pc_array := (
+        x"000000bc", x"000000db", x"000000de", x"000000e0",
+        x"000000fc", x"00000102",
+        others => '0'
+    );
 
     component RC5
         port(
@@ -139,7 +147,13 @@ begin
                     if (MIPS_State = "00010") then
                         state <= ST_STEP;
                     end if;
-                when others => null;
+                when ST_ALL => 
+                    if (MIPS_State = "00010") then
+                        if (PC = bp_array(bp_cnt)) then
+                            bp_cnt <= bp_cnt + 1;
+                            state <= ST_STEP;
+                        end if;
+                    end if;
             end case;
         end if;
     end process;
