@@ -21,8 +21,7 @@ end Data_Mem_BD;
 
 architecture Behavioral of Data_Mem_BD is
 	signal A_short : STD_LOGIC_VECTOR(ADDR_BITS - 1 downto 0);
-	type ram is array (0 to ENTRIES - 1) of STD_LOGIC_VECTOR(MEM_BITS - 1 downto 0);
-	signal data_mem : ram := (others => (others => '0'));
+	signal data_mem : mem := (others => (others => '0'));
 
 begin
 	-- fix address out of range

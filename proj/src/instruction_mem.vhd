@@ -16,8 +16,7 @@ end Instruction_Mem;
 
 architecture Behavioral of Instruction_Mem is
     signal A_short : STD_LOGIC_VECTOR(ADDR_BITS - 1 downto 0);
-    type rom is array (0 to ENTRIES - 1) of STD_LOGIC_VECTOR(MEM_BITS - 1 downto 0);
-    -- signal instr_mem : rom := (
+    -- signal instr_mem : mem := (
     --     "0000010000000001","0000000000000111",
     --     "0000010000000010","0000000000001000",
     --     "0000000001000001","0001100000010000",
@@ -26,7 +25,7 @@ architecture Behavioral of Instruction_Mem is
     -- );
     
     -- sample code 2
-    -- signal instr_mem : rom := (
+    -- signal instr_mem : mem := (
     --     "0000010000000001","0000000000000010",      -- ADDI R1, R0, 2  
     --     "0000010000000011","0000000000001010",      -- ADDI R3, R0, 10 
     --     "0000010000000100","0000000000001110",      -- ADDI R4, R0, 14 
@@ -56,139 +55,17 @@ architecture Behavioral of Instruction_Mem is
     -- );
 
     -- RC5 encryption
-    signal instr_mem : rom := (
-        -- initialize part
-        -- R0 stores zero
-        -- initialize R0 to be 0
-        "0000000000000000","0000000000000011",          -- SUB R0, R0, R0
-        -- R1 stores the input A
-        "0001110000000001","0000000000110100",          -- LW R1 52(R0)
-        -- R2 stores the input B
-        "0001110000000010","0000000000110110",          -- LW R2 54(R0)
-        -- R3 stores i
-        -- initialize R3 to be 0
-        "0000000001100011","0001100000000011",          -- SUB R3, R3, R3
-        -- R6 stores S[0]
-        "0001110000000110","0000000000000000",          -- LW R6, 0(R0)
-        -- R7 stores S[1]
-        "0001110000000111","0000000000000010",          -- LW R7, 2(R0)
-        -- R8 stores intermediate A
-        -- A = A + S[0]
-        "0000000000100110","0100000000000001",          -- ADD R8, R1, R6
-        -- R9 stores intermediate B
-        -- B = B + S[1]
-        "0000000001000111","0100100000000001",          -- ADD R9, R2, R7
-        -- R10 stores 12
-        "0000010000001010","0000000000001100",          -- ADDI R10, R0, 12
-        
-        -- encryption loop begin
-        -- R3 = R3 + 1
-        "0000010001100011","0000000000000001",          -- ADDI R3, R3, 1
-        -- R4 stores 2*i
-        "0000000001100011","0010000000000001",          -- ADD R4, R3, R3
-        -- R5 stores 2*i+1
-        "0000010010000101","0000000000000001",          -- ADDI R5, R4, 1
-        -- R4 and R5 multiplied by 2 because 16-bit addressable
-        "0000000010000100","0010000000000001",          -- ADD R4, R4, R4
-        "0000000010100101","0010100000000001",          -- ADD R5, R5, R5
-        -- R6 stores S[2*i]
-        "0001110010000110","0000000000000000",          -- LW R6, 0(R4)
-        -- R7 stores S[2*i+1]
-        "0001110010100111","0000000000000000",          -- LW R7, 0(R5)
+    --signal instr_mem : mem := instr_enc;
 
-        -- A = A xor B
-        -- R11 stores A nor B
-        "0000000100001001","0101100000001001",          -- NOR R11, R8, R9
-        -- R12 stores A and B
-        "0000000100001001","0110000000000101",          -- AND R12, R8, R9
-        -- A = A xor B = (A nor B) nor (A and B) 
-        "0000000101101100","0100000000001001",          -- NOR R8, R11, R12
+    -- RC5 decryption
+    --signal instr_mem : mem := instr_dec;
 
-        -- A = A <<< B
-        -- initialize R11 with A
-        "0000010100001011","0000000000000000",          -- ADDI R11, R8, 0
-        -- R13 stores B[4:0] - 32
-        "0000110100101101","0000000000011111",          -- ANDI R13, R9, 31
-        "0000100110101101","0000000000100000",          -- SUBI R13, R13, 32
-        -- R11 loop begin
-        "0010100110100000","0000000000000011",          -- BEQ R13, R0, 3
-        -- R11 stores B[4:0] MSBs of A
-        "0001010101101011","0000000000000001",          -- SHR R11, R11, 1
-        -- R13 = R13 + 1
-        "0000010110101101","0000000000000001",          -- ADDI R13, R13, 1
-        -- R11 loop while R13 < 0
-        "0010110110100000","1111111111111101",          -- BNE R13, R0, -3
-        -- initialize R12 with A
-        "0000010100001100","0000000000000000",          -- ADDI R12, R8, 0
-        -- R13 stores B[4:0]
-        "0000110100101101","0000000000011111",          -- ANDI R13, R9, 31
-        -- R12 loop begin
-        "0010100110100000","0000000000000011",          -- BEQ R13, R0, 3
-        -- R12 stores A shifted by B[4:0] bits left
-        "0000000110001100","0110000000000001",          -- ADD R12, R12, R12
-        -- R13 = R13 - 1
-        "0000100110101101","0000000000000001",          -- SUBI R13, R13, 1
-        -- R12 loop while R13 > 0
-        "0010110110100000","1111111111111101",          -- BNE R13, R0, -3
-        -- A = R11 or R12
-        "0000000101101100","0100000000000111",          -- OR R8, R11, R12
+    -- RC5 key expansion
+    --signal instr_mem : mem := instr_key;
 
-        -- A = A + S[2*i]
-        "0000000100000110","0100000000000001",          -- ADD R8, R8, R6
+    -- RC5
+    signal instr_mem : mem := instr_rc5;
 
-        -- B = B xor A
-        -- R11 stores B nor A
-        "0000000100101000","0101100000001001",          -- NOR R11, R9, R8
-        -- R12 stores B and A
-        "0000000100101000","0110000000000101",          -- AND R12, R9, R8
-        -- B = B xor A = (B nor A) nor (B and A) 
-        "0000000101101100","0100100000001001",          -- NOR R9, R11, R12
-
-        -- B = B <<< A
-        -- initialize R11 with B
-        "0000010100101011","0000000000000000",          -- ADDI R11, R9, 0
-        -- R13 stores A[4:0] - 32
-        "0000110100001101","0000000000011111",          -- ANDI R13, R8, 31
-        "0000100110101101","0000000000100000",          -- SUBI R13, R13, 32
-        -- R11 loop begin
-        "0010100110100000","0000000000000011",          -- BEQ R13, R0, 3
-        -- R11 stores A[4:0] MSBs of B
-        "0001010101101011","0000000000000001",          -- SHR R11, R11, 1
-        -- R13 = R13 + 1
-        "0000010110101101","0000000000000001",          -- ADDI R13, R13, 1
-        -- R11 loop while R13 < 0
-        "0010110110100000","1111111111111101",          -- BNE R13, R0, -3
-        -- initialize R12 with B
-        "0000010100101100","0000000000000000",          -- ADDI R12, R9, 0
-        -- R13 stores A[4:0]
-        "0000110100001101","0000000000011111",          -- ANDI R13, R8, 31
-        -- R12 loop begin
-        "0010100110100000","0000000000000011",          -- BEQ R13, R0, 3
-        -- R12 stores B shifted by A[4:0] bits left
-        "0000000110001100","0110000000000001",          -- ADD R12, R12, R12
-        -- R13 = R13 - 1
-        "0000100110101101","0000000000000001",          -- SUBI R13, R13, 1
-        -- R12 loop while R13 > 0
-        "0010110110100000","1111111111111101",          -- BNE R13, R0, -3
-        -- B = R11 or R12
-        "0000000101101100","0100100000000111",          -- OR R9, R11, R12
-
-        -- B = B + S[2*i+1]
-        "0000000100100111","0100100000000001",          -- ADD R9, R9, R7
-        
-        -- encryption loop while i < 12
-        "0010010001101010","1111111111010100",          -- BLT R3, R10, -44
-
-        -- store encrypted A to Mem[56]
-        "0010000000001000","0000000000111000",          -- SW R8, 56(R0)
-
-        -- store encrypted B to Mem[58]
-        "0010000000001001","0000000000111010",          -- SW R9, 58(R0)
-
-        -- halt
-        "1111110000000000","0000000000000000",          -- HAL
-        others => x"0000"
-    );
 
 begin
     -- fix address out of range
