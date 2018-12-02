@@ -85,7 +85,7 @@ begin
                 --x"1946", x"5f91",       -- 60
                 --x"51b2", x"41be",       -- 62
                 --x"01a5", x"5563",       -- 64
-                x"1111", x"1111",       -- 60
+                x"0000", x"0000",       -- 60
                 x"0000", x"0000",       -- 62
                 x"0000", x"0000",       -- 64
                 -- 32-bit user key
@@ -93,10 +93,6 @@ begin
                     & ukey32(15 downto 8),
                 ukey32(23 downto 16)    -- 67
                     & ukey32(31 downto 24),
-                -- magic constant P
-                x"b7e1", x"5163",       -- 68
-                -- magic constant Q
-                x"9e37", x"79b9",       -- 70
                 others => x"0000");
         elsif (Clk'event and Clk = '1') then
             -- write enabled

@@ -64,9 +64,9 @@ begin
 
     Clr <= '0', '1' after 5 ns;
 
-    BackDoor_in <= x"ac13c0f752892b5b";
+    --BackDoor_in <= x"ac13c0f752892b5b";
     --Ukey32 <= x"10a9ce91";
-    --BackDoor_in <= x"eedba5216d8f4b15";
+    BackDoor_in <= x"eedba5216d8f4b15";
     Ukey32 <= x"00000000";
 
     process
