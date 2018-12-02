@@ -1,0 +1,23 @@
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 4409df7ba9664059991f113d4601d441 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot rc5_tb_behav xil_defaultlib.rc5_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package xil_defaultlib.rc5_pkg
+Compiling architecture rtl of entity xil_defaultlib.left_rotate [left_rotate_default]
+Compiling architecture rtl of entity xil_defaultlib.key_exp [key_exp_default]
+Compiling architecture rtl of entity xil_defaultlib.rc5_enc [rc5_enc_default]
+Compiling architecture rtl of entity xil_defaultlib.right_rotate [right_rotate_default]
+Compiling architecture rtl of entity xil_defaultlib.rc5_dec [rc5_dec_default]
+Compiling architecture rtl of entity xil_defaultlib.RC5 [rc5_default]
+Compiling architecture behavioral of entity xil_defaultlib.rc5_tb
+Built simulation snapshot rc5_tb_behav

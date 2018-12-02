@@ -1,0 +1,878 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Sat Dec  1 02:45:26 2018
+# Process ID: 9032
+# Current directory: C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/RC5/RC5.runs/synth_1
+# Command line: vivado.exe -log rc5_fpga.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rc5_fpga.tcl
+# Log file: C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/RC5/RC5.runs/synth_1/rc5_fpga.vds
+# Journal file: C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/RC5/RC5.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source rc5_fpga.tcl -notrace
+Command: synth_design -top rc5_fpga -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 9480 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 357.500 ; gain = 99.383
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'rc5_fpga' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:26]
+INFO: [Synth 8-3491] module 'RC5' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5.vhd:7' bound to instance 'RC5_uut' of component 'rc5' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:61]
+INFO: [Synth 8-638] synthesizing module 'RC5' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5.vhd:23]
+INFO: [Synth 8-3491] module 'key_exp' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_key.vhd:7' bound to instance 'KEY_EXP_uut' of component 'key_exp' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5.vhd:68]
+INFO: [Synth 8-638] synthesizing module 'key_exp' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_key.vhd:18]
+INFO: [Synth 8-3491] module 'left_rotate' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/left_rotate.vhd:4' bound to instance 'uut' of component 'left_rotate' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_key.vhd:83]
+INFO: [Synth 8-638] synthesizing module 'left_rotate' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/left_rotate.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'left_rotate' (1#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/left_rotate.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'key_exp' (2#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_key.vhd:18]
+INFO: [Synth 8-3491] module 'rc5_enc' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_enc.vhd:7' bound to instance 'RC5_ENC_uut' of component 'rc5_enc' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5.vhd:79]
+INFO: [Synth 8-638] synthesizing module 'rc5_enc' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_enc.vhd:19]
+INFO: [Synth 8-3491] module 'left_rotate' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/left_rotate.vhd:4' bound to instance 'uut1' of component 'left_rotate' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_enc.vhd:46]
+INFO: [Synth 8-3491] module 'left_rotate' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/left_rotate.vhd:4' bound to instance 'uut2' of component 'left_rotate' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_enc.vhd:51]
+INFO: [Synth 8-226] default block is never used [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_enc.vhd:63]
+INFO: [Synth 8-256] done synthesizing module 'rc5_enc' (3#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_enc.vhd:19]
+INFO: [Synth 8-3491] module 'rc5_dec' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_dec.vhd:7' bound to instance 'RC5_DEC_uut' of component 'rc5_dec' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5.vhd:89]
+INFO: [Synth 8-638] synthesizing module 'rc5_dec' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_dec.vhd:19]
+INFO: [Synth 8-3491] module 'right_rotate' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/right_rotate.vhd:4' bound to instance 'uut1' of component 'right_rotate' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_dec.vhd:46]
+INFO: [Synth 8-638] synthesizing module 'right_rotate' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/right_rotate.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'right_rotate' (4#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/right_rotate.vhd:11]
+INFO: [Synth 8-3491] module 'right_rotate' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/right_rotate.vhd:4' bound to instance 'uut2' of component 'right_rotate' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_dec.vhd:51]
+INFO: [Synth 8-226] default block is never used [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_dec.vhd:63]
+INFO: [Synth 8-256] done synthesizing module 'rc5_dec' (5#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_dec.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'RC5' (6#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5.vhd:23]
+INFO: [Synth 8-3491] module 'Hex2LED' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/Hex2SevenSegConverter.vhd:6' bound to instance 'Hex2LED_uut' of component 'Hex2LED' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'Hex2LED' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/Hex2SevenSegConverter.vhd:11]
+WARNING: [Synth 8-614] signal 'X' is read in the process but is not in the sensitivity list [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/Hex2SevenSegConverter.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'Hex2LED' (7#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/Hex2SevenSegConverter.vhd:11]
+WARNING: [Synth 8-614] signal 'key_sw' is read in the process but is not in the sensitivity list [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:111]
+WARNING: [Synth 8-614] signal 'ukey' is read in the process but is not in the sensitivity list [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:111]
+WARNING: [Synth 8-614] signal 'din' is read in the process but is not in the sensitivity list [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:111]
+WARNING: [Synth 8-614] signal 'dout' is read in the process but is not in the sensitivity list [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:111]
+WARNING: [Synth 8-614] signal 'io_sw' is read in the process but is not in the sensitivity list [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:149]
+WARNING: [Synth 8-6014] Unused sequential element disp_clk_reg was removed.  [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:76]
+INFO: [Synth 8-256] done synthesizing module 'rc5_fpga' (8#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:26]
+WARNING: [Synth 8-3331] design Hex2LED has unconnected port CLK
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[31]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[30]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[29]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[28]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[27]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[26]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[25]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[24]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[23]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[22]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[21]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[20]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[19]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[18]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[17]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[16]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[15]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[14]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[13]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[12]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[11]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[10]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[9]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[8]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[7]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[6]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[5]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[31]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[30]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[29]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[28]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[27]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[26]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[25]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[24]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[23]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[22]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[21]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[20]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[19]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[18]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[17]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[16]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[15]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[14]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[13]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[12]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[11]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[10]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[9]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[8]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[7]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[6]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[5]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 412.852 ; gain = 154.734
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 412.852 ; gain = 154.734
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 412.852 ; gain = 154.734
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/Nexys-4-DDR-Master.xdc]
+Finished Parsing XDC File [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/Nexys-4-DDR-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/Nexys-4-DDR-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/rc5_fpga_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/rc5_fpga_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 776.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 776.879 ; gain = 518.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 776.879 ; gain = 518.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 776.879 ; gain = 518.762
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'key_exp'
+INFO: [Synth 8-5546] ROM "key_rdy" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[0]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[2]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[3]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[4]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[5]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[6]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[7]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[8]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[9]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[10]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[11]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[12]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[13]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[14]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[15]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[16]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[17]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[18]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[19]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[20]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[21]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[22]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[23]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[24]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_arr_tmp_reg[25]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "l_arr_reg[0]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "l_arr_reg[1]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "l_arr_reg[2]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "l_arr_reg[3]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_enc.vhd:92]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'rc5_enc'
+INFO: [Synth 8-5544] ROM "do_rdy" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'rc5_dec'
+INFO: [Synth 8-5544] ROM "do_rdy" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 st_idle |                               00 |                               00
+             st_key_init |                               01 |                               01
+              st_key_exp |                               10 |                               10
+                st_ready |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'key_exp'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 st_idle |                               00 |                               00
+            st_pre_round |                               01 |                               01
+             st_round_op |                               10 |                               10
+                st_ready |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'rc5_enc'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 st_idle |                               00 |                               00
+            st_pre_round |                               01 |                               01
+             st_round_op |                               10 |                               10
+                st_ready |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'rc5_dec'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:26 . Memory (MB): peak = 776.879 ; gain = 518.762
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 5     
+	   2 Input     32 Bit       Adders := 5     
+	   2 Input      7 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 26    
+	   3 Input      4 Bit       Adders := 24    
+	   2 Input      2 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 4     
++---Registers : 
+	              128 Bit    Registers := 1     
+	               64 Bit    Registers := 1     
+	               32 Bit    Registers := 36    
+	                8 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 3     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 4     
+	   2 Input     32 Bit        Muxes := 51    
+	   4 Input     32 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 4     
+	   3 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 34    
+	   3 Input      1 Bit        Muxes := 38    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module rc5_fpga 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      4 Bit       Adders := 24    
+	   2 Input      4 Bit       Adders := 24    
++---Registers : 
+	              128 Bit    Registers := 1     
+	               64 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 3     
+	   2 Input     32 Bit        Muxes := 12    
+	   8 Input      8 Bit        Muxes := 1     
+Module key_exp 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input      7 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 32    
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 32    
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 31    
+	   3 Input      1 Bit        Muxes := 34    
+Module rc5_enc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input      4 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+Module rc5_dec 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 4     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+Module RC5 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5546] ROM "key_rdy" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[31]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[30]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[29]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[28]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[27]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[26]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[25]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[24]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[23]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[22]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[21]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[20]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[19]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[18]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[17]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[16]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[15]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[14]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[13]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[12]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[11]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[10]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[9]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[8]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[7]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[6]
+WARNING: [Synth 8-3331] design right_rotate has unconnected port b[5]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[31]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[30]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[29]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[28]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[27]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[26]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[25]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[24]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[23]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[22]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[21]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[20]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[19]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[18]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[17]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[16]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[15]
+WARNING: [Synth 8-3331] design left_rotate has unconnected port b[14]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[127]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[127] with 1st driver pin 'ukey_reg[127]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[127] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[127] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[126]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[126] with 1st driver pin 'ukey_reg[126]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[126] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[126] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[125]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[125] with 1st driver pin 'ukey_reg[125]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[125] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[125] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[124]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[124] with 1st driver pin 'ukey_reg[124]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[124] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[124] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[123]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[123] with 1st driver pin 'ukey_reg[123]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[123] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[123] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[122]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[122] with 1st driver pin 'ukey_reg[122]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[122] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[122] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[121]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[121] with 1st driver pin 'ukey_reg[121]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[121] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[121] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[120]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[120] with 1st driver pin 'ukey_reg[120]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[120] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[120] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[119]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[119] with 1st driver pin 'ukey_reg[119]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[119] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[119] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[118]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[118] with 1st driver pin 'ukey_reg[118]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[118] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[118] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[117]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[117] with 1st driver pin 'ukey_reg[117]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[117] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[117] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[116]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[116] with 1st driver pin 'ukey_reg[116]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[116] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[116] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[115]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[115] with 1st driver pin 'ukey_reg[115]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[115] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[115] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[114]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[114] with 1st driver pin 'ukey_reg[114]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[114] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[114] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[113]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[113] with 1st driver pin 'ukey_reg[113]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[113] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[113] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[112]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[112] with 1st driver pin 'ukey_reg[112]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[112] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[112] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[111]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[111] with 1st driver pin 'ukey_reg[111]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[111] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[111] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[110]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[110] with 1st driver pin 'ukey_reg[110]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[110] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[110] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[109]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[109] with 1st driver pin 'ukey_reg[109]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[109] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[109] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[108]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[108] with 1st driver pin 'ukey_reg[108]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[108] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[108] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[107]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[107] with 1st driver pin 'ukey_reg[107]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[107] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[107] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[106]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[106] with 1st driver pin 'ukey_reg[106]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[106] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[106] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[105]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[105] with 1st driver pin 'ukey_reg[105]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[105] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[105] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[104]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[104] with 1st driver pin 'ukey_reg[104]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[104] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[104] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[103]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[103] with 1st driver pin 'ukey_reg[103]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[103] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[103] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[102]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[102] with 1st driver pin 'ukey_reg[102]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[102] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[102] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[101]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[101] with 1st driver pin 'ukey_reg[101]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[101] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[101] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[100]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[100] with 1st driver pin 'ukey_reg[100]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[100] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[100] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[99]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[99] with 1st driver pin 'ukey_reg[99]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[99] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[99] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[98]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[98] with 1st driver pin 'ukey_reg[98]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[98] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[98] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[97]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[97] with 1st driver pin 'ukey_reg[97]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[97] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[97] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[96]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[96] with 1st driver pin 'ukey_reg[96]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[96] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[96] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[95]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[95] with 1st driver pin 'ukey_reg[95]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[95] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[95] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[94]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[94] with 1st driver pin 'ukey_reg[94]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[94] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[94] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[93]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[93] with 1st driver pin 'ukey_reg[93]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[93] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[93] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[92]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[92] with 1st driver pin 'ukey_reg[92]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[92] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[92] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[91]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[91] with 1st driver pin 'ukey_reg[91]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[91] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[91] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[90]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[90] with 1st driver pin 'ukey_reg[90]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[90] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[90] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[89]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[89] with 1st driver pin 'ukey_reg[89]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[89] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[89] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[88]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[88] with 1st driver pin 'ukey_reg[88]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[88] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[88] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[87]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[87] with 1st driver pin 'ukey_reg[87]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[87] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[87] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[86]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[86] with 1st driver pin 'ukey_reg[86]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[86] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[86] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[85]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[85] with 1st driver pin 'ukey_reg[85]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[85] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[85] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[84]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[84] with 1st driver pin 'ukey_reg[84]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[84] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[84] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[83]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[83] with 1st driver pin 'ukey_reg[83]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[83] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[83] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[82]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[82] with 1st driver pin 'ukey_reg[82]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[82] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[82] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[81]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[81] with 1st driver pin 'ukey_reg[81]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[81] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[81] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[80]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[80] with 1st driver pin 'ukey_reg[80]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[80] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[80] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[79]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[79] with 1st driver pin 'ukey_reg[79]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[79] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[79] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[78]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[78] with 1st driver pin 'ukey_reg[78]/Q' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net ukey[78] with 2nd driver pin 'GND' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+INFO: [Common 17-14] Message 'Synth 8-3352' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[78] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[77]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[77] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[76]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[76] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[75]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[75] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[74]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[74] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[73]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[73] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[72]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[72] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[71]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[71] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[70]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[70] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[69]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[69] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[68]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[68] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[67]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[67] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[66]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[66] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[65]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[65] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[64]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[64] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[63]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[63] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[62]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[62] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[61]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[61] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[60]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[60] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[59]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[59] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[58]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[58] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[57]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[57] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[56]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[56] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[55]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[55] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[54]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[54] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[53]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[53] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[52]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[52] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[51]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[51] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[50]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[50] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[49]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[49] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[48]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[48] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[47]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[47] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[46]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[46] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[45]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[45] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[44]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[44] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[43]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[43] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[42]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[42] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[41]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[41] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[40]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[40] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[39]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[39] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[38]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[38] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[37]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[37] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[36]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[36] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[35]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[35] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[34]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[34] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[33]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[33] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+WARNING: [Synth 8-3332] Sequential element (ukey_reg[32]) is unused and will be removed from module rc5_fpga.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net ukey[32] is connected to constant driver, other driver is ignored [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/rc5_fpga.vhd:148]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:49 . Memory (MB): peak = 776.879 ; gain = 518.762
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:53 ; elapsed = 00:01:02 . Memory (MB): peak = 776.879 ; gain = 518.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:58 ; elapsed = 00:01:07 . Memory (MB): peak = 837.582 ; gain = 579.465
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:00 ; elapsed = 00:01:09 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:02 ; elapsed = 00:01:11 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:02 ; elapsed = 00:01:11 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:03 ; elapsed = 00:01:12 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:03 ; elapsed = 00:01:12 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:03 ; elapsed = 00:01:12 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:03 ; elapsed = 00:01:12 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    85|
+|3     |LUT1   |     3|
+|4     |LUT2   |   151|
+|5     |LUT3   |   156|
+|6     |LUT4   |   238|
+|7     |LUT5   |   223|
+|8     |LUT6   |  1327|
+|9     |MUXF7  |   134|
+|10    |MUXF8  |     4|
+|11    |FDCE   |   862|
+|12    |FDPE   |   420|
+|13    |FDRE   |    25|
+|14    |FDSE   |     8|
+|15    |IBUF   |    18|
+|16    |OBUF   |    18|
++------+-------+------+
+
+Report Instance Areas: 
++------+----------------+------------+------+
+|      |Instance        |Module      |Cells |
++------+----------------+------------+------+
+|1     |top             |            |  3673|
+|2     |  Hex2LED_uut   |Hex2LED     |     7|
+|3     |  RC5_uut       |RC5         |  3386|
+|4     |    KEY_EXP_uut |key_exp     |  2410|
+|5     |      uut       |left_rotate |    64|
+|6     |    RC5_DEC_uut |rc5_dec     |   588|
+|7     |    RC5_ENC_uut |rc5_enc     |   388|
++------+----------------+------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:03 ; elapsed = 00:01:12 . Memory (MB): peak = 838.605 ; gain = 580.488
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 288 critical warnings and 150 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:48 ; elapsed = 00:00:59 . Memory (MB): peak = 838.605 ; gain = 216.461
+Synthesis Optimization Complete : Time (s): cpu = 00:01:03 ; elapsed = 00:01:12 . Memory (MB): peak = 838.605 ; gain = 580.488
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 241 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+84 Infos, 203 Warnings, 196 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:07 ; elapsed = 00:01:16 . Memory (MB): peak = 838.605 ; gain = 593.500
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB7/RC5/RC5.runs/synth_1/rc5_fpga.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file rc5_fpga_utilization_synth.rpt -pb rc5_fpga_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.150 . Memory (MB): peak = 838.605 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sat Dec  1 02:46:57 2018...

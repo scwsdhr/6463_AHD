@@ -1,0 +1,111 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sat Dec  1 02:48:20 2018
+| Host         : DESKTOP-65OAGH3 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file rc5_fpga_control_sets_placed.rpt
+| Design       : rc5_fpga
+| Device       : xc7a100t
+-------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    43 |
+| Unused register locations in slices containing registers |    34 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            2 |
+|      4 |            1 |
+|      8 |            2 |
+|     14 |            1 |
+|    16+ |           37 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              50 |           11 |
+| No           | No                    | Yes                    |              14 |            4 |
+| No           | Yes                   | No                     |              16 |            4 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |            2550 |          546 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------+-----------------------------------------------+----------------------------------------+------------------+----------------+
+|      Clock Signal      |                 Enable Signal                 |            Set/Reset Signal            | Slice Load Count | Bel Load Count |
++------------------------+-----------------------------------------------+----------------------------------------+------------------+----------------+
+|  disp_clk_reg_n_0_[15] |                                               | sel0[0]                                |                1 |              2 |
+|  disp_clk_reg_n_0_[15] |                                               | disp_sel[7]_i_1_n_0                    |                1 |              2 |
+|  disp_clk_reg_n_0_[15] |                                               | sel0[2]                                |                1 |              4 |
+|  disp_clk_reg_n_0_[15] |                                               |                                        |                4 |              8 |
+|  disp_clk_reg_n_0_[15] |                                               | sel0[1]                                |                1 |              8 |
+|  clk_IBUF_BUFG         |                                               | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |                4 |             14 |
+|  clk_IBUF_BUFG         |                                               |                                        |                7 |             42 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[2][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               15 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[6][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               19 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[7][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               14 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[22][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               10 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[4][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               18 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[8][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               15 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[17][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               10 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[21][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |                8 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[3][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               11 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[16][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               11 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[11][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               13 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[14][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               15 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[20][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |                9 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[25][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               14 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[18][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               12 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[19][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               12 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[23][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               22 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[9][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               17 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[15][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               22 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[13][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               13 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[10][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               16 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[0][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               11 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[12][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               14 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[1][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |                9 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[24][31]_i_1_n_0 | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               11 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/l_arr[0][31]_i_1_n_0      | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               15 |             64 |
+|  clk_IBUF_BUFG         | din[63]_i_1_n_0                               | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               15 |             64 |
+|  clk_IBUF_BUFG         | din[31]_i_1_n_0                               | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               13 |             64 |
+|  clk_IBUF_BUFG         | ukey[31]_i_1_n_0                              | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |                7 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/l_arr[2][31]_i_1_n_0      | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               15 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/l_arr[3][31]_i_1_n_0      | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               24 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/l_arr[1][31]_i_1_n_0      | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               12 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/s_arr_tmp[5][31]_i_1_n_0  | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               12 |             64 |
+|  clk_IBUF_BUFG         | RC5_uut/RC5_DEC_uut/i_cnt[3]_i_1__1_n_0       | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               25 |            136 |
+|  clk_IBUF_BUFG         | RC5_uut/RC5_ENC_uut/i_cnt[3]_i_1__0_n_0       | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               27 |            140 |
+|  clk_IBUF_BUFG         | RC5_uut/KEY_EXP_uut/i_cnt[4]_i_1_n_0          | RC5_uut/KEY_EXP_uut/i_cnt_reg[0]_rep_0 |               40 |            162 |
++------------------------+-----------------------------------------------+----------------------------------------+------------------+----------------+
+
+
