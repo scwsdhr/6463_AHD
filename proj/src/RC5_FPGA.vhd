@@ -89,6 +89,7 @@ begin
         Clr => Clr,
         Clk => Clk,
         BackDoor_in => BackDoor_in,
+        Ukey32 => Ukey32,
         BackDoor_out => BackDoor_out,
         PC_out => PC,
         Instr_out => Instr,
@@ -196,6 +197,7 @@ begin
             when x"6" => Disp_Bits <= SrcB;
             when x"7" => Disp_Bits <= ALUResult;
             when x"8" => Disp_Bits <= Result;
+            when x"a" => Disp_Bits <= Ukey32;
             when x"c" => Disp_Bits <= BackDoor_in(63 downto 32);
             when x"d" => Disp_Bits <= BackDoor_in(31 downto 0);
             when x"e" => Disp_Bits <= BackDoor_out(63 downto 32);
@@ -216,7 +218,29 @@ begin
     process(Clr, Sysclk)
     begin
         if (Sysclk'event and Sysclk = '1') then
-            if (Disp_SW = x"c") then 
+            if (Disp_SW = x"a") then
+                -- rising edge of up button
+                if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                    Ukey32(31 downto 28) <= Ukey32(31 downto 28) + ("000" & Mod_Hex(7));
+                    Ukey32(27 downto 24) <= Ukey32(27 downto 24) + ("000" & Mod_Hex(6));
+                    Ukey32(23 downto 20) <= Ukey32(23 downto 20) + ("000" & Mod_Hex(5));
+                    Ukey32(19 downto 16) <= Ukey32(19 downto 16) + ("000" & Mod_Hex(4));
+                    Ukey32(15 downto 12) <= Ukey32(15 downto 12) + ("000" & Mod_Hex(3));
+                    Ukey32(11 downto 8)  <= Ukey32(11 downto 8)  + ("000" & Mod_Hex(2));
+                    Ukey32(7 downto 4)   <= Ukey32(7 downto 4)   + ("000" & Mod_Hex(1));
+                    Ukey32(3 downto 0)   <= Ukey32(3 downto 0)   + ("000" & Mod_Hex(0));
+                -- rising edge of down button
+                elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                    Ukey32(31 downto 28) <= Ukey32(31 downto 28) - ("000" & Mod_Hex(7));
+                    Ukey32(27 downto 24) <= Ukey32(27 downto 24) - ("000" & Mod_Hex(6));
+                    Ukey32(23 downto 20) <= Ukey32(23 downto 20) - ("000" & Mod_Hex(5));
+                    Ukey32(19 downto 16) <= Ukey32(19 downto 16) - ("000" & Mod_Hex(4));
+                    Ukey32(15 downto 12) <= Ukey32(15 downto 12) - ("000" & Mod_Hex(3));
+                    Ukey32(11 downto 8)  <= Ukey32(11 downto 8)  - ("000" & Mod_Hex(2));
+                    Ukey32(7 downto 4)   <= Ukey32(7 downto 4)   - ("000" & Mod_Hex(1));
+                    Ukey32(3 downto 0)   <= Ukey32(3 downto 0)   - ("000" & Mod_Hex(0));
+                end if;
+            elsif (Disp_SW = x"c") then 
                 -- rising edge of up button
                 if (Up_Btn = '1' and Up_Btn_buf = '0') then 
                     BackDoor_in(63 downto 60) <= BackDoor_in(63 downto 60) + ("000" & Mod_Hex(7));
