@@ -107,8 +107,8 @@ BEGIN
         END IF;
     END PROCESS;
 
-    -- din/dout switch and a/b switch
-    PROCESS(io_sw, ab_sw)
+    -- key switch, din/dout switch and a/b switch
+    PROCESS(key_sw, io_sw, ab_sw)
     BEGIN
         IF (key_sw = '1') THEN
             disp_bits <= ukey(31 DOWNTO 0);

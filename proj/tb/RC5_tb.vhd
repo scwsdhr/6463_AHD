@@ -10,6 +10,9 @@ architecture Behavioral of RC5_tb is
     signal Clk : STD_LOGIC := '1';
     signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0) := x"0000000000000000";
     signal Ukey32 : STD_LOGIC_VECTOR(31 downto 0);
+    signal Key_Ind : STD_LOGIC_VECTOR(4 downto 0);
+    signal test_in : STD_LOGIC_VECTOR(4 downto 0);
+    signal PROG : STD_LOGIC;
     signal BackDoor_out : STD_LOGIC_VECTOR(63 downto 0);
 --    signal PC : STD_LOGIC_VECTOR(31 downto 0);
 --    signal Instr : STD_LOGIC_VECTOR(31 downto 0);
@@ -28,6 +31,9 @@ architecture Behavioral of RC5_tb is
             Clk : in STD_LOGIC;
             BackDoor_in : in STD_LOGIC_VECTOR(63 downto 0);
             Ukey32 : in STD_LOGIC_VECTOR(31 downto 0);
+            Key_Ind : in STD_LOGIC_VECTOR(4 downto 0);
+            test_in : in STD_LOGIC_VECTOR(4 downto 0);
+            PROG : in STD_LOGIC;
             BackDoor_out : out STD_LOGIC_VECTOR(63 downto 0)
 --            PC_out : out STD_LOGIC_VECTOR(31 downto 0);
 --            Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
@@ -49,6 +55,9 @@ begin
         Clk => Clk,
         BackDoor_in => BackDoor_in,
         Ukey32 => Ukey32,
+        Key_Ind => Key_Ind,
+        test_in => test_in,
+        PROG => PROG,
         BackDoor_out => BackDoor_out
 --        PC_out => PC,
 --        Instr_out => Instr,
@@ -63,6 +72,10 @@ begin
     );
 
     Clr <= '0', '1' after 5 ns;
+
+    Key_Ind <= (others => '0');
+    test_in <= (others => '0');
+    PROG <= '0';
 
     BackDoor_in <= x"a2b568bac7edc2c1";
     --Ukey32 <= x"10a9ce91";

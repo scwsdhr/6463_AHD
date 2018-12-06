@@ -9,9 +9,12 @@ entity RC5 is
     port(
         Clr : in STD_LOGIC;
         Clk : in STD_LOGIC;
+        PROG : in STD_LOGIC;
         BackDoor_in : in STD_LOGIC_VECTOR(63 downto 0);
         Ukey32 : in STD_LOGIC_VECTOR(31 downto 0);
+        Key_Ind : in STD_LOGIC_VECTOR(4 downto 0);
         BackDoor_out : out STD_LOGIC_VECTOR(63 downto 0);
+        Key_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
         PC_out : out STD_LOGIC_VECTOR(31 downto 0);
         Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
         A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -81,7 +84,10 @@ architecture Behavioral of RC5 is
 
     component Instruction_Mem
         port (
+            Clr : in STD_LOGIC;
+            Clk : in STD_LOGIC;
             A : in STD_LOGIC_VECTOR(31 downto 0);
+            PROG : in STD_LOGIC;
             RD : out STD_LOGIC_VECTOR(31 downto 0)
         );
     end component;
@@ -114,13 +120,13 @@ architecture Behavioral of RC5 is
         port (
             Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
-            A1 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
-            A2 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
-            A3 : in STD_LOGIC_VECTOR(4 DOWNTO 0);
-            WD3 : in STD_LOGIC_VECTOR(31 DOWNTO 0);
+            A1 : in STD_LOGIC_VECTOR(4 downto 0);
+            A2 : in STD_LOGIC_VECTOR(4 downto 0);
+            A3 : in STD_LOGIC_VECTOR(4 downto 0);
+            WD3 : in STD_LOGIC_VECTOR(31 downto 0);
             WE3 : in STD_LOGIC;
-            RD1 : out STD_LOGIC_VECTOR(31 DOWNTO 0);
-            RD2 : out STD_LOGIC_VECTOR(31 DOWNTO 0)
+            RD1 : out STD_LOGIC_VECTOR(31 downto 0);
+            RD2 : out STD_LOGIC_VECTOR(31 downto 0)
         );
     end component;
 
@@ -158,7 +164,9 @@ architecture Behavioral of RC5 is
             WE : in STD_LOGIC;
             BD_in : in STD_LOGIC_VECTOR(63 downto 0);
             Ukey32 : in STD_LOGIC_VECTOR(31 downto 0);
+            Key_Ind : in STD_LOGIC_VECTOR(4 downto 0);
             BD_out : out STD_LOGIC_VECTOR(63 downto 0);
+            Key_Disp : out STD_LOGIC_VECTOR(31 downto 0);
             RD : out STD_LOGIC_VECTOR(31 downto 0)
         );
     end component;
@@ -187,7 +195,10 @@ begin
     );
 
     Instruction_Mem_uut : Instruction_Mem port map (
+        Clr => Clr,
+        Clk => Clk,
         A => PC,
+        PROG => PROG,
         RD => Instr
     );
 
@@ -292,7 +303,9 @@ begin
         WE => MemWrite,
         BD_in => BackDoor_in,
         Ukey32 => Ukey32,
+        Key_Ind => Key_Ind,
         BD_out => BackDoor_out,
+        Key_Disp => Key_Disp_out,
         RD => ReadData
     );
 

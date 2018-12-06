@@ -1,0 +1,14 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"rc5_tb_func_impl.vhd" \
+"../../../../../../left_rotate.vhd" \
+"../../../../../../rc5_pkg.vhd" \
+"../../../../../../rc5.vhd" \
+"../../../../../../rc5_dec.vhd" \
+"../../../../../../rc5_enc.vhd" \
+"../../../../../../rc5_key.vhd" \
+"../../../../../../right_rotate.vhd" \
+"../../../../../../rc5_tb.vhd" \
+
+# Do not sort compile order
+nosort

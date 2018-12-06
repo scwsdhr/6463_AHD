@@ -9,7 +9,10 @@ use work.header.ALL;
 -- This block is initialized to contain the program to be executed. 
 entity Instruction_Mem is
     port (
+        Clr : in STD_LOGIC;
+        Clk : in STD_LOGIC;
         A : in STD_LOGIC_VECTOR(31 downto 0);
+        PROG : in STD_LOGIC;
         RD : out STD_LOGIC_VECTOR(31 downto 0)
     );
 end Instruction_Mem;
@@ -64,7 +67,9 @@ architecture Behavioral of Instruction_Mem is
     --signal instr_mem : mem := instr_key;
 
     -- RC5
-    signal instr_mem : mem := instr_rc5;
+    --signal instr_mem : mem := instr_rc5;
+
+    signal instr_mem : mem;
 
 
 begin
@@ -72,5 +77,23 @@ begin
     A_short <= A(ADDR_BITS -1 downto 0);
 
     RD <= instr_mem(conv_integer(A_short)) & instr_mem(conv_integer(A_short + '1'));
+
+    --instr_mem <= instr_key;
+    with PROG select
+        instr_mem <= instr_key when '0',
+            instr_dec when others;
+    
+    -- reset and load instruction
+    --process(Clr, Clk, PROG)
+    --begin
+    --    if (Clr = '0') then
+    --        case PROG is
+    --            when '0' => instr_mem <= instr_key;
+    --            when others => instr_mem <= instr_dec;
+    --        end case;
+    --    elsif (Clk'event and Clk = '1') then
+    --        null;
+    --    end if;
+    --end process;
 
 end Behavioral;

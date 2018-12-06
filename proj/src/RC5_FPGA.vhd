@@ -12,10 +12,12 @@ entity RC5_FPGA is
         All_Btn : in STD_LOGIC;                             -- button to provide run all
         Up_Btn : in STD_LOGIC;                              -- add 1 to targeted variable
         Down_Btn : in STD_LOGIC;                            -- minus 1 to targeted variable
-        Mod_Hex : in std_logic_vector (7 downto 0);         -- select the hex bits to modify
+        PROG_SW : in STD_LOGIC;                             -- select a program to be executed
+        Mod_Hex : in STD_LOGIC_VECTOR(7 downto 0);          -- select the hex bits to modify
 
         Disp_SW : in STD_LOGIC_VECTOR(3 downto 0);          -- display content switch
         LED_State : out STD_LOGIC_VECTOR(4 downto 0);       -- LED display to show the current stage
+        LED_Ind : out STD_LOGIC_VECTOR(4 downto 0);         -- LED display to show the current index
         Disp_Sel : out STD_LOGIC_VECTOR(7 downto 0);        -- select the digit to lit
         Disp_Val : out STD_LOGIC_VECTOR(7 downto 0)         -- the value to display
     );
@@ -28,9 +30,11 @@ architecture Behavioral of RC5_FPGA is
     signal All_Btn_buf : STD_LOGIC;                         -- end button buffer
     signal Up_Btn_buf : STD_LOGIC;                          -- up button buffer
     signal Down_Btn_buf : STD_LOGIC;                        -- down button buffer
-    signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0) := x"0123456789abcdef";
+    signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0) := x"a2b568bac7edc2c1";
     signal Ukey32 : STD_LOGIC_VECTOR(31 downto 0);
+    signal Key_Ind : STD_LOGIC_VECTOR(4 downto 0);
     signal BackDoor_out : STD_LOGIC_VECTOR(63 downto 0);
+    signal Key_Disp : STD_LOGIC_VECTOR(31 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
     signal A1 : STD_LOGIC_VECTOR(4 downto 0);
@@ -45,6 +49,9 @@ architecture Behavioral of RC5_FPGA is
     signal Result : STD_LOGIC_VECTOR(31 downto 0);
     signal MIPS_State : STD_LOGIC_VECTOR(4 downto 0);
 
+    signal test_in : STD_LOGIC_VECTOR(4 downto 0);
+    signal test_out : STD_LOGIC_VECTOR(31 downto 0);
+
     signal Disp_Clk : STD_LOGIC_VECTOR(18 downto 0);                    -- display clock
     signal Disp_Hex : STD_LOGIC_VECTOR(3 downto 0);                     -- display hex number
     signal Disp_Bits : STD_LOGIC_VECTOR(31 downto 0);                   -- display text in bits
@@ -56,21 +63,20 @@ architecture Behavioral of RC5_FPGA is
     );
     signal state : StateType;
 
-    type pc_array is array (0 to 10) of STD_LOGIC_VECTOR(31 downto 0);  -- breakpoint array
-    signal bp_cnt : integer range 0 to 10;                              -- brakpoint counter
-    signal bp_array : pc_array := (
-        x"000000bc", x"000000db", x"000000de", x"000000e0",
-        x"000000fc", x"00000102",
-        others => '0'
-    );
+    type pc_array is array (0 to 20) of STD_LOGIC_VECTOR(31 downto 0);  -- breakpoint array
+    signal bp_cnt : integer range 0 to 20;                              -- brakpoint counter
+    signal bp_array : pc_array;
 
     component RC5
         port(
             Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
+            PROG : in STD_LOGIC;
             BackDoor_in : in STD_LOGIC_VECTOR(63 downto 0);
             Ukey32 : in STD_LOGIC_VECTOR(31 downto 0);
+            Key_Ind : in STD_LOGIC_VECTOR(4 downto 0);
             BackDoor_out : out STD_LOGIC_VECTOR(63 downto 0);
+            Key_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
             PC_out : out STD_LOGIC_VECTOR(31 downto 0);
             Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
             A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -96,9 +102,12 @@ begin
     RC5_uut : RC5 port map (
         Clr => Clr,
         Clk => Clk,
+        PROG => PROG_SW,
         BackDoor_in => BackDoor_in,
         Ukey32 => Ukey32,
         BackDoor_out => BackDoor_out,
+        Key_Ind => Key_Ind,
+        Key_Disp_out => Key_Disp,
         PC_out => PC,
         Instr_out => Instr,
         A1_out => A1,
@@ -111,6 +120,7 @@ begin
         State_out => MIPS_State
     );
     LED_State <= MIPS_State;
+    LED_Ind <= Key_Ind;
 
     Hex2LED_uut : Hex2LED port map (
         Clk => Disp_Clk(15),
@@ -130,10 +140,19 @@ begin
         end if;
     end process;
 
+    with PROG_SW select
+        bp_array <= (
+        x"00000018", x"00000034", x"0000003a",
+        x"00000018", x"00000034", x"0000003a",
+        x"00000018", x"00000034", x"0000003a",
+        others => (others => '1')) when '1',
+        (others => (others => '1')) when others;
+
     -- finite state machine
     process(Sysclk)
     begin
         if (Clr = '0') then
+            bp_cnt <= 0;
             state <= ST_STEP;
         elsif (Sysclk'event and Sysclk = '1') then
             case state is
@@ -148,11 +167,9 @@ begin
                         state <= ST_STEP;
                     end if;
                 when ST_ALL => 
-                    if (MIPS_State = "00010") then
-                        if (PC = bp_array(bp_cnt)) then
-                            bp_cnt <= bp_cnt + 1;
-                            state <= ST_STEP;
-                        end if;
+                    if (PC = bp_array(bp_cnt) and MIPS_State = "00100") then
+                        bp_cnt <= bp_cnt + 1;
+                        state <= ST_STEP;
                     end if;
             end case;
         end if;
@@ -212,6 +229,7 @@ begin
             when x"7" => Disp_Bits <= ALUResult;
             when x"8" => Disp_Bits <= Result;
             when x"a" => Disp_Bits <= Ukey32;
+            when x"b" => Disp_Bits <= Key_Disp;
             when x"c" => Disp_Bits <= BackDoor_in(63 downto 32);
             when x"d" => Disp_Bits <= BackDoor_in(31 downto 0);
             when x"e" => Disp_Bits <= BackDoor_out(63 downto 32);
@@ -229,76 +247,98 @@ begin
     end process;
 
     -- select the targeted hex bits to modify
-    process(Clr, Sysclk)
+    process(Clr, Sysclk, Disp_SW)
     begin
-        if (Sysclk'event and Sysclk = '1') then
-            if (Disp_SW = x"a") then
-                -- rising edge of up button
-                if (Up_Btn = '1' and Up_Btn_buf = '0') then 
-                    Ukey32(31 downto 28) <= Ukey32(31 downto 28) + ("000" & Mod_Hex(7));
-                    Ukey32(27 downto 24) <= Ukey32(27 downto 24) + ("000" & Mod_Hex(6));
-                    Ukey32(23 downto 20) <= Ukey32(23 downto 20) + ("000" & Mod_Hex(5));
-                    Ukey32(19 downto 16) <= Ukey32(19 downto 16) + ("000" & Mod_Hex(4));
-                    Ukey32(15 downto 12) <= Ukey32(15 downto 12) + ("000" & Mod_Hex(3));
-                    Ukey32(11 downto 8)  <= Ukey32(11 downto 8)  + ("000" & Mod_Hex(2));
-                    Ukey32(7 downto 4)   <= Ukey32(7 downto 4)   + ("000" & Mod_Hex(1));
-                    Ukey32(3 downto 0)   <= Ukey32(3 downto 0)   + ("000" & Mod_Hex(0));
-                -- rising edge of down button
-                elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
-                    Ukey32(31 downto 28) <= Ukey32(31 downto 28) - ("000" & Mod_Hex(7));
-                    Ukey32(27 downto 24) <= Ukey32(27 downto 24) - ("000" & Mod_Hex(6));
-                    Ukey32(23 downto 20) <= Ukey32(23 downto 20) - ("000" & Mod_Hex(5));
-                    Ukey32(19 downto 16) <= Ukey32(19 downto 16) - ("000" & Mod_Hex(4));
-                    Ukey32(15 downto 12) <= Ukey32(15 downto 12) - ("000" & Mod_Hex(3));
-                    Ukey32(11 downto 8)  <= Ukey32(11 downto 8)  - ("000" & Mod_Hex(2));
-                    Ukey32(7 downto 4)   <= Ukey32(7 downto 4)   - ("000" & Mod_Hex(1));
-                    Ukey32(3 downto 0)   <= Ukey32(3 downto 0)   - ("000" & Mod_Hex(0));
-                end if;
-            elsif (Disp_SW = x"c") then 
-                -- rising edge of up button
-                if (Up_Btn = '1' and Up_Btn_buf = '0') then 
-                    BackDoor_in(63 downto 60) <= BackDoor_in(63 downto 60) + ("000" & Mod_Hex(7));
-                    BackDoor_in(59 downto 56) <= BackDoor_in(59 downto 56) + ("000" & Mod_Hex(6));
-                    BackDoor_in(55 downto 52) <= BackDoor_in(55 downto 52) + ("000" & Mod_Hex(5));
-                    BackDoor_in(51 downto 48) <= BackDoor_in(51 downto 48) + ("000" & Mod_Hex(4));
-                    BackDoor_in(47 downto 44) <= BackDoor_in(47 downto 44) + ("000" & Mod_Hex(3));
-                    BackDoor_in(43 downto 40) <= BackDoor_in(43 downto 40) + ("000" & Mod_Hex(2));
-                    BackDoor_in(39 downto 36) <= BackDoor_in(39 downto 36) + ("000" & Mod_Hex(1));
-                    BackDoor_in(35 downto 32) <= BackDoor_in(35 downto 32) + ("000" & Mod_Hex(0));
-                -- rising edge of down button
-                elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
-                    BackDoor_in(63 downto 60) <= BackDoor_in(63 downto 60) - ("000" & Mod_Hex(7));
-                    BackDoor_in(59 downto 56) <= BackDoor_in(59 downto 56) - ("000" & Mod_Hex(6));
-                    BackDoor_in(55 downto 52) <= BackDoor_in(55 downto 52) - ("000" & Mod_Hex(5));
-                    BackDoor_in(51 downto 48) <= BackDoor_in(51 downto 48) - ("000" & Mod_Hex(4));
-                    BackDoor_in(47 downto 44) <= BackDoor_in(47 downto 44) - ("000" & Mod_Hex(3));
-                    BackDoor_in(43 downto 40) <= BackDoor_in(43 downto 40) - ("000" & Mod_Hex(2));
-                    BackDoor_in(39 downto 36) <= BackDoor_in(39 downto 36) - ("000" & Mod_Hex(1));
-                    BackDoor_in(35 downto 32) <= BackDoor_in(35 downto 32) - ("000" & Mod_Hex(0));
-                end if;
-            elsif (Disp_SW = x"d") then 
-                -- rising edge of up button
-                if (Up_Btn = '1' and Up_Btn_buf = '0') then 
-                    BackDoor_in(31 downto 28) <= BackDoor_in(31 downto 28) + ("000" & Mod_Hex(7));
-                    BackDoor_in(27 downto 24) <= BackDoor_in(27 downto 24) + ("000" & Mod_Hex(6));
-                    BackDoor_in(23 downto 20) <= BackDoor_in(23 downto 20) + ("000" & Mod_Hex(5));
-                    BackDoor_in(19 downto 16) <= BackDoor_in(19 downto 16) + ("000" & Mod_Hex(4));
-                    BackDoor_in(15 downto 12) <= BackDoor_in(15 downto 12) + ("000" & Mod_Hex(3));
-                    BackDoor_in(11 downto 8)  <= BackDoor_in(11 downto 8)  + ("000" & Mod_Hex(2));
-                    BackDoor_in(7 downto 4)   <= BackDoor_in(7 downto 4)   + ("000" & Mod_Hex(1));
-                    BackDoor_in(3 downto 0)   <= BackDoor_in(3 downto 0)   + ("000" & Mod_Hex(0));
-                -- rising edge of down button
-                elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
-                    BackDoor_in(31 downto 28) <= BackDoor_in(31 downto 28) - ("000" & Mod_Hex(7));
-                    BackDoor_in(27 downto 24) <= BackDoor_in(27 downto 24) - ("000" & Mod_Hex(6));
-                    BackDoor_in(23 downto 20) <= BackDoor_in(23 downto 20) - ("000" & Mod_Hex(5));
-                    BackDoor_in(19 downto 16) <= BackDoor_in(19 downto 16) - ("000" & Mod_Hex(4));
-                    BackDoor_in(15 downto 12) <= BackDoor_in(15 downto 12) - ("000" & Mod_Hex(3));
-                    BackDoor_in(11 downto 8)  <= BackDoor_in(11 downto 8)  - ("000" & Mod_Hex(2));
-                    BackDoor_in(7 downto 4)   <= BackDoor_in(7 downto 4)   - ("000" & Mod_Hex(1));
-                    BackDoor_in(3 downto 0)   <= BackDoor_in(3 downto 0)   - ("000" & Mod_Hex(0));
-                end if;
-            end if;
+        if (Clr = '0') then
+            Key_Ind <= (others => '0');
+        elsif (Sysclk'event and Sysclk = '1') then
+            case Disp_SW is
+                when x"a" =>
+                    -- rising edge of up button
+                    if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                        Ukey32(31 downto 28) <= Ukey32(31 downto 28) + ("000" & Mod_Hex(7));
+                        Ukey32(27 downto 24) <= Ukey32(27 downto 24) + ("000" & Mod_Hex(6));
+                        Ukey32(23 downto 20) <= Ukey32(23 downto 20) + ("000" & Mod_Hex(5));
+                        Ukey32(19 downto 16) <= Ukey32(19 downto 16) + ("000" & Mod_Hex(4));
+                        Ukey32(15 downto 12) <= Ukey32(15 downto 12) + ("000" & Mod_Hex(3));
+                        Ukey32(11 downto 8)  <= Ukey32(11 downto 8)  + ("000" & Mod_Hex(2));
+                        Ukey32(7 downto 4)   <= Ukey32(7 downto 4)   + ("000" & Mod_Hex(1));
+                        Ukey32(3 downto 0)   <= Ukey32(3 downto 0)   + ("000" & Mod_Hex(0));
+                    -- rising edge of down button
+                    elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                        Ukey32(31 downto 28) <= Ukey32(31 downto 28) - ("000" & Mod_Hex(7));
+                        Ukey32(27 downto 24) <= Ukey32(27 downto 24) - ("000" & Mod_Hex(6));
+                        Ukey32(23 downto 20) <= Ukey32(23 downto 20) - ("000" & Mod_Hex(5));
+                        Ukey32(19 downto 16) <= Ukey32(19 downto 16) - ("000" & Mod_Hex(4));
+                        Ukey32(15 downto 12) <= Ukey32(15 downto 12) - ("000" & Mod_Hex(3));
+                        Ukey32(11 downto 8)  <= Ukey32(11 downto 8)  - ("000" & Mod_Hex(2));
+                        Ukey32(7 downto 4)   <= Ukey32(7 downto 4)   - ("000" & Mod_Hex(1));
+                        Ukey32(3 downto 0)   <= Ukey32(3 downto 0)   - ("000" & Mod_Hex(0));
+                    end if;
+                when x"b" =>
+                    -- rising edge of up button
+                    if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                        -- if index is 25, reset it to 0
+                        if (Key_Ind = "11001") then 
+                            Key_Ind <= (others => '0'); 
+                        else
+                            Key_Ind <= Key_Ind + '1';
+                        end if;
+                    -- rising edge of down button
+                    elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                        -- if index is 0, reset it to 25
+                        if (Key_Ind = "00000") then
+                            Key_Ind <= "11001";
+                        else
+                            Key_Ind <= Key_Ind - '1';
+                        end if;
+                    end if;
+                when x"c" => 
+                    -- rising edge of up button
+                    if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                        BackDoor_in(63 downto 60) <= BackDoor_in(63 downto 60) + ("000" & Mod_Hex(7));
+                        BackDoor_in(59 downto 56) <= BackDoor_in(59 downto 56) + ("000" & Mod_Hex(6));
+                        BackDoor_in(55 downto 52) <= BackDoor_in(55 downto 52) + ("000" & Mod_Hex(5));
+                        BackDoor_in(51 downto 48) <= BackDoor_in(51 downto 48) + ("000" & Mod_Hex(4));
+                        BackDoor_in(47 downto 44) <= BackDoor_in(47 downto 44) + ("000" & Mod_Hex(3));
+                        BackDoor_in(43 downto 40) <= BackDoor_in(43 downto 40) + ("000" & Mod_Hex(2));
+                        BackDoor_in(39 downto 36) <= BackDoor_in(39 downto 36) + ("000" & Mod_Hex(1));
+                        BackDoor_in(35 downto 32) <= BackDoor_in(35 downto 32) + ("000" & Mod_Hex(0));
+                    -- rising edge of down button
+                    elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                        BackDoor_in(63 downto 60) <= BackDoor_in(63 downto 60) - ("000" & Mod_Hex(7));
+                        BackDoor_in(59 downto 56) <= BackDoor_in(59 downto 56) - ("000" & Mod_Hex(6));
+                        BackDoor_in(55 downto 52) <= BackDoor_in(55 downto 52) - ("000" & Mod_Hex(5));
+                        BackDoor_in(51 downto 48) <= BackDoor_in(51 downto 48) - ("000" & Mod_Hex(4));
+                        BackDoor_in(47 downto 44) <= BackDoor_in(47 downto 44) - ("000" & Mod_Hex(3));
+                        BackDoor_in(43 downto 40) <= BackDoor_in(43 downto 40) - ("000" & Mod_Hex(2));
+                        BackDoor_in(39 downto 36) <= BackDoor_in(39 downto 36) - ("000" & Mod_Hex(1));
+                        BackDoor_in(35 downto 32) <= BackDoor_in(35 downto 32) - ("000" & Mod_Hex(0));
+                    end if;
+                when x"d" => 
+                    -- rising edge of up button
+                    if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                        BackDoor_in(31 downto 28) <= BackDoor_in(31 downto 28) + ("000" & Mod_Hex(7));
+                        BackDoor_in(27 downto 24) <= BackDoor_in(27 downto 24) + ("000" & Mod_Hex(6));
+                        BackDoor_in(23 downto 20) <= BackDoor_in(23 downto 20) + ("000" & Mod_Hex(5));
+                        BackDoor_in(19 downto 16) <= BackDoor_in(19 downto 16) + ("000" & Mod_Hex(4));
+                        BackDoor_in(15 downto 12) <= BackDoor_in(15 downto 12) + ("000" & Mod_Hex(3));
+                        BackDoor_in(11 downto 8)  <= BackDoor_in(11 downto 8)  + ("000" & Mod_Hex(2));
+                        BackDoor_in(7 downto 4)   <= BackDoor_in(7 downto 4)   + ("000" & Mod_Hex(1));
+                        BackDoor_in(3 downto 0)   <= BackDoor_in(3 downto 0)   + ("000" & Mod_Hex(0));
+                    -- rising edge of down button
+                    elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                        BackDoor_in(31 downto 28) <= BackDoor_in(31 downto 28) - ("000" & Mod_Hex(7));
+                        BackDoor_in(27 downto 24) <= BackDoor_in(27 downto 24) - ("000" & Mod_Hex(6));
+                        BackDoor_in(23 downto 20) <= BackDoor_in(23 downto 20) - ("000" & Mod_Hex(5));
+                        BackDoor_in(19 downto 16) <= BackDoor_in(19 downto 16) - ("000" & Mod_Hex(4));
+                        BackDoor_in(15 downto 12) <= BackDoor_in(15 downto 12) - ("000" & Mod_Hex(3));
+                        BackDoor_in(11 downto 8)  <= BackDoor_in(11 downto 8)  - ("000" & Mod_Hex(2));
+                        BackDoor_in(7 downto 4)   <= BackDoor_in(7 downto 4)   - ("000" & Mod_Hex(1));
+                        BackDoor_in(3 downto 0)   <= BackDoor_in(3 downto 0)   - ("000" & Mod_Hex(0));
+                    end if;
+                when others => null;
+            end case;
         end if;
     end process;
 

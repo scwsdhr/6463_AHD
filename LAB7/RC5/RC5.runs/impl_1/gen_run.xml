@@ -1,69 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1543650322">
-  <File Type="BITSTR-BMM" Name="rc5_fpga_bd.bmm"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="rc5_fpga_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="rc5_fpga_timing_summary_init.rpt"/>
   <File Type="ROUTE-PWR" Name="rc5_fpga_power_routed.rpt"/>
   <File Type="PA-TCL" Name="rc5_fpga.tcl"/>
-  <File Type="OPT-TIMING" Name="rc5_fpga_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="rc5_fpga_opt.dcp"/>
+  <File Type="BITSTR-BMM" Name="rc5_fpga_bd.bmm"/>
   <File Type="ROUTE-PWR-SUM" Name="rc5_fpga_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="rc5_fpga_reports.tcl"/>
+  <File Type="OPT-DCP" Name="rc5_fpga_opt.dcp"/>
   <File Type="OPT-DRC" Name="rc5_fpga_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="rc5_fpga.hwdef"/>
   <File Type="PWROPT-DCP" Name="rc5_fpga_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="rc5_fpga_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="rc5_fpga_timing_summary_pwropted.rpt"/>
   <File Type="PLACE-DCP" Name="rc5_fpga_placed.dcp"/>
   <File Type="PLACE-IO" Name="rc5_fpga_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="rc5_fpga_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="rc5_fpga_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="rc5_fpga_utilization_placed.pb"/>
   <File Type="PLACE-CTRL" Name="rc5_fpga_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="rc5_fpga_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="rc5_fpga_incremental_reuse_pre_placed.rpt"/>
   <File Type="BG-BGN" Name="rc5_fpga.bgn"/>
-  <File Type="PLACE-TIMING" Name="rc5_fpga_timing_summary_placed.rpt"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="rc5_fpga_postplace_pwropt.dcp"/>
   <File Type="BG-BIN" Name="rc5_fpga.bin"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="rc5_fpga_timing_summary_postplace_pwropted.rpt"/>
   <File Type="PHYSOPT-DCP" Name="rc5_fpga_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="rc5_fpga_drc_physopted.rpt"/>
   <File Type="BITSTR-MSK" Name="rc5_fpga.msk"/>
-  <File Type="PHYSOPT-TIMING" Name="rc5_fpga_timing_summary_physopted.rpt"/>
   <File Type="ROUTE-ERROR-DCP" Name="rc5_fpga_routed_error.dcp"/>
   <File Type="ROUTE-DCP" Name="rc5_fpga_routed.dcp"/>
   <File Type="ROUTE-BLACKBOX-DCP" Name="rc5_fpga_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="rc5_fpga_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="rc5_fpga_drc_routed.pb"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="rc5_fpga.ltx"/>
   <File Type="ROUTE-DRC-RPX" Name="rc5_fpga_drc_routed.rpx"/>
-  <File Type="BITSTR-MMI" Name="rc5_fpga.mmi"/>
+  <File Type="BITSTR-LTX" Name="rc5_fpga.ltx"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="rc5_fpga_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-MMI" Name="rc5_fpga.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="rc5_fpga_methodology_drc_routed.rpx"/>
-  <File Type="BITSTR-SYSDEF" Name="rc5_fpga.sysdef"/>
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="rc5_fpga_methodology_drc_routed.pb"/>
+  <File Type="BITSTR-SYSDEF" Name="rc5_fpga.sysdef"/>
   <File Type="ROUTE-PWR-RPX" Name="rc5_fpga_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="rc5_fpga_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="rc5_fpga_route_status.pb"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="rc5_fpga_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="rc5_fpga_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="rc5_fpga_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="rc5_fpga_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-CLK" Name="rc5_fpga_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="rc5_fpga_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="rc5_fpga_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="rc5_fpga_bus_skew_routed.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="rc5_fpga_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="rc5_fpga_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="rc5_fpga_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="rc5_fpga_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="rc5_fpga_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="rc5_fpga_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="rc5_fpga_bus_skew_postroute_physopted.pb"/>
   <File Type="BG-BIT" Name="rc5_fpga.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="rc5_fpga_bus_skew_postroute_physopted.rpx"/>
   <File Type="BITSTR-RBT" Name="rc5_fpga.rbt"/>
   <File Type="BITSTR-NKY" Name="rc5_fpga.nky"/>
   <File Type="BG-DRC" Name="rc5_fpga.drc"/>

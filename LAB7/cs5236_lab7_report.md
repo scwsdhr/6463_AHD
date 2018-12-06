@@ -8,13 +8,17 @@ netID: cs5236
 
 ----
 
-![FSM_key](image/FSM_key.png)
+## Block Diagram
 
-### RC5 Encryption----
+![Block](image/Block.png)
 
-## FSM Diagram
+## FSM Diagram for Each Component
 
 ### key expansion
+
+![FSM_key](image/FSM_key.png)
+
+### RC5 Encryption
 
 ![FSM_enc](image/FSM_enc.png)
 
@@ -24,17 +28,51 @@ netID: cs5236
 
 ## Simulation
 
+### Whole results
+
+![whole_sim](image/whole.png)
+
+This is a general result of several different cases, followed by more detailed functional and timing simulations.
+
 ### Case 1
 
 #### Functional Simulation
 
+![Func_P1](image/Func_P1.png)
+
 #### Timing Simulation
+
+![Timing_P1](image/Timing_P1.png)
 
 ### Case 2
 
 #### Functional Simulation
 
+![Func_P2](image/Func_P2.png)
+
 #### Timing Simulation
+
+![Timing_P2](image/Timing_P2.png)
+
+### Case 3
+
+#### Functional Simulation
+
+![Func_P3](image/Func_P3.png)
+
+#### Timing Simulation
+
+![Timing_P3](image/Timing_P3.png)
+
+### Case 4
+
+#### Functional Simulation
+
+![Func_P4](image/Func_P4.png)
+
+#### Timing Simulation
+
+![Timing_P4](image/Timing_P4.png)
 
 ## Resource Utilization
 
@@ -77,29 +115,37 @@ The reset signal `clr` (logic bit) is mapped to **CPU reset button**, which serv
 
 The signals `up_btn` (logic bit) and `down_btn` (logic bit) are mapped to **up button** and **down button**, which are used to modify the value of input vector. When clicking on up button, the displaying 8-bit hexadecimal number will increase by 1. Similarly, when clicking on down button, the displaying 8-bit hexadecimal number will decrease by 1. These two button only work when the input vector is being displayed. In addition, in order to avoid continued increasing/decreasing, I used a buffer signal for each button. By checking the value of button and the corresponding buffer at every clock rising edge, I can decide the rising edge of button signal is within which clock cycle. Thus, the function will be triggered only once at a time. Also, thanks to the high frequency clock signal, the delay cannot be detected by us human beings.
 
-**Center button** is mapped to the signal `di_vld`, which is used to tell the system that input value is ready and computation can take place.
+**Left button** is mapped to the signal `key_in`, which is used to tell the system that user key is ready and key expansion can take place.
+
+**Right button** is mapped to the signal `di_vld`, which is used to tell the system that input value is ready and computation can take place.
 
 ### Switches
 
-In my design, 10 switches (I/O switch, A/B switch, and 8 switches to decide the modifying bits) are used.
+In my design, 12 switches (User key switch, I/O switch, A/B switch, Function switch and 8 switches to decide the modifying bits) are used.
 
-The signal `io_sw` (logic bit) is mapped to the first right-handed switch (**I/O switch**). This switch is used to switch the display (on 7 segments) between input vector and output vector.
+The signal `key_sw` (logic bit) is mapped to the first right-handed switch (**User key switch**). This switch is used to switch the display (on 7 segments) between input user key and others.
 
-The signal `ab_sw` (logic bit) is mapped to the second right-handed switch (**A/B switch**). This switch is used to switch the display (on 7 segments) between vector `A` (32 most significant bits) and vector `B` (32 least significant bits).
+The signal `io_sw` (logic bit) is mapped to the second right-handed switch (**I/O switch**). This switch is used to switch the display (on 7 segments) between input vector and output vector.
+
+The signal `ab_sw` (logic bit) is mapped to the third right-handed switch (**A/B switch**). This switch is used to switch the display (on 7 segments) between vector `A` (32 most significant bits) and vector `B` (32 least significant bits).
+
+The signal `func_sel` (logic bit) is mapped to the first left-handed switch (**Function switch**). This switch is used to switch the function between encryption and decryption.
 
 The signal `mod_hex` (8-bit logic vector) is mapped to 8 switches (**modifying switch**). Each bit of the vector corresponds to a certain segment. When modifying the hexadecimal value with the two buttons mentioned above, only the segments of which the corresponding switch is set to `1` will change.
 
 ### LEDs
 
-In my design, only one LED is used.
+In my design, two LEDs are used.
 
 The signal `do_rdy` is mapped to the first left-handed LED. When output is ready, the LED will be on. Or it remains off.
+
+The signal `key_rdy` is mapped to the second left-handed LED. When round keys are ready, the LED will be on. Or it remains off.
 
 ### 7 Segment Display
 
 In my design, all 7 segment display are used.
 
-The current displaying value are determined by the two switch mentioned above (**I/O switch** and **A/B switch**).
+The current displaying value are determined by the switches mentioned above (**User key switch**, **I/O switch** and **A/B switch**).
 
 In order to perform a proper function of displaying, I generate a slow clock, comparing with the clock `clk` (20 ns period). This clock signal for 7 segment display has a period of 20 * 2^16 ns and it is used to switch among all the 8 digits. At the rising edge of display clock signal (`disp_clk(15)`), the anode select (signal `seg_sel`) and corresponding value to be displayed (signal `seg_val`) will change. As a result, we can get a suitable refresh rate. With this rate, the 8 digits can be different and no overlapping occurs.
 
@@ -115,4 +161,4 @@ For more details, please go over my VHDL codes.
 
 ## Demo Video
 
-<>
+<https://youtu.be/wSFgVzekZwQ>

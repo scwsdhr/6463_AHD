@@ -41,7 +41,7 @@ ADDI R7, R0, 0xb7e1 		// 16 MSBs
 ADDI R16, R0, 16			// R16 <= 16
 ADD R7, R7, R7				// R7 <= R7 << 1
 SUBI R16, R16, 1 			// R16 <= R16 - 1
-BNE R16, R0, -3              // if R16 != R0, jump to PC + 2 - 6
+BNE R16, R0, -3             // if R16 != R0, jump to PC + 2 - 6
 ADDI R7, R7, 0x5163 		// 16 LSBs
 SW R7, 0(R0)                // Mem[0] <= R7
 // R7 <= 0x9e3779b9 (magic number Q)
