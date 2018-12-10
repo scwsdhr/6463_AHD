@@ -14,6 +14,8 @@ entity Reg_File is
 		A3 : in STD_LOGIC_VECTOR(4 downto 0);
 		WD3 : in STD_LOGIC_VECTOR(31 downto 0);
         WE3 : in STD_LOGIC;
+        RF_Ind : in STD_LOGIC_VECTOR(4 downto 0);
+        RF_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
 		RD1 : out STD_LOGIC_VECTOR(31 downto 0);
 		RD2 : out STD_LOGIC_VECTOR(31 downto 0)
 	);
@@ -23,25 +25,31 @@ architecture Behavioral of Reg_File is
     type ram is array (0 to 31) of STD_LOGIC_VECTOR(31 downto 0);
     signal reg : ram := (others => (others => '0'));
 begin
+    ---- read RD1 from A1
+    --process(Clr, Clk)
+    --begin
+    --    if (Clr = '0') then 
+    --        RD1 <= (others => '0');
+    --    elsif (Clk'event and Clk = '1') then
+    --        RD1 <= reg(conv_integer(A1));
+    --    end if;
+    --end process;
+
+    ---- read RD2 from A2
+    --process(Clr, Clk)
+    --begin
+    --    if (Clr = '0') then 
+    --        RD2 <= (others => '0');
+    --    elsif (Clk'event and Clk = '1') then
+    --        RD2 <= reg(conv_integer(A2));
+    --    end if;
+    --end process;
+
     -- read RD1 from A1
-    process(Clr, Clk)
-    begin
-        if (Clr = '0') then 
-            RD1 <= (others => '0');
-        elsif (Clk'event and Clk = '1') then
-            RD1 <= reg(conv_integer(A1));
-        end if;
-    end process;
+    RD1 <= reg(conv_integer(A1));
 
     -- read RD2 from A2
-    process(Clr, Clk)
-    begin
-        if (Clr = '0') then 
-            RD2 <= (others => '0');
-        elsif (Clk'event and Clk = '1') then
-            RD2 <= reg(conv_integer(A2));
-        end if;
-    end process;
+    RD2 <= reg(conv_integer(A2));
 
     -- write WD3 to A3
     process(Clr, Clk)
@@ -54,4 +62,8 @@ begin
             end if;
         end if;
     end process;
+
+    -- Backdoor to display
+    RF_Disp_out <= reg(conv_integer(RF_Ind));
+
 end Behavioral;

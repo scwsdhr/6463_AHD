@@ -12,11 +12,11 @@ entity RC5_FPGA is
         All_Btn : in STD_LOGIC;                             -- button to provide run all
         Up_Btn : in STD_LOGIC;                              -- add 1 to targeted variable
         Down_Btn : in STD_LOGIC;                            -- minus 1 to targeted variable
-        PROG_SW : in STD_LOGIC;                             -- select a program to be executed
+        PROG_SW : in STD_LOGIC_VECTOR(1 downto 0);          -- select a program to be executed
         Mod_Hex : in STD_LOGIC_VECTOR(7 downto 0);          -- select the hex bits to modify
 
         Disp_SW : in STD_LOGIC_VECTOR(3 downto 0);          -- display content switch
-        LED_State : out STD_LOGIC_VECTOR(4 downto 0);       -- LED display to show the current stage
+        LED_State : out STD_LOGIC_VECTOR(2 downto 0);       -- LED display to show the current stage
         LED_Ind : out STD_LOGIC_VECTOR(4 downto 0);         -- LED display to show the current index
         Disp_Sel : out STD_LOGIC_VECTOR(7 downto 0);        -- select the digit to lit
         Disp_Val : out STD_LOGIC_VECTOR(7 downto 0)         -- the value to display
@@ -24,17 +24,20 @@ entity RC5_FPGA is
 end RC5_FPGA;
 
 architecture Behavioral of RC5_FPGA is
-    signal Clk : STD_LOGIC;                                 -- clock signal
+    signal Clk : STD_LOGIC := '0';                          -- clock signal
     signal Clk_Btn_buf : STD_LOGIC;                         -- clock button buffer
     signal Cycle_Btn_buf : STD_LOGIC;                       -- cycle button buffer
     signal All_Btn_buf : STD_LOGIC;                         -- end button buffer
     signal Up_Btn_buf : STD_LOGIC;                          -- up button buffer
     signal Down_Btn_buf : STD_LOGIC;                        -- down button buffer
+    signal Hold : STD_LOGIC;                                -- hold instruction
     signal BackDoor_in : STD_LOGIC_VECTOR(63 downto 0) := x"a2b568bac7edc2c1";
     signal Ukey32 : STD_LOGIC_VECTOR(31 downto 0);
     signal Key_Ind : STD_LOGIC_VECTOR(4 downto 0);
+    signal RF_Ind : STD_LOGIC_VECTOR(4 downto 0);
     signal BackDoor_out : STD_LOGIC_VECTOR(63 downto 0);
     signal Key_Disp : STD_LOGIC_VECTOR(31 downto 0);
+    signal RF_Disp : STD_LOGIC_VECTOR(31 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0);
     signal Instr : STD_LOGIC_VECTOR(31 downto 0);
     signal A1 : STD_LOGIC_VECTOR(4 downto 0);
@@ -47,21 +50,11 @@ architecture Behavioral of RC5_FPGA is
     signal SrcB : STD_LOGIC_VECTOR(31 downto 0);
     signal ALUResult : STD_LOGIC_VECTOR(31 downto 0);
     signal Result : STD_LOGIC_VECTOR(31 downto 0);
-    signal MIPS_State : STD_LOGIC_VECTOR(4 downto 0);
-
-    signal test_in : STD_LOGIC_VECTOR(4 downto 0);
-    signal test_out : STD_LOGIC_VECTOR(31 downto 0);
+    signal MIPS_State : STD_LOGIC_VECTOR(2 downto 0);
 
     signal Disp_Clk : STD_LOGIC_VECTOR(18 downto 0);                    -- display clock
     signal Disp_Hex : STD_LOGIC_VECTOR(3 downto 0);                     -- display hex number
     signal Disp_Bits : STD_LOGIC_VECTOR(31 downto 0);                   -- display text in bits
-
-    type StateType is ( 
-        ST_STEP,                                                        -- run by step
-        ST_INSTR,                                                       -- run by instruction
-        ST_ALL                                                          -- run all state
-    );
-    signal state : StateType;
 
     type pc_array is array (0 to 20) of STD_LOGIC_VECTOR(31 downto 0);  -- breakpoint array
     signal bp_cnt : integer range 0 to 20;                              -- brakpoint counter
@@ -70,13 +63,16 @@ architecture Behavioral of RC5_FPGA is
     component RC5
         port(
             Clr : in STD_LOGIC;
+            Sysclk : in STD_LOGIC;
             Clk : in STD_LOGIC;
-            PROG : in STD_LOGIC;
+            PROG : in STD_LOGIC_VECTOR(1 downto 0);
             BackDoor_in : in STD_LOGIC_VECTOR(63 downto 0);
             Ukey32 : in STD_LOGIC_VECTOR(31 downto 0);
             Key_Ind : in STD_LOGIC_VECTOR(4 downto 0);
+            RF_Ind : in STD_LOGIC_VECTOR(4 downto 0);
             BackDoor_out : out STD_LOGIC_VECTOR(63 downto 0);
             Key_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
+            RF_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
             PC_out : out STD_LOGIC_VECTOR(31 downto 0);
             Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
             A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -86,7 +82,7 @@ architecture Behavioral of RC5_FPGA is
             SrcB_out : out STD_LOGIC_VECTOR(31 downto 0);
             ALUResult_out : out STD_LOGIC_VECTOR(31 downto 0);
             Result_out : out STD_LOGIC_VECTOR(31 downto 0);
-            State_out : out STD_LOGIC_VECTOR(4 downto 0)
+            State_out : out STD_LOGIC_VECTOR(2 downto 0)
         );
     end component;
 
@@ -101,13 +97,16 @@ architecture Behavioral of RC5_FPGA is
 begin
     RC5_uut : RC5 port map (
         Clr => Clr,
+        Sysclk => Sysclk,
         Clk => Clk,
         PROG => PROG_SW,
         BackDoor_in => BackDoor_in,
         Ukey32 => Ukey32,
-        BackDoor_out => BackDoor_out,
         Key_Ind => Key_Ind,
+        RF_Ind => RF_Ind,
+        BackDoor_out => BackDoor_out,
         Key_Disp_out => Key_Disp,
+        RF_Disp_out => RF_Disp,
         PC_out => PC,
         Instr_out => Instr,
         A1_out => A1,
@@ -120,7 +119,6 @@ begin
         State_out => MIPS_State
     );
     LED_State <= MIPS_State;
-    LED_Ind <= Key_Ind;
 
     Hex2LED_uut : Hex2LED port map (
         Clk => Disp_Clk(15),
@@ -145,40 +143,26 @@ begin
         x"00000018", x"00000034", x"0000003a",
         x"00000018", x"00000034", x"0000003a",
         x"00000018", x"00000034", x"0000003a",
-        others => (others => '1')) when '1',
-        (others => (others => '1')) when others;
-
-    -- finite state machine
-    process(Sysclk)
-    begin
-        if (Clr = '0') then
-            bp_cnt <= 0;
-            state <= ST_STEP;
-        elsif (Sysclk'event and Sysclk = '1') then
-            case state is
-                when ST_STEP =>
-                    if (Cycle_Btn_buf = '0' and Cycle_Btn = '1') then
-                        state <= ST_INSTR;
-                    elsif (All_Btn_buf = '0' and All_Btn = '1') then
-                        state <= ST_ALL;
-                    end if;
-                when ST_INSTR =>
-                    if (MIPS_State = "00010") then
-                        state <= ST_STEP;
-                    end if;
-                when ST_ALL => 
-                    if (PC = bp_array(bp_cnt) and MIPS_State = "00100") then
-                        bp_cnt <= bp_cnt + 1;
-                        state <= ST_STEP;
-                    end if;
-            end case;
-        end if;
-    end process;
+        x"000000fe", 
+        others => (others => '1')) when "10",
+        (x"00000060", x"00000060", x"00000060", 
+        x"000000a0", others => (others => '1')) when others;
 
     -- provide different run time
-    with state select
-        Clk <= Clk_Btn when ST_STEP,
-            Sysclk when others;
+    process(Sysclk)
+    begin
+        if (Sysclk'event and Sysclk = '1') then
+            if (All_Btn = '0') then
+                if (Clk_Btn = '1' and Clk_Btn_buf = '0') then
+                    Clk <= '1';
+                elsif (Clk_Btn = '0' and Clk_Btn_buf = '1') then
+                    Clk <= '0';
+                end if;
+            else
+                Clk <= not Clk;
+            end if;
+        end if;
+    end process;
 
     -- generate a low-frequency clock for display 
     process(Clr, Sysclk)
@@ -202,13 +186,13 @@ begin
                 when "010" => Disp_Sel <= x"fb"; Disp_Hex <= Disp_Bits(11 downto 8);
                 when "011" => Disp_Sel <= x"f7"; Disp_Hex <= Disp_Bits(15 downto 12);
                 when "100" => Disp_Sel <= x"ef"; Disp_Hex <= Disp_Bits(19 downto 16);
-                when "101" => 
-                    if (Disp_SW = x"2" or Disp_SW = x"3" or Disp_SW = x"4") then
-                        Disp_Sel <= x"ff";
-                    else 
-                        Disp_Sel <= x"df"; 
-                        Disp_Hex <= Disp_Bits(23 downto 20);
-                    end if;
+                when "101" => Disp_Sel <= x"df"; Disp_Hex <= Disp_Bits(23 downto 20);
+                    --if (Disp_SW = x"2" or Disp_SW = x"3" or Disp_SW = x"4") then
+                    --    Disp_Sel <= x"ff";
+                    --else 
+                    --    Disp_Sel <= x"df"; 
+                    --    Disp_Hex <= Disp_Bits(23 downto 20);
+                    --end if;
                 when "110" => Disp_Sel <= x"bf"; Disp_Hex <= Disp_Bits(27 downto 24);
                 when others => Disp_Sel <= x"7f"; Disp_Hex <= Disp_Bits(31 downto 28);
             end case;
@@ -221,13 +205,14 @@ begin
         case Disp_SW is
             when x"0" => Disp_Bits <= PC;
             when x"1" => Disp_Bits <= Instr;
-            when x"2" => Disp_Bits <= A1_Disp;
-            when x"3" => Disp_Bits <= A2_Disp;
-            when x"4" => Disp_Bits <= A3_Disp;
+            --when x"2" => Disp_Bits <= A1_Disp;
+            --when x"3" => Disp_Bits <= A2_Disp;
+            --when x"4" => Disp_Bits <= A3_Disp;
             when x"5" => Disp_Bits <= SrcA;
             when x"6" => Disp_Bits <= SrcB;
             when x"7" => Disp_Bits <= ALUResult;
             when x"8" => Disp_Bits <= Result;
+            when x"9" => Disp_Bits <= RF_Disp;
             when x"a" => Disp_Bits <= Ukey32;
             when x"b" => Disp_Bits <= Key_Disp;
             when x"c" => Disp_Bits <= BackDoor_in(63 downto 32);
@@ -239,20 +224,29 @@ begin
     end process;
 
     -- generate A1_Disp, A2_Disp and A3_Disp
-    process(A1, A2, A3)
-    begin
-        A1_Disp <= x"a10" & "000" & A1(4) & "000" & A1(3) & "000" & A1(2) & "000" & A1(1) & "000" & A1(0);
-        A2_Disp <= x"a20" & "000" & A2(4) & "000" & A2(3) & "000" & A2(2) & "000" & A2(1) & "000" & A2(0);
-        A3_Disp <= x"a30" & "000" & A3(4) & "000" & A3(3) & "000" & A3(2) & "000" & A3(1) & "000" & A3(0);
-    end process;
+    --process(A1, A2, A3)
+    --begin
+    --    A1_Disp <= x"a10" & "000" & A1(4) & "000" & A1(3) & "000" & A1(2) & "000" & A1(1) & "000" & A1(0);
+    --    A2_Disp <= x"a20" & "000" & A2(4) & "000" & A2(3) & "000" & A2(2) & "000" & A2(1) & "000" & A2(0);
+    --    A3_Disp <= x"a30" & "000" & A3(4) & "000" & A3(3) & "000" & A3(2) & "000" & A3(1) & "000" & A3(0);
+    --end process;
 
     -- select the targeted hex bits to modify
     process(Clr, Sysclk, Disp_SW)
     begin
         if (Clr = '0') then
             Key_Ind <= (others => '0');
+            --RF_Ind <= (others => '0');
         elsif (Sysclk'event and Sysclk = '1') then
             case Disp_SW is
+                when x"9" =>
+                    -- rising edge of up button
+                    if (Up_Btn = '1' and Up_Btn_buf = '0') then 
+                        RF_Ind <= RF_Ind + '1';
+                    -- rising edge of down button
+                    elsif (Down_Btn = '1' and Down_Btn_buf = '0') then
+                        RF_Ind <= RF_Ind - '1';
+                    end if;
                 when x"a" =>
                     -- rising edge of up button
                     if (Up_Btn = '1' and Up_Btn_buf = '0') then 
@@ -338,6 +332,21 @@ begin
                         BackDoor_in(3 downto 0)   <= BackDoor_in(3 downto 0)   - ("000" & Mod_Hex(0));
                     end if;
                 when others => null;
+            end case;
+        end if;
+    end process;
+
+    -- select the index bits to display
+    --LED_Ind <= Key_Ind;
+    process(Clr, Sysclk, Disp_SW)
+    begin
+        if (Clr = '0') then
+            LED_Ind <= (others => '0');
+        elsif (Sysclk'event and Sysclk = '1') then
+            case Disp_SW is
+                when x"9" => LED_Ind <= RF_Ind;
+                when x"b" => LED_Ind <= Key_Ind;
+                when others => LED_Ind <= (others => '0');
             end case;
         end if;
     end process;

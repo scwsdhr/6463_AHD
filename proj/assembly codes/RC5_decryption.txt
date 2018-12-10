@@ -1,0 +1,120 @@
+* What you should know */
+ * In our assembly codes, we used Intel style,
+ * in which the destination register is located first,
+ * the register name and immediate number remains the same.
+ */
+
+ /* Definations of registers
+ *  R0              		- constant zero
+ *  R1              		- constant one
+ *  R3              		- loop variable i
+ *  R4              		- address (2*i)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
+ *  R5              		- address (2*i+1)*2 (extra multiplied by 2 because the memory is 16-bit addressable)
+ *  R6              		- Skey[2*i]
+ *  R7              		- Skey[2*i+1]
+ *  R8              		- intermediate and final result of A
+ *  R9              		- intermediate and final result of B
+ *  R11, R12, R13,R14, R15  - temporary variables
+ */
+
+// initialize
+SUB R0, R0, R0 				// R0 <= 0
+ADDI R3, R0, 13 			// R13 <= R0 + 13
+LW R8, 56(R0) 				// R8 <= Mem[R0 + 56]
+LW R9, 58(R0)				// R9 <= Mem[R0 + 58]
+ADDI R1, R0, 1 				// R1 <= 1
+
+--  decryption loop begins
+SUBI R3, R3, 1 				// R3 <= R3 - 1
+ADD R4, R3, R3 				// R4 <= R3 + R3 (left shift by 1 bit)
+ADDI R5, R4, 1 				// R5 <= R4 + 1 
+ADD R4, R4, R4 				// R4 <= R4 + R4 (left shift by 1 bit)			
+ADD R5, R5, R15				// R5 <= R5 + R15
+LW R6, 0(R4) 				// R6 <= Mem[R4 + 0]
+LW R7, 0(R5) 				// R7 <= Mem[R5 + 0]
+
+SUB R9, R9, R7				// R9 <= R9 + R7
+
+-- B = B >>> A
+ADDI R12, R9, 0 			// R12 <= R9  
+ANDI R13, R8, 31 			// R13 <= R8 & x"0000001F"
+SUBI R13, R13, 32			// R13 <= R13 -32
+
+-- R12 loop begins
+BEQ R13, R0, 3				// if R13 = R0, jump to PC + 2 + 6 
+ADD R12, R12, R12 			// R12 <= R12 + R12 (left shift by 1 bit)
+ADDI R13, R13, 1  			// R13 <= R13 + 1
+BNE R13, R0, -3 			// if R13 != R0, jump to PC + 2 - 6 
+
+ADDI R11, R9, 0 			// R11 <= R9 + 0;
+ANDI R13, R8, 31 			// R13 <= R8 & x"0000001F"
+
+-- R11 loop begins
+BEQ R13, R0, 3				// if R13 = R0, jump to PC + 2 + 6 
+SHR R11, R11, 1 			// R11 >> 1
+SUBI R13, R13, 1 			// R13 <= R13 - 1
+BNE R13, R0, -3				// if R13 != R0, jump to PC + 2 - 6
+
+OR R9, R11, R12 			// B <= R11 or R12
+
+NOR R11, R8, R9 			// R11 <= !(R9 | R8)
+AND R12, R8, R9 			// R12 <= R9 & R8
+NOR R9, R11, R12 			// R9 <= !(R11 | R12)
+
+SUB R8, R8, R6 				// R8 <= R8 - R6
+
+-- A = A >>> B
+ADDI R12, R8, 0 			// R12 <= R8 + 0
+ANDI R13, R9, 31 			// R13 <= R9 = 31
+SUBI R12, R12, 32			// R12 <= R12 - 32;
+
+-- R12 loop begins
+BEQ R13, R0, 3				// if R13 = R0, jump to PC + 2 + 6
+ADD R12, R12, R12 			// R12 <= R12 + R12 (left shift by 1 bit)
+ADDI R13, R13, 1 			// R13 <= R13 + 1
+BNE R13, R0, -3 			// if R13 != R0, jump to PC + 2 - 6
+
+ADDI R11, R8, 0 			// R11 <= R8 + 0
+ANDI R13, R9, 31 			// R13 <= R9 & x"0000001F"
+
+-- R11 loop begins
+BEQ R13, R0, 3				// if R13 = R0, jump to PC + 2 + 6
+SHR R11, R11, 1 			// R11 >> 1
+SUBI R13, R13, 1 			// R13 <= R13 - 1
+BNE R13, R0, -3				// if R13 != R0, jump to PC + 2 - 6
+
+OR R8, R11, R12				// R8 <= R11 OR R12
+
+NOR R11, R8, R9 			// R11 <= !(R9 | R8)
+AND R12, R8, R9 			// R12 <= R8 & R9
+NOR R8, R11, R12 			// R8 <= !(R11 | R12)
+
+BNE R3, R1, -43				// if R13 != R0, jump to PC + 2 - 86
+
+LW R14, 0(R0) 				// R14 <= Mem[0]
+LW R15, 2(R0) 				// R15 <= Mem[2]
+SUB R9, R9, R15 			// R9 <= R9 - R15
+SUB R8, R8, R14 			// R8 <= R8 - R14
+
+SW R8, 52(R0) 				// Mem[52] <= R8
+SW R9, 54(R0) 				// Mem[54] <= R9
+HAL 						// Halt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

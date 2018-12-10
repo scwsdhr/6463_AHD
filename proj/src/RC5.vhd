@@ -8,13 +8,16 @@ use work.header.ALL;
 entity RC5 is
     port(
         Clr : in STD_LOGIC;
+        Sysclk : in STD_LOGIC;
         Clk : in STD_LOGIC;
-        PROG : in STD_LOGIC;
+        PROG : in STD_LOGIC_VECTOR(1 downto 0);
         BackDoor_in : in STD_LOGIC_VECTOR(63 downto 0);
         Ukey32 : in STD_LOGIC_VECTOR(31 downto 0);
         Key_Ind : in STD_LOGIC_VECTOR(4 downto 0);
+        RF_Ind : in STD_LOGIC_VECTOR(4 downto 0);
         BackDoor_out : out STD_LOGIC_VECTOR(63 downto 0);
         Key_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
+        RF_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
         PC_out : out STD_LOGIC_VECTOR(31 downto 0);
         Instr_out : out STD_LOGIC_VECTOR(31 downto 0);
         A1_out : out STD_LOGIC_VECTOR(4 downto 0);
@@ -24,14 +27,12 @@ entity RC5 is
         SrcB_out : out STD_LOGIC_VECTOR(31 downto 0);
         ALUResult_out : out STD_LOGIC_VECTOR(31 downto 0);
         Result_out : out STD_LOGIC_VECTOR(31 downto 0);
-        State_out : out STD_LOGIC_VECTOR(4 downto 0)
+        State_out : out STD_LOGIC_VECTOR(2 downto 0)
     );
 end RC5;
 
 architecture Behavioral of RC5 is
-    signal Clk_1 : STD_LOGIC;
-    signal Clk_2 : STD_LOGIC;
-    signal Clk_3 : STD_LOGIC;
+    signal Clk_in : STD_LOGIC;
     signal PC_buf_buf : STD_LOGIC_VECTOR(31 downto 0);
     signal PC_buf : STD_LOGIC_VECTOR(31 downto 0);
     signal PC : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
@@ -87,7 +88,7 @@ architecture Behavioral of RC5 is
             Clr : in STD_LOGIC;
             Clk : in STD_LOGIC;
             A : in STD_LOGIC_VECTOR(31 downto 0);
-            PROG : in STD_LOGIC;
+            PROG : in STD_LOGIC_VECTOR(1 downto 0);
             RD : out STD_LOGIC_VECTOR(31 downto 0)
         );
     end component;
@@ -125,6 +126,8 @@ architecture Behavioral of RC5 is
             A3 : in STD_LOGIC_VECTOR(4 downto 0);
             WD3 : in STD_LOGIC_VECTOR(31 downto 0);
             WE3 : in STD_LOGIC;
+            RF_Ind : in STD_LOGIC_VECTOR(4 downto 0);
+            RF_Disp_out : out STD_LOGIC_VECTOR(31 downto 0);
             RD1 : out STD_LOGIC_VECTOR(31 downto 0);
             RD2 : out STD_LOGIC_VECTOR(31 downto 0)
         );
@@ -173,9 +176,7 @@ architecture Behavioral of RC5 is
 
     type StateType is ( 
         ST_READY,                       -- idle state
-        ST_IF,                          -- instruction fetch
-        ST_RF,                          -- register file
-        ST_WB,                          -- write back
+        ST_RUN,                         -- running state
         ST_HALT);                       -- halt
     signal state : StateType;
 
@@ -189,14 +190,14 @@ begin
 
     Flipflop_uut : Flipflop port map (
         Clr => Clr,
-        Clk => Clk_1,
+        Clk => Clk_in,
         I => PC_buf,
         O => PC
     );
 
     Instruction_Mem_uut : Instruction_Mem port map (
         Clr => Clr,
-        Clk => Clk,
+        Clk => Sysclk,
         A => PC,
         PROG => PROG,
         RD => Instr
@@ -222,31 +223,16 @@ begin
         RegWrite => RegWrite
     );
 
-    -- WB buffer
-    process(Clr, Clk)
-    begin
-        if (Clr = '0') then
-            RegWrite_delay <= '0';
-        elsif (Clk'event and Clk = '1') then
-            case state is
-                when ST_IF => 
-                    RegWrite_delay <= RegWrite;
-                when ST_RF => 
-                    RegWrite_delay <= RegWrite;
-                when others => 
-                    RegWrite_delay <= '0';
-            end case;
-        end if;
-    end process;
-
     Reg_File_uut : Reg_File port map (
         Clr => Clr,
-        Clk => Clk_2,
+        Clk => Clk_in,
         A1 => Instr(25 downto 21),
         A2 => Instr(20 downto 16),
         A3 => WriteReg,
         WD3 => Result,
-        WE3 => RegWrite_delay,
+        WE3 => RegWrite,
+        RF_Ind => RF_Ind,
+        RF_Disp_out => RF_Disp_out,
         RD1 => SrcA,
         RD2 => WriteData
     );
@@ -297,7 +283,7 @@ begin
 
     Data_Mem_RC5_uut : Data_Mem_RC5 port map (
         Clr => Clr,
-        Clk => Clk_3,
+        Clk => Clk_in,
         A => ALUResult,
         WD => WriteData,
         WE => MemWrite,
@@ -331,68 +317,33 @@ begin
     );
 
     -- finite state machine
-    process(Clr, Clk)
+    process(Clr, Clk, Instr)
     begin
         if (Clr = '0') then
             state <= ST_READY;
+        elsif (Instr(31 downto 26) = OP_HAL) then
+            state <= ST_HALT;
         elsif (Clk'event and Clk = '1') then
             case state is
-                when ST_READY => 
-                    if (Instr(31 downto 26) = OP_HAL) then
-                        state <= ST_HALT;
-                    else 
-                        state <= ST_RF;
-                    end if;
-                when ST_IF => 
-                    if (Instr(31 downto 26) = OP_HAL) then
-                        state <= ST_HALT;
-                    else
-                        state <= ST_RF;
-                    end if;
-                when ST_RF => state <= ST_WB;
-                when ST_WB => state <= ST_IF;
+                when ST_READY => state <= ST_RUN;
                 when others => null;
             end case;
         end if;
     end process;
 
-    -- IF
-    process(Clr, state)
-    begin
-        if (state = ST_READY) then
-            Clk_1 <= '0';
-        elsif (state = ST_IF) then
-            Clk_1 <= '1';
-        else 
-            Clk_1 <= '0';
-        end if;
-    end process;
+    -- halt state
+    --process(Clr, Clk)
+    --begin
+    --    if (Clk'event and Clk = '0') then
+    --        if (Instr(31 downto 26) = OP_HAL) then
+    --            state <= ST_HALT;
+    --        end if;
+    --    end if;
+    --end process;
 
-    -- RF
-    process(Clr, Clk, state)
-    begin
-        if (Clr = '0') then
-            Clk_2 <= '0';
-        elsif (state = ST_IF) then
-            Clk_2 <= Clk;
-        elsif (state = ST_RF) then
-            Clk_2 <= Clk;
-        else 
-            Clk_2 <= '0';
-        end if;
-    end process;
-
-    -- WB
-    process(Clr, state)
-    begin
-        if (Clr = '0') then
-            Clk_3 <= '0';
-        elsif (state = ST_WB) then
-            Clk_3 <= '1';
-        else
-            Clk_3 <= '0';
-        end if;
-    end process;
+    with state select
+        Clk_in <= '0' when ST_HALT | ST_READY,
+            Clk when others;
 
     -- output signals, used on FPGA
     PC_out <= PC;
@@ -405,10 +356,9 @@ begin
     ALUResult_out <= ALUResult;
     Result_out <= Result;
     with state select
-        State_out <= "10000" when ST_READY,
-            "01000" when ST_IF,
-            "00100" when ST_RF,
-            "00010" when ST_WB,
-            "00001" when ST_HALT;
+        State_out <= "100" when ST_READY,
+            "010" when ST_RUN,
+            "001" when ST_HALT,
+            "111" when others;
     
 end Behavioral;
