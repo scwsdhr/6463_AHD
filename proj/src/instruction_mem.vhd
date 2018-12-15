@@ -58,20 +58,7 @@ architecture Behavioral of Instruction_Mem is
      --    others => "1111110000000000"
      --);
 
-    -- RC5 encryption
-    --signal instr_mem : mem := instr_enc;
-
-    -- RC5 decryption
-    --signal instr_mem : mem := instr_dec;
-
-    -- RC5 key expansion
-    --signal instr_mem : mem := instr_key;
-
-    -- RC5
-    --signal instr_mem : mem := instr_rc5;
-
     signal instr_mem : mem := instr_clr;
-    --signal instr_mem_pre : mem := instr_clr;
 
 begin
     -- fix address out of range

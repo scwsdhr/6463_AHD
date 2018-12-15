@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1540229746">
   <File Type="PA-TCL" Name="rc5_enc.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="rc5_enc_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="rc5_enc_reports.tcl"/>
   <File Type="RDS-RDS" Name="rc5_enc.vds"/>
   <File Type="RDS-UTIL" Name="rc5_enc_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="rc5_enc_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="rc5_enc.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="rc5_enc_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="rc5_enc_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../left_rotate.vhd">

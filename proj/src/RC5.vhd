@@ -178,7 +178,7 @@ architecture Behavioral of RC5 is
         ST_READY,                       -- idle state
         ST_RUN,                         -- running state
         ST_HALT);                       -- halt
-    signal state : StateType;
+    signal State : StateType;
 
 begin
     Mux1 : Mux port map (
@@ -320,12 +320,12 @@ begin
     process(Clr, Clk, Instr)
     begin
         if (Clr = '0') then
-            state <= ST_READY;
+            State <= ST_READY;
         elsif (Instr(31 downto 26) = OP_HAL) then
-            state <= ST_HALT;
+            State <= ST_HALT;
         elsif (Clk'event and Clk = '1') then
-            case state is
-                when ST_READY => state <= ST_RUN;
+            case State is
+                when ST_READY => State <= ST_RUN;
                 when others => null;
             end case;
         end if;
@@ -341,7 +341,7 @@ begin
     --    end if;
     --end process;
 
-    with state select
+    with State select
         Clk_in <= '0' when ST_HALT | ST_READY,
             Clk when others;
 
@@ -355,7 +355,7 @@ begin
     SrcB_out <= SrcB;
     ALUResult_out <= ALUResult;
     Result_out <= Result;
-    with state select
+    with State select
         State_out <= "100" when ST_READY,
             "010" when ST_RUN,
             "001" when ST_HALT,

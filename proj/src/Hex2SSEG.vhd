@@ -3,17 +3,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity Hex2LED is
+entity Hex2SSEG is
     port ( 
         Clk: in STD_LOGIC; 
-        X : in  STD_LOGIC_VECTOR (3 downto 0);
-        Y : out  STD_LOGIC_VECTOR (7 downto 0)
+        X : in STD_LOGIC_VECTOR (3 downto 0);
+        Y : out STD_LOGIC_VECTOR (7 downto 0)
     );
-end Hex2LED;
+end Hex2SSEG;
 
-architecture Behavioral of Hex2LED is
+architecture Behavioral of Hex2SSEG is
 begin
-    process (Clk)
+    process(Clk)
     begin
         case X is
             when "0000" => Y <= "11000000";

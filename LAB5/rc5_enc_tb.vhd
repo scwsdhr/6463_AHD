@@ -6,7 +6,7 @@ ENTITY rc5_enc_tb IS
 END rc5_enc_tb;
 
 ARCHITECTURE behavior OF rc5_enc_tb IS
-    CONSTANT T : time := 20 ns;
+    CONSTANT T : time := 10 ps;
     SIGNAL clk : std_logic := '0';
     SIGNAL clr : std_logic := '0';
     SIGNAL din : std_logic_vector (63 downto 0);

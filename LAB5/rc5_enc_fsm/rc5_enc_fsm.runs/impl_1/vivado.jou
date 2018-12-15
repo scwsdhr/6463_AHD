@@ -2,11 +2,11 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Sun Nov  4 01:23:57 2018
-# Process ID: 14832
-# Current directory: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_fsm/rc5_enc_fsm.runs/impl_1
+# Start of session at: Mon Dec 10 19:54:01 2018
+# Process ID: 2020
+# Current directory: C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_fsm/rc5_enc_fsm.runs/impl_1
 # Command line: vivado.exe -log rc5_enc_fpga.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source rc5_enc_fpga.tcl -notrace
-# Log file: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_fsm/rc5_enc_fsm.runs/impl_1/rc5_enc_fpga.vdi
-# Journal file: C:/Users/shenc/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_fsm/rc5_enc_fsm.runs/impl_1\vivado.jou
+# Log file: C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_fsm/rc5_enc_fsm.runs/impl_1/rc5_enc_fpga.vdi
+# Journal file: C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/LAB5/rc5_enc_fsm/rc5_enc_fsm.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
 source rc5_enc_fpga.tcl -notrace

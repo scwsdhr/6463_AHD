@@ -1,7 +1,7 @@
 (DELAYFILE 
 (SDFVERSION "3.0" )
 (DESIGN "rc5_enc_fpga")
-(DATE "Sun Nov  4 20:22:46 2018")
+(DATE "Mon Dec 10 19:58:31 2018")
 (VENDOR "XILINX")
 (PROGRAM "Vivado")
 (VERSION "2018.2")

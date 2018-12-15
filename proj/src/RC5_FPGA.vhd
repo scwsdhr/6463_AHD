@@ -8,7 +8,7 @@ entity RC5_FPGA is
         Clr : in STD_LOGIC;                                 -- reset signal
         Sysclk : in STD_LOGIC;                              -- system clock
         Clk_Btn : in STD_LOGIC;                             -- button as clock signal
-        Cycle_Btn : in STD_LOGIC;                           -- button to provide a cycle run
+        Break_Btn : in STD_LOGIC;                           -- button to run until breakpoint
         All_Btn : in STD_LOGIC;                             -- button to provide run all
         Up_Btn : in STD_LOGIC;                              -- add 1 to targeted variable
         Down_Btn : in STD_LOGIC;                            -- minus 1 to targeted variable
@@ -26,7 +26,7 @@ end RC5_FPGA;
 architecture Behavioral of RC5_FPGA is
     signal Clk : STD_LOGIC := '0';                          -- clock signal
     signal Clk_Btn_buf : STD_LOGIC;                         -- clock button buffer
-    signal Cycle_Btn_buf : STD_LOGIC;                       -- cycle button buffer
+    signal Break_Btn_buf : STD_LOGIC;                       -- cycle button buffer
     signal All_Btn_buf : STD_LOGIC;                         -- end button buffer
     signal Up_Btn_buf : STD_LOGIC;                          -- up button buffer
     signal Down_Btn_buf : STD_LOGIC;                        -- down button buffer
@@ -60,6 +60,12 @@ architecture Behavioral of RC5_FPGA is
     signal bp_cnt : integer range 0 to 20;                              -- brakpoint counter
     signal bp_array : pc_array;
 
+    type StateType is (
+        ST_STEP,                                -- run as step
+        ST_BREAK,                               -- run to breakpoint
+        ST_ALL);                                -- run all
+    signal State : StateType := ST_STEP;
+
     component RC5
         port(
             Clr : in STD_LOGIC;
@@ -86,7 +92,7 @@ architecture Behavioral of RC5_FPGA is
         );
     end component;
 
-    component Hex2LED
+    component Hex2SSEG
         port ( 
             Clk : in STD_LOGIC;                             -- display clock signal
             X : in STD_LOGIC_VECTOR (3 downto 0);           -- display hex
@@ -119,8 +125,13 @@ begin
         State_out => MIPS_State
     );
     LED_State <= MIPS_State;
+    --with State select
+    --    LED_State <= "100" when ST_STEP,
+    --        "010" when ST_BREAK,
+    --        "001" when ST_ALL,
+    --        "111" when others;
 
-    Hex2LED_uut : Hex2LED port map (
+    Hex2SSEG_uut : Hex2SSEG port map (
         Clk => Disp_Clk(15),
         X => Disp_Hex,
         Y => Disp_Val
@@ -131,7 +142,7 @@ begin
     begin
         if (Sysclk'event and Sysclk = '1') then
             Clk_Btn_buf <= Clk_Btn;
-            Cycle_Btn_buf <= Cycle_Btn;
+            Break_Btn_buf <= Break_Btn;
             All_Btn_buf <= All_Btn;
             Up_Btn_buf <= Up_Btn;
             Down_Btn_buf <= Down_Btn;
@@ -145,24 +156,66 @@ begin
         x"00000018", x"00000034", x"0000003a",
         x"000000fe", 
         others => (others => '1')) when "10",
-        (x"00000060", x"00000060", x"00000060", 
-        x"000000a0", others => (others => '1')) when others;
+        (others => (others => '1')) when others;
 
-    -- provide different run time
-    process(Sysclk)
+    -- clock signal provider
+    process(Clr, Sysclk, PC)
     begin
-        if (Sysclk'event and Sysclk = '1') then
-            if (All_Btn = '0') then
-                if (Clk_Btn = '1' and Clk_Btn_buf = '0') then
+        if (Clr = '0') then
+            Clk <= '0';
+            bp_cnt <= 0;
+        elsif (Sysclk'event and Sysclk = '1') then
+            if (All_Btn = '0' and Break_Btn = '0') then
+                if (Clk_Btn_buf = '0' and Clk_Btn = '1') then
                     Clk <= '1';
-                elsif (Clk_Btn = '0' and Clk_Btn_buf = '1') then
+                elsif (Clk_Btn_buf = '1' and Clk_Btn = '0') then
                     Clk <= '0';
                 end if;
+            elsif (Break_Btn = '1' and PC = bp_array(bp_cnt)) then
+                Clk <= '0';
             else
                 Clk <= not Clk;
             end if;
+            if (Break_Btn_buf = '1' and Break_Btn = '0') then
+                bp_cnt <= bp_cnt + 1;
+            end if;
         end if;
     end process;
+
+    ---- finite state machine
+    --process(Clr, Sysclk)
+    --begin
+    --    if (Clr = '0') then
+    --        State <= ST_STEP;
+    --        bp_cnt <= 0;
+    --    elsif (Sysclk'event and Sysclk = '1') then
+    --        case State is
+    --            when ST_STEP =>
+    --                if (All_Btn_buf = '0' and All_Btn = '1') then
+    --                    State <= ST_ALL;
+    --                elsif (Break_Btn_buf = '0' and Break_Btn = '1') then
+    --                    State <= ST_BREAK;
+    --                end if;
+    --            when ST_BREAK =>
+    --                if (PC = bp_array(bp_cnt)) then
+    --                    bp_cnt <= bp_cnt + 1;
+    --                    State <= ST_STEP;
+    --                elsif (All_Btn_buf = '0' and All_Btn = '1') then
+    --                    State <= ST_ALL;
+    --                end if;
+    --            when others => null;
+    --        end case;
+    --    end if;
+    --end process;
+
+    ---- provide different runtime
+    --process(Sysclk, State)
+    --begin
+    --    case State is 
+    --        when ST_STEP => Clk <= Clk_Btn;
+    --        when others => Clk <= Sysclk;
+    --    end case;
+    --end process;
 
     -- generate a low-frequency clock for display 
     process(Clr, Sysclk)
@@ -337,7 +390,6 @@ begin
     end process;
 
     -- select the index bits to display
-    --LED_Ind <= Key_Ind;
     process(Clr, Sysclk, Disp_SW)
     begin
         if (Clr = '0') then
