@@ -1,0 +1,324 @@
+
+*** Running vivado
+    with args -log controller_fpga.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source controller_fpga.tcl
+
+
+****** Vivado v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source controller_fpga.tcl -notrace
+Command: synth_design -top controller_fpga -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 8892 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 357.656 ; gain = 99.445
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'controller_fpga' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final_fpga.vhd:18]
+INFO: [Synth 8-3491] module 'controller' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd:4' bound to instance 'controller_uut' of component 'controller' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final_fpga.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'controller' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'controller' (1#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd:14]
+INFO: [Synth 8-3491] module 'Bit2SSEG' declared at 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/Bit2SSEG.vhd:6' bound to instance 'Bit2SSEG_uut' of component 'Bit2SSEG' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final_fpga.vhd:55]
+INFO: [Synth 8-638] synthesizing module 'Bit2SSEG' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/Bit2SSEG.vhd:14]
+WARNING: [Synth 8-614] signal 'X' is read in the process but is not in the sensitivity list [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/Bit2SSEG.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'Bit2SSEG' (2#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/Bit2SSEG.vhd:14]
+WARNING: [Synth 8-6014] Unused sequential element DispClk_reg was removed.  [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final_fpga.vhd:56]
+INFO: [Synth 8-256] done synthesizing module 'controller_fpga' (3#1) [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final_fpga.vhd:18]
+WARNING: [Synth 8-3331] design Bit2SSEG has unconnected port Clk
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 412.688 ; gain = 154.477
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 412.688 ; gain = 154.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 412.688 ; gain = 154.477
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/Nexys-4-DDR-Master.xdc]
+Finished Parsing XDC File [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/Nexys-4-DDR-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/Nexys-4-DDR-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/controller_fpga_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/controller_fpga_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 755.527 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:23 . Memory (MB): peak = 755.527 ; gain = 497.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:23 . Memory (MB): peak = 755.527 ; gain = 497.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:23 . Memory (MB): peak = 755.527 ; gain = 497.316
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'State_reg' in module 'controller'
+INFO: [Synth 8-5544] ROM "Detect" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Match" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_NextState_reg' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd:27]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_NextState_reg' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd:27]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                      s0 |                            00001 |                              000
+                      s1 |                            00010 |                              001
+                      s2 |                            00100 |                              010
+                      s3 |                            01000 |                              011
+                      s4 |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'State_reg' using encoding 'one-hot' in module 'controller'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_NextState_reg' [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd:27]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 755.527 ; gain = 497.316
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 3     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   5 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 5     
+	   5 Input      4 Bit        Muxes := 1     
+	   5 Input      3 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module controller_fpga 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 3     
+	                1 Bit    Registers := 3     
+Module controller 
+Detailed RTL Component Info : 
++---Muxes : 
+	   5 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 5     
+	   5 Input      4 Bit        Muxes := 1     
+	   5 Input      3 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3917] design controller_fpga has port SSEG_CA[7] driven by constant 1
+WARNING: [Synth 8-3917] design controller_fpga has port SSEG_CA[6] driven by constant 1
+WARNING: [Synth 8-3917] design controller_fpga has port SSEG_CA[2] driven by constant 0
+WARNING: [Synth 8-3917] design controller_fpga has port SSEG_CA[1] driven by constant 0
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:25 . Memory (MB): peak = 755.527 ; gain = 497.316
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 755.527 ; gain = 497.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |     5|
+|3     |LUT1   |     2|
+|4     |LUT2   |     3|
+|5     |LUT3   |    11|
+|6     |LUT4   |     4|
+|7     |LUT5   |     2|
+|8     |LUT6   |     2|
+|9     |MUXF7  |     1|
+|10    |FDRE   |    34|
+|11    |FDSE   |    17|
+|12    |LD     |     5|
+|13    |IBUF   |     4|
+|14    |OBUF   |    21|
++------+-------+------+
+
+Report Instance Areas: 
++------+-----------------+-----------+------+
+|      |Instance         |Module     |Cells |
++------+-----------------+-----------+------+
+|1     |top              |           |   112|
+|2     |  controller_uut |controller |    19|
++------+-----------------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:28 . Memory (MB): peak = 760.117 ; gain = 159.066
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 760.117 ; gain = 501.906
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 15 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 5 instances were transformed.
+  LD => LDCE: 5 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+28 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:00:44 . Memory (MB): peak = 772.180 ; gain = 526.793
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final/final.runs/synth_1/controller_fpga.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file controller_fpga_utilization_synth.rpt -pb controller_fpga_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.110 . Memory (MB): peak = 772.180 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Dec 11 19:52:07 2018...
