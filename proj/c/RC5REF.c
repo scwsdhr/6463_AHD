@@ -1,5 +1,6 @@
 /* RC5REF.C -- Reference implementation of RC5-32/12/16 in C.        */
 /* Copyright (C) 1995 RSA Data Security, Inc.                        */
+/* Modified by Chen Shen for EL6463 Advanced Hardware Design         */
 #include <stdio.h>
 typedef unsigned int WORD; /* Should be 32-bit = 4 bytes        */
 #define w        32             /* word size in bits                 */
@@ -45,13 +46,16 @@ void RC5_SETUP(unsigned char *K) /* secret input key K[0...b-1]      */
 void main()
 { WORD i, j, pt1[2], pt2[2], ct[2] = {0,0};
   unsigned char key[b];
-  FILE *fp = NULL;
-  fp = fopen("verify.txt", "w+");
+  FILE *fp1 = NULL;
+  FILE *fp2 = NULL;
+  fp1 = fopen("verify_one.txt", "w+");
+  fp2 = fopen("verify_two.txt", "w+");
   const int NUM = 300;
 
   if (sizeof(WORD)!=4) 
     printf("RC5 error: WORD has %d bytes.\n",sizeof(WORD));
   printf("RC5-32/12/16 examples:\n");
+
   for (i=1;i<NUM+1;i++)
     { /* Initialize pt1 and key pseudorandomly based on previous ct */
       pt1[0]=ct[0]; pt1[1]=ct[1]; 
@@ -70,14 +74,52 @@ void main()
         printf("Decryption Error!");
 
       /* Print out data in a required form */
-      fprintf(fp, "%d ", 1);
-      for (j=b-4; j<b; j++) fprintf(fp, "%.2X", key[j]);
-      fprintf(fp, " %.8lX%.8lX %.8lX%.8lX\n",
+      fprintf(fp1, "%d ", 1);
+      for (j=b-4; j<b; j++) fprintf(fp1, "%.2X", key[j]);
+      fprintf(fp1, " %.8lX%.8lX %.8lX%.8lX\n",
              pt1[0], pt1[1], ct[0], ct[1]);
 
-      fprintf(fp, "%d ", 0);
-      for (j=b-4; j<b; j++) fprintf(fp, "%.2X", key[j]);
-      fprintf(fp, " %.8lX%.8lX %.8lX%.8lX\n",
+      fprintf(fp1, "%d ", 0);
+      for (j=b-4; j<b; j++) fprintf(fp1, "%.2X", key[j]);
+      fprintf(fp1, " %.8lX%.8lX %.8lX%.8lX\n",
              ct[0], ct[1], pt1[0], pt1[1]);
+    }
+
+  for (i=1;i<2;i++)
+    { WORD pt3[2], pt4[2], ct1[2] = {0,0}, ct2[2] = {0,0};
+      /* Initialize pt1 and key pseudorandomly based on previous ct */
+      pt1[0]=ct1[0]; pt1[1]=ct1[1]; 
+      for (j=0;j<b-4;j++) key[j] = 0;
+      for (j=b-4;j<b;j++) key[j] = ct1[0]%(255-j);
+      /* Setup, encrypt, and decrypt */
+      RC5_SETUP(key);  
+      RC5_ENCRYPT(pt1,ct1);  
+      pt2[0]=ct1[0]; pt2[1]=ct1[1]; 
+      RC5_ENCRYPT(pt2,ct2);  
+      RC5_DECRYPT(ct1,pt3);
+      RC5_DECRYPT(ct2,pt4);
+      /* Print out results, checking for decryption failure */
+      printf("\n%d. key = ",i); 
+      for (j=0; j<b; j++) printf("%.2X ",key[j]);
+      printf("\n   plaintext %.8lX %.8lX  --->  ciphertext %.8lX %.8lX  \n",
+             pt1[0], pt1[1], ct1[0], ct1[1]);
+      if (pt1[0]!=pt3[0] || pt1[1]!=pt3[1]) 
+        printf("Decryption Error!");
+      printf("\n%d. key = ",i); 
+      for (j=0; j<b; j++) printf("%.2X ",key[j]);
+      printf("\n   plaintext %.8lX %.8lX  --->  ciphertext %.8lX %.8lX  \n",
+             pt2[0], pt2[1], ct2[0], ct2[1]);
+      if (pt2[0]!=pt4[0] || pt2[1]!=pt4[1]) 
+        printf("Decryption Error!");
+
+      /* Print out data in a required form */
+      fprintf(fp2, "%d ", 1);
+      for (j=b-4; j<b; j++) fprintf(fp2, "%.2X", key[j]);
+      fprintf(fp2, " %.8lX%.8lX %.8lX%.8lX %.8lX%.8lX %.8lX%.8lX\n",
+             pt1[0], pt1[1], pt2[0], pt2[1], ct1[0], ct1[1], ct2[0], ct2[1]);
+      fprintf(fp2, "%d ", 0);
+      for (j=b-4; j<b; j++) fprintf(fp2, "%.2X", key[j]);
+      fprintf(fp2, " %.8lX%.8lX %.8lX%.8lX %.8lX%.8lX %.8lX%.8lX\n",
+             ct1[0], ct1[1], ct2[0], ct2[1], pt1[0], pt1[1], pt2[0], pt2[1]);
     }
 }
