@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"controller_tb_func_impl.vhd" \
+"../../../../../../final.vhd" \
+"../../../../../../final_tb.vhd" \
+
+# Do not sort compile order
+nosort

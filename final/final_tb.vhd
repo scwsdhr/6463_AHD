@@ -12,7 +12,7 @@ architecture Behavioral of controller_tb is
             Clk : in STD_LOGIC;                         -- input clock
             Data : in STD_LOGIC;                        -- input data bit
             Detect : out STD_LOGIC;                     -- '1' when target sequence detected
-            Match : out STD_LOGIC_VECTOR(3 downto 0)    -- match process
+            Match : out STD_LOGIC_VECTOR(4 downto 0)    -- match process
         );
     end component;
 
@@ -25,7 +25,7 @@ architecture Behavioral of controller_tb is
     signal Clk : STD_LOGIC := '1';
     signal Data : STD_LOGIC;
     signal Detect : STD_LOGIC;
-    signal Match : STD_LOGIC_VECTOR(3 downto 0);
+    signal Match : STD_LOGIC_VECTOR(4 downto 0);
 
 begin
 

@@ -1,0 +1,8 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final/final.sim/sim_1/impl/func/xsim/controller_tb_func_impl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity controller
+INFO: [VRFC 10-307] analyzing entity controller_fpga
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity controller
+WARNING: [VRFC 10-1193] overwriting existing primary unit controller [C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final.vhd:4]
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/UnFound/OneDrive - nyu.edu/6463_AHD/final/final_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity controller_tb

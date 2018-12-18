@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date                      : Tue Dec 11 19:53:17 2018
+| Date                      : Mon Dec 17 18:10:38 2018
 | Host                      : DESKTOP-65OAGH3 running 64-bit major release  (build 9200)
 | Command                   : report_io -file controller_fpga_io_placed.rpt
 | Design                    : controller_fpga
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            25 |
+|            26 |
 +---------------+
 
 
@@ -319,7 +319,7 @@ Table of Contents
 | T12        |              | High Range | VCCO_14                      | VCCO        |             |      14 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 | T13        |              | High Range | IO_L23P_T3_A03_D19_14        | User IO     |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | T14        | SSEG_AN[5]   | High Range | IO_L14P_T2_SRCC_14           | OUTPUT      | LVCMOS33    |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
-| T15        |              | High Range | IO_L14N_T2_SRCC_14           | User IO     |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| T15        | Match_LED[4] | High Range | IO_L14N_T2_SRCC_14           | OUTPUT      | LVCMOS33    |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | T16        |              | High Range | IO_L15N_T2_DQS_DOUT_CSO_B_14 | User IO     |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | T17        |              |            | GND                          | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | T18        |              | High Range | IO_L7N_T1_D10_14             | User IO     |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |

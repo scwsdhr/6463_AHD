@@ -8,7 +8,7 @@ entity controller_fpga is
         SysClk : in STD_LOGIC;
         Clk_Btn : in STD_LOGIC;
         Data_SW : in STD_LOGIC;
-        Match_LED : out STD_LOGIC_VECTOR(3 downto 0);
+        Match_LED : out STD_LOGIC_VECTOR(4 downto 0);
         Detect_LED : out STD_LOGIC;
         SSEG_CA : out STD_LOGIC_VECTOR(7 downto 0);
         SSEG_AN : out STD_LOGIC_VECTOR(7 downto 0)
@@ -23,7 +23,7 @@ architecture Behavioral of controller_fpga is
             Clk : in STD_LOGIC;                         -- input clock
             Data : in STD_LOGIC;                        -- input data bit
             Detect : out STD_LOGIC;                     -- '1' when target sequence detected
-            Match : out STD_LOGIC_VECTOR(3 downto 0)    -- match process
+            Match : out STD_LOGIC_VECTOR(4 downto 0)    -- match process
         );
     end component;
 

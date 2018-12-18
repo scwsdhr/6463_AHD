@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Tue Dec 11 19:53:17 2018
+| Date         : Mon Dec 17 18:10:38 2018
 | Host         : DESKTOP-65OAGH3 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file controller_fpga_control_sets_placed.rpt
 | Design       : controller_fpga
@@ -24,7 +24,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |     7 |
-| Unused register locations in slices containing registers |    24 |
+| Unused register locations in slices containing registers |    20 |
 +----------------------------------------------------------+-------+
 
 
@@ -36,7 +36,7 @@ Table of Contents
 +--------+--------------+
 |      2 |            1 |
 |      8 |            2 |
-|     10 |            1 |
+|     12 |            1 |
 |    16+ |            3 |
 +--------+--------------+
 
@@ -47,12 +47,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              54 |            9 |
+| No           | No                    | No                     |              56 |            9 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              42 |            6 |
+| No           | Yes                   | No                     |              44 |            4 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              16 |            1 |
+| Yes          | Yes                   | No                     |              16 |            2 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -64,10 +64,10 @@ Table of Contents
 +---------------------------+---------------+--------------------+------------------+----------------+
 |  Clk                      |               |                    |                1 |              2 |
 |  Clk                      |               | SSEG_AN[7]_i_1_n_0 |                1 |              8 |
-|  Clk                      |               | sel0[2]            |                2 |              8 |
-|  controller_uut/NextState |               |                    |                2 |             10 |
-|  Clk_reg_n_0              | p_0_in        | Rst_IBUF           |                1 |             16 |
-|  Clk_reg_n_0              |               | Rst_IBUF           |                3 |             26 |
+|  Clk                      |               | sel0[2]            |                1 |              8 |
+|  controller_uut/NextState |               |                    |                2 |             12 |
+|  Clk_reg_n_0              | p_0_in        | Rst_IBUF           |                2 |             16 |
+|  Clk_reg_n_0              |               | Rst_IBUF           |                2 |             28 |
 |  SysClk_IBUF_BUFG         |               |                    |                6 |             42 |
 +---------------------------+---------------+--------------------+------------------+----------------+
 
